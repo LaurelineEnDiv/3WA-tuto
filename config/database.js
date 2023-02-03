@@ -1,9 +1,23 @@
 import mysql from "mysql";
 
+
 export let pool  = mysql.createPool({
   connectionLimit : 10000,
     host: "db.3wa.io",// on rentre l'hôte, l'adresse url où se trouve la bdd
-    user: "anthonycarreta", // identifiant BDD
-    password: "acfff451642c9b6988a8a36616c1ba28", // le password
-    database: "anthonycarreta_projetNode", // nom de la base de donnée
+    user: "laurelineauger", // identifiant BDD
+    password: "585dc9b9c99225b16b4f2a3b33b89642", // le password
+    database: "laurelineauger_tuto-test", // nom de la base de donnée
 });
+
+
+// permet d'obtenir le resultat des requetes sql async
+export const asyncQuery = async (sql, params = []) => {
+    return new Promise((resolve, reject)=>{
+        pool.query(sql,params, (error, result)=>{
+            if(error){
+                return reject(error);
+            }
+            return resolve(result);
+        });
+    });
+}
