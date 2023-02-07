@@ -1,8 +1,13 @@
 import express from "express";
-import testController from "../controllers/testController.js";
+import listShowsController from "../controllers/listShowsController.js";
+import addShowController from "../controllers/addShowController.js";
+import uploadFile from '../controllers/uploadFile.js'
 
 const router = express.Router();
 
-router.get("/", testController);
+router.get("/listshows", listShowsController);
+router.post("/addshow", addShowController);
+router.post("/uploadFile", uploadFile);
+
 
 export default router;
