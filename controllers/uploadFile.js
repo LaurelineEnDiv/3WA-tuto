@@ -1,6 +1,7 @@
 import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path';
+import {asyncQuery} from "../config/database.js"
 
 const allowedExtensions = ['jpeg', 'jpg', 'png', 'gif'];
 const imageDirectory = 'public/img';
@@ -52,9 +53,14 @@ const uploadFile = async (req, res) => {
         if (!fs.existsSync(imageDirectory)) {
             return res.status(500).json({ error: `Le dossier ${imageDirectory} n'existe pas.` });
         }
-
+        
+        // const {username} = fields
+        
         try {
             await fs.promises.copyFile(file.filepath, newPath);
+            const sql = "INSERT INTO pictures (show_id, url, pro) VALUES (?,?,0)"
+            const params = [1, newFilename]
+            await asyncQuery(sql,params)
             return res.json({ success: true });
         } catch (e) {
             return res.status(500).json({ error: 'Le fichier ne peut pas être enregistré.' });

@@ -5,6 +5,7 @@ import Error404 from "./components/Error404";
 import AddShow from "./components/AddShow";
 import ListShows from "./components/ListShows";
 import Show from "./components/Show";
+import UploadFile from "./components/UploadFile";
 
 const App = () => {
     return(
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path="/listshows" element={<ListShows />} />
                 <Route path="/show/:id" element={<Show />} />
                 <Route path="/addshow" element={<AddShow />} />
+                <Route path="/upload" element={<UploadFile />} />
             </Routes>
         </BrowserRouter>
     )
