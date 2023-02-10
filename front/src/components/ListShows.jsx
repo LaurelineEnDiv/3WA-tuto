@@ -12,10 +12,11 @@ const ListShows = () => {
     },[])
     
     
+    
     return (
         <div>
         <h1>Les Projets</h1>
-            {shows.map((show, i) => {
+            {shows.length > 0 && shows.map((show, i) => {
             console.log(show)
                 return(
                 
