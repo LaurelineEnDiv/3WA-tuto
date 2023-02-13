@@ -1,4 +1,5 @@
 import axios from "axios";
+import YoutubePlayer from './YoutubePlayer.jsx'
 import {useParams} from "react-router-dom";
 import {BASE_URL} from '../tools/constante.js';
 import {useState, useEffect} from "react";
@@ -24,6 +25,7 @@ const Show = () => {
                     <div key={i}>
                         <p>{data.title}</p>
                         <p>{data.name}</p>
+                        {data.url_video && <YoutubePlayer url_video={data.url_video}/>}
                         <p>{data.content}</p>
                     </div>
                 )

@@ -1,4 +1,3 @@
-import {pool} from "../config/database.js"
 import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path';
@@ -24,7 +23,6 @@ const checkAcceptedExtensions = (file) => {
 export default (req, res) => {
     
     form.parse(req, async (err, fields, files) => {
-        
         //form.parse prend en entrée la requête HTTP (req) et appelle une fonction de rappel (callback) en fournissant des erreurs éventuelles (err), 
         //les champs sous forme de objet (fields) et les fichiers téléchargés (files) extraits de la requête HTTP.
         if (err) {
@@ -45,15 +43,22 @@ export default (req, res) => {
     
         const newFilename = `${file.newFilename}`;
         const newPath = path.join(imageDirectory, newFilename);
+        
+        console.log(fields, files)
 
         try {
             await fs.promises.copyFile(file.filepath, newPath);
-            const sql = "INSERT INTO shows (title, content, year_creation, image, category_id) VALUES (?,?,?,?,1)"
-            const {title, content, year_creation} = fields
-            const paramsSql = [title, content, year_creation, newFilename]
-            // const params = [1, newFilename]
-            const result = await asyncQuery(sql,paramsSql)
-            res.json({result})
+            
+            // const sql = "INSERT INTO shows (title, content, year_creation, url_video, image, category_id) VALUES (?,?,?,?,?,1)"
+            // const {title, content, year_creation, url_video} = fields
+            // const paramsSql = [title, content, year_creation, url_video, newFilename]
+            // const result = await asyncQuery(sql,paramsSql)
+            
+            // const sqlPictures = "INSERT INTO pictures (show_id, url_pictures) VALUES (?,?)";
+            // const paramsSqlPictures = [result.insertId, url_pictures];
+            // const resultPictures = await asyncQuery(sqlPictures, paramsSqlPictures);
+            
+            // res.json({result, resultPictures}) // resultPictures
             return res.json({ success: true });
         } catch (e) {
             console.log(e)
@@ -62,3 +67,5 @@ export default (req, res) => {
     });
 
 }
+
+

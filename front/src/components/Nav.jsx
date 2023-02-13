@@ -14,6 +14,7 @@ const Nav = (props) => {
   
   return (
     <nav>
+      <img src="">
       <ul>
         <li>
           <NavLink to="/">
