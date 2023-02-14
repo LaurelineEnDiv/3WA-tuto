@@ -40,7 +40,7 @@ const AddShow = () => {
     }
     
     
-    /*///////// TESTE 
+    /*///////// TESTE
     const handleFileChange = (event) => {
         setSelectedFiles(event.target.files);
       };*/
@@ -55,7 +55,7 @@ const AddShow = () => {
         }
         
         const formData = new FormData()
-        const files = {...e.target.image.files};
+        const files = {...e.target.image.files,...e.target.url_pictures.files};
         /*for (let i = 0; i < selectedFiles.length; i++) {
           formData.append("files", selectedFiles[i], selectedFiles[i].name);
         }*/

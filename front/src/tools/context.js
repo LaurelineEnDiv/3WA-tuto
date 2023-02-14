@@ -3,7 +3,11 @@ const StoreContext = React.createContext([]);
 
 const initialState = {
     count : 0,
-    data : []
+    data : [],
+    user:{
+        isAdmin : false,
+        isLogged: false
+    }
 }
 
 export {StoreContext, initialState}

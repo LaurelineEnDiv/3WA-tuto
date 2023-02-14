@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
-import {useEffect} from 'react'
-import axios from 'axios'
+// import {useEffect} from 'react';
+// import axios from 'axios';
+import img from "../assets/img/logo-Hommes_Sensibles.png";
+
 const Nav = (props) => {
   
   // useEffect(() => {
@@ -14,7 +16,7 @@ const Nav = (props) => {
   
   return (
     <nav>
-      <img src="">
+      <img src={img} alt='Les Hommes Sensibles - Logo'/>
       <ul>
         <li>
           <NavLink to="/">
@@ -31,7 +33,6 @@ const Nav = (props) => {
            Ajouter un spectacle
           </NavLink>
         </li>
-        
       </ul>
     </nav>
   );

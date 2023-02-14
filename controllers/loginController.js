@@ -2,29 +2,26 @@ import {asyncQuery} from "../config/database.js"
 import bcrypt from "bcrypt"
 import {generateToken} from "../config/token.js"
 
-
 const generateResponse = async (userDataSQL) => {
-    // ID du role Admin en BDD
-    const ADMIN_ROLE_ID = 5
-    // verrifie si le user est admin return true OR false
-    const admin = userDataSQL.role_id === ADMIN_ROLE_ID
+    
+    const admin = true
     
     const userData = { 
         id:userDataSQL.id,
         nom:userDataSQL.nom,
         prenom:userDataSQL.prenom,
         email:userDataSQL.email,
-        
         user:true,
         admin
     }
+    
     try {
         const token = await generateToken(userData)
         return {response:true, admin, token}
-    } catch(err){
+        } catch(err){
         console.log(err)
-        return
-    }
+        return err
+        }
 }
 
 export default async (req, res) => {
@@ -42,3 +39,36 @@ export default async (req, res) => {
         res.sendStatus(500)
     }
 }
+
+        
+
+const login = async (email, password, generateToken) => {    
+    
+        try{
+            const dataBDD = await this._emailExist(email) 
+            
+            if(!dataBDD[0]){
+                return {response: "E-mail ou mot de passe invalide"}
+            } else if(email.length > 255 || password.length > 255){
+                return {response:'Utiliser moins de 250 caractères'}
+            } else if(email.length <= 0 || password.length <= 0){
+                return {response:"Veuillez remplir tous les champs"}
+            }
+            
+            const passwordIsValide = await bcrypt.compare(password,dataBDD[0].password)
+            const token = await this.generateResponse(dataBDD[0], generateToken)
+            
+            if(passwordIsValide){
+                return{response:passwordIsValide, token}
+            }
+            
+            return{response:"E-mail ou mot de passe invalide"}
+        } catch (err){
+            return err
+        }
+            
+    }
+    
+
+
+
