@@ -22,7 +22,7 @@ const AddAdmin = () => {
             console.log("Veuillez remplir tous les champs")
         }
         e.preventDefault()
-        axios.post(`${BASE_URL}/addAdmin`,{
+        axios.post(`${BASE_URL}/addadmin`,{
           nom : userData.nom.trim(),
           prenom: userData.prenom.trim(),
           email: userData.email.trim(),

@@ -45,6 +45,11 @@ const Nav = (props) => {
            Ajouter un spectacle
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/adddate">
+           Ajouter une date
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

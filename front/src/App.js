@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Error404 from "./components/Error404";
 import AddShow from "./components/AddShow";
+import AddDate from "./components/AddDate";
 import ListShows from "./components/ListShows";
 import Show from "./components/Show";
 import UploadFile from "./components/UploadFile";
@@ -19,6 +20,7 @@ const App = () => {
                 <Route path="/listshows" element={<ListShows />} />
                 <Route path="/show/:id" element={<Show />} />
                 <Route path="/addshow" element={<AddShow />} />
+                <Route path="/adddate" element={<AddDate />} />
                 <Route path="/upload" element={<UploadFile />} />
                 <Route path="/addadmin" element={<AddAdmin />} />
                 <Route path="/login" element={<Login />} />

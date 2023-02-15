@@ -57,7 +57,7 @@ export default (req, res, next) => {
           const newFilename = `${image.newFilename}`;
           const newPath = path.join(imageDirectory, newFilename);
     
-          // on verrifie si le dossier existe
+          // on vérifie si le dossier existe
           if (!fs.existsSync(imageDirectory)) {
             return res.status(500).json({ error: `Le dossier ${imageDirectory} n'existe pas.` });
           }
