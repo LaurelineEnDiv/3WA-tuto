@@ -28,6 +28,18 @@ const Nav = (props) => {
             Spectacles
           </NavLink>
         </li>
+      </ul>
+      <ul>
+        <li>
+          <NavLink to="/login">
+           Connexion
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/addadmin">
+           Ajouter un admin
+          </NavLink>
+        </li>
         <li>
           <NavLink to="/addshow">
            Ajouter un spectacle

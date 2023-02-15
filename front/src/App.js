@@ -6,6 +6,8 @@ import AddShow from "./components/AddShow";
 import ListShows from "./components/ListShows";
 import Show from "./components/Show";
 import UploadFile from "./components/UploadFile";
+import AddAdmin from "./components/AddAdmin";
+import Login from "./components/Login";
 
 const App = () => {
     return(
@@ -18,6 +20,8 @@ const App = () => {
                 <Route path="/show/:id" element={<Show />} />
                 <Route path="/addshow" element={<AddShow />} />
                 <Route path="/upload" element={<UploadFile />} />
+                <Route path="/addadmin" element={<AddAdmin />} />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </BrowserRouter>
     )

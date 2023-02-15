@@ -1,6 +1,7 @@
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
+import inputCheck from "../tools/inputLength.js"
 
 const Login = () => {
     const initialState = {email:'',password:''}
@@ -8,12 +9,15 @@ const Login = () => {
     
     const handleChange = (e) => {
         const {name,value} = e.target
-        setInfo({...info, [name]:value})
+         if(inputCheck(value)){
+            setInfo({...info, [name]:value})
+         }
     }
     
     const submit = (e) => {
         e.preventDefault()
-        axios.post(`${BASE_URL}/login`,{password:info.password, email:info.email})
+         if(inputCheck(info.email) && inputCheck(info.password)){
+            axios.post(`${BASE_URL}/login`,{password:info.password, email:info.email})
             .then(res => {
                 if(res.data.response) {
                     localStorage.setItem('jwtToken', res.data.response.token)
@@ -21,6 +25,8 @@ const Login = () => {
                     setInfo(initialState)
                 }
             })
+            .catch(e => console.log(e))
+         }
     }
     
     

@@ -2,7 +2,7 @@ import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
 import {useState} from "react"
 
-const CreateAccount = () => {
+const AddAdmin = () => {
     
     const initialValue = {
         nom:'',
@@ -23,39 +23,42 @@ const CreateAccount = () => {
         }
         e.preventDefault()
         axios.post(`${BASE_URL}/addAdmin`,{
-          last_name : userData.nom.trim(),
-          first_name: userData.prenom.trim(),
+          nom : userData.nom.trim(),
+          prenom: userData.prenom.trim(),
           email: userData.email.trim(),
           password:userData.password.trim(),
           
       })
-        .then(res => alert(res.data.data.response))
+        .then(res => {
+            console.log(res)
+            alert(res.data.response)
+        })
         setUserData(initialValue)
 
     }
    
     return(
-        <div className = "login contact createAccount" >
-            <h2>Inscription</h2>
-            <form className="login-form" onSubmit={submit} method="post">
-                <div className="form-item">
+        <div>
+            <h1>Ajouter un nouvel Admin</h1>
+            <form onSubmit={submit} method="post">
+                <div>
                     <input type="text" name="nom" placeholder="Nom" onChange={handleChange} value={userData.nom} maxLength="100"/>
                 </div>
-                <div className = "form-item">
+                <div>
                     <input type="text" name="prenom" placeholder="Prénom" onChange={handleChange} value={userData.prenom} maxLength="100"/>
                 </div>
-                <div className="form-item">
-                    <i className="fa-regular fa-user"></i>
+                <div>
+                    
                     <input type="email" name="email" placeholder="E-mail" onChange={handleChange} value={userData.email} maxLength="100"/>
                 </div>
-                <div className="form-item">
-                    <i className="fa-solid fa-lock"></i>
+                <div >
+                    
                     <input type="password" name="password" placeholder="Mot de passe" onChange={handleChange} value={userData.password} maxLength="250"/>
                 </div>
-                <button className="submit" type="submit">VALIDER</button>
+                <button type="submit">VALIDER</button>
             </form>
         </div>
     )
 }
 
-export default CreateAccount
+export default AddAdmin
