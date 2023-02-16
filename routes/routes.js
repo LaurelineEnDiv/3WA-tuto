@@ -9,6 +9,7 @@ import showController from '../controllers/showController.js';
 import getShowByIdController from '../controllers/getShowByIdController.js';
 import addAdminController from "../controllers/addAdminController.js";
 import loginController from "../controllers/loginControllerV2.js";
+import getLieuController from "../controllers/getLieuController.js";
 
 const router = express.Router();
 
@@ -20,6 +21,7 @@ router.post("/show", showController)
 router.post("/getShowById", getShowByIdController)
 router.post("/addadmin", addAdminController);
 router.post("/login", middleware, loginController) 
+router.get("/getLieu", middleware, getLieuController) 
 router.post("/uploadFile", uploadFile);
 
 

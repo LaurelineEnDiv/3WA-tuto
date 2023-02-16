@@ -26,21 +26,12 @@ const AddShow = () => {
     },[])
     
     
-    // const [shows, setShows] = useState([])
-    
-    // useEffect(() => {
-    //     axios.get(`${BASE_URL}/getShowById`)
-    //     .then(res => setShows(res.data.result))
-    // },[])
-    
-    
     const handleChange = (e) => {
         const {name, value} = e.target
         setShowData({...showData,[name]:value})
     }
     
-    
-    /*///////// TESTE
+    /*///////// TEST
     const handleFileChange = (event) => {
         setSelectedFiles(event.target.files);
       };*/
@@ -49,7 +40,7 @@ const AddShow = () => {
         e.preventDefault()
         
         if(!inputCheck(showData.title, 255, 1) || !inputCheck(showData.content, 255, 1) 
-            || !inputCheck(showData.year_creation, 4, 4) || !inputCheck(showData.url_video, 255, 1)) {
+            || !inputCheck(showData.year_creation, 4, 4) /*|| !inputCheck(showData.url_video, 255, 1)*/) {
             console.log("Les données saisies ne sont pas valides.")
             return
         }
@@ -109,9 +100,9 @@ const AddShow = () => {
             <p>URL de la vidéo de présentation du spectacle : </p>
             <input type='url' name='url_video' onChange={handleChange} value={showData.url_video} />
             <p>Télécharger l'image de présentation du spectacle</p>
-            <input type='file' name='image' />
+            <input type='file' name='image' onChange={handleChange} />
             <p>Télécharger les photos spectacle</p>
-            <input type='file' name='url_pictures' /*onChange={handleFileChange}*/ multiple />
+            <input type='file' name='url_pictures' onChange={handleChange} /*onChange={handleFileChange}*/ multiple />
             <input type='submit' />
         </form>
         </Fragment>
