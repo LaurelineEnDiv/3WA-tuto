@@ -5,14 +5,15 @@ import {useState, useEffect, useRef} from "react"
 import inputCheck from '../tools/inputLength.js'
 
 const AddShow = () => {
-    const [showData, setShowData] = useState({
+    const initialState = {
         title:'',
         categorie:'',
         year_creation:'',
         content:'',
         url_video:'',
         url_pictures:'',
-    })
+    }
+    const [showData, setShowData] = useState(initialState)
     
     const [categories, setCategories] = useState([])
     const [pictures, setPictures] = useState(null) 
@@ -32,8 +33,8 @@ const AddShow = () => {
     const submit = (e) => {
         e.preventDefault()
         
-        if(!inputCheck(showData.title, 255, 1) || !inputCheck(showData.content, 255, 1) 
-            || !inputCheck(showData.year_creation, 4, 4) /*|| !inputCheck(showData.url_video, 255, 1)*/) {
+        if(!inputCheck(showData.title, 255, 1) || /*!inputCheck(showData.content, 255, 1) 
+            ||*/ !inputCheck(showData.year_creation, 4, 4) /*|| !inputCheck(showData.url_video, 255, 1)*/) {
             console.log("Les données saisies ne sont pas valides.")
             return
         }
@@ -60,8 +61,7 @@ const AddShow = () => {
         axios.post(`${BASE_URL}/addshow`, dataFile)
         .then((res)=> {
             setPictures(res.data.newFilenames)
-            console.log(res)
-            res.data.response && console.log('succesfully upload');
+            setShowData(initialState)
         })
         .catch((err) => {
             console.log(err)
@@ -76,10 +76,12 @@ const AddShow = () => {
         const urlPicture = pictures[pictureSelected]
         console.log(urlPicture)
         
-        axios.post(`${BASE_URL}/selectedImage`, urlPicture)
+        axios.post(`${BASE_URL}/selectedImage`, {url_pictures:urlPicture})
         .then((res)=> {
             console.log(res)
             res.data.response && console.log('succesfully selected');
+            setPictures(null)
+            setPictureSelected(null)
         })
         .catch((err) => {
             console.log(err)
@@ -90,26 +92,38 @@ const AddShow = () => {
         <Fragment>
             {!pictures &&(
                 <Fragment>
-                    <h1>Ajouter/modifier un spectacle</h1>
+                    <h1>Ajouter un spectacle</h1>
                     <form onSubmit={submit} encType="multipart/form-data">
-                    <label>Nom du spectacle</label>
-                        <input type='text' placeholder='title' name='title' onChange={handleChange} value={showData.title} />
-                        <label>Catégorie</label>
+                        <label>Nom du spectacle</label>
+                            <input type='text' placeholder='Titre' name='title' onChange={handleChange} value={showData.title} />
+                        <div>
+                            <label>Catégorie</label>
                             <select name="categorie" onChange={handleChange} value={showData.name}>
                             {categories.map((categorie, i) => {
                             return(
-                              <option key={i} value={categorie.id}>{categorie.name}</option>
+                            <option key={i} value={categorie.id}>{categorie.name}</option>
                             )})}
                             </select>
-                        <label>Année de création</label>
-                        <input type='text' placeholder='année de création' name='year_creation' onChange={handleChange} value={showData.year_creation} />
-                        <label>Description</label>
-                        <input type='text' placeholder='content' name='content' onChange={handleChange} value={showData.content} />
-                        <p>URL de la vidéo de présentation du spectacle (embed sur YouTube, ex : https://www.youtube.com/embed/JZlo) </p>
-                        <input type='url' name='url_video' onChange={handleChange} value={showData.url_video} />
-                        <p>Télécharger les photos du spectacle</p>
-                        <input type='file' name='url_pictures' multiple />
+                        </div>
+                        <div>
+                            <label>Année de création</label>
+                            <input type='text' placeholder='Année de création' name='year_creation' onChange={handleChange} value={showData.year_creation} />
+                         </div> 
+                         <div>
+                            <label>Description</label>
+                            <input type='text' placeholder='Description' name='content' onChange={handleChange} value={showData.content} />
+                        </div> 
+                        <div>
+                            <label>URL de la vidéo de présentation du spectacle (embed sur YouTube, ex : https://www.youtube.com/embed/JZlo) </label>
+                            <input type='url' name='url_video' onChange={handleChange} value={showData.url_video} />
+                        </div> 
+                        <div>
+                            <label>Télécharger les photos du spectacle</label>
+                            <input type='file' name='url_pictures' multiple />
+                        </div>
+                        <div>
                         <input type='submit' value='Valider'/>
+                        </div>
                     </form>
                 </Fragment>
             )}

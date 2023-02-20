@@ -1,31 +1,29 @@
 import axios from "axios";
-import {NavLink} from "react-router-dom"
-import {BASE_URL, BASE_IMG} from "../tools/constante.js"
+import {BASE_URL} from "../tools/constante.js"
 import {useState, useEffect} from "react";
 
-const ListShows = () => {
-    const [shows, setShows] = useState([])
+const ListDates = () => {
+    const [dates, setDates] = useState([])
     
     useEffect(() => {
-        axios.get(`${BASE_URL}/listshows`)
-        .then(res => setShows(res.data.result))
+        axios.get(`${BASE_URL}/listdates`)
+        .then(res => setDates(res.data.result))
+        .then(res => console.log(dates))
     },[])
-    
     
     
     return (
         <div>
-        <h1>Les Projets</h1>
-            {shows.length > 0 && shows.map((show, i) => {
-            console.log(show)
+        <h1>Agenda</h1>
+            {dates.length > 0 && dates.map((date, i) => {
+            console.log(date)
                 return(
                 
                     <div key={i}>
-                        <img src={`${BASE_IMG}/${show.image}`} />
-                        <p><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></p>
-                        <p>{show.name}</p>
-                        <p>{show.year_creation}</p>
-                        
+                        <p>{date.date}</p>
+                        <p>{date.title}</p>
+                        <p>{date.nom_lieu}</p>
+                        <p>{date.ville}{date.departement}</p>
                     </div>
                 )
             })}
@@ -33,4 +31,4 @@ const ListShows = () => {
     )
 }
 
-export default ListShows
+export default ListDates

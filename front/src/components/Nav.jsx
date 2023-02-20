@@ -28,7 +28,13 @@ const Nav = (props) => {
             Spectacles
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/listdates">
+            Agenda
+          </NavLink>
+        </li>
       </ul>
+      
       <ul>
         <li>
           <NavLink to="/login">
