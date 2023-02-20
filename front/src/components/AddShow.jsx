@@ -1,24 +1,22 @@
 import axios from "axios"
 import {Fragment} from 'react'
-import {BASE_URL} from '../tools/constante.js'
-import {useState, useEffect} from "react"
+import {BASE_URL, BASE_IMG} from '../tools/constante.js'
+import {useState, useEffect, useRef} from "react"
 import inputCheck from '../tools/inputLength.js'
 
 const AddShow = () => {
     const [showData, setShowData] = useState({
         title:'',
-        content:'',
+        categorie:'',
         year_creation:'',
-        image:'',
+        content:'',
         url_video:'',
-        url_pictures:''
+        url_pictures:'',
     })
     
-    //////// test
-//     const [selectedFiles, setSelectedFiles] = useState([]);
-// console.log(selectedFiles)
-    
     const [categories, setCategories] = useState([])
+    const [pictures, setPictures] = useState(null) 
+    const [pictureSelected, setPictureSelected] = useState(null) 
     
     useEffect(() => {
         axios.get(`${BASE_URL}/getCategories`)
@@ -31,11 +29,6 @@ const AddShow = () => {
         setShowData({...showData,[name]:value})
     }
     
-    /*///////// TEST
-    const handleFileChange = (event) => {
-        setSelectedFiles(event.target.files);
-      };*/
-    
     const submit = (e) => {
         e.preventDefault()
         
@@ -45,19 +38,28 @@ const AddShow = () => {
             return
         }
         
-        const formData = new FormData()
-        const files = {...e.target.image.files,...e.target.url_pictures.files};
-        /*for (let i = 0; i < selectedFiles.length; i++) {
-          formData.append("files", selectedFiles[i], selectedFiles[i].name);
-        }*/
-        formData.append('files', files[0], files[0].name)
-        formData.append('title', showData.title)
-        formData.append('content', showData.content)
-        formData.append('year_creation', showData.year_creation)
-        formData.append('url_video', showData.url_video)
+        const dataFile = new FormData();
+        const files = [...e.target.url_pictures.files];
         
-        axios.post(`${BASE_URL}/addshow`, formData)
+        console.log(files)
+
+        // ajouter d'autre inputs au formulaire
+        dataFile.append('title', showData.title)
+        dataFile.append('content', showData.content)
+        dataFile.append('year_creation', showData.year_creation)
+        dataFile.append('url_video', showData.url_video)
+        
+        // ajouter tous les fichiers à FormData
+        for (let i = 0; i < files.length; i++) {
+            dataFile.append('files', files[i], files[i].name)
+        }
+        
+        //met à jour l'état de l'application à l'aide de la méthode setPictures 
+        //avec les nouveaux noms de fichiers renvoyés par le serveur (stockés dans res.data.newFilenames):
+        
+        axios.post(`${BASE_URL}/addshow`, dataFile)
         .then((res)=> {
+            setPictures(res.data.newFilenames)
             console.log(res)
             res.data.response && console.log('succesfully upload');
         })
@@ -67,45 +69,69 @@ const AddShow = () => {
        
     }
     
+    // récupère l'image sélectionnée (urlPicture) à partir de l'état pictures 
+    // en utilisant la variable d'état pictureSelected 
     
-    /*///////// TEST
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-        for (let i = 0; i < selectedFiles.length; i++) {
-          formData.append("files_bis", selectedFiles[i]);
-        }
-        axios.post("/upload", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-      };*/
-
+    const submitMainPicture = () => {
+        const urlPicture = pictures[pictureSelected]
+        console.log(urlPicture)
+        
+        axios.post(`${BASE_URL}/selectedImage`, urlPicture)
+        .then((res)=> {
+            console.log(res)
+            res.data.response && console.log('succesfully selected');
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
     
     return(
         <Fragment>
-        {/*<form onSubmit={handleSubmit} encType="multipart/form-data">*/}
-        <form onSubmit={submit} encType="multipart/form-data">
-            <input type='text' placeholder='title' name='title' onChange={handleChange} value={showData.title} />
-            <label>Catégorie</label>
-                <select name="name">
-                {categories.map((categorie, i) => {
-                return(
-                  <option key={i} value={categorie.id}>{categorie.name}</option>
-                )})}
-                </select>
-            <input type='text' placeholder='année de création' name='year_creation' onChange={handleChange} value={showData.year_creation} />
-            <input type='text' placeholder='content' name='content' onChange={handleChange} value={showData.content} />
-            <p>URL de la vidéo de présentation du spectacle : </p>
-            <input type='url' name='url_video' onChange={handleChange} value={showData.url_video} />
-            <p>Télécharger l'image de présentation du spectacle</p>
-            <input type='file' name='image' onChange={handleChange} />
-            <p>Télécharger les photos spectacle</p>
-            <input type='file' name='url_pictures' onChange={handleChange} /*onChange={handleFileChange}*/ multiple />
-            <input type='submit' />
-        </form>
-        </Fragment>
+            {!pictures &&(
+                <Fragment>
+                    <h1>Ajouter/modifier un spectacle</h1>
+                    <form onSubmit={submit} encType="multipart/form-data">
+                    <label>Nom du spectacle</label>
+                        <input type='text' placeholder='title' name='title' onChange={handleChange} value={showData.title} />
+                        <label>Catégorie</label>
+                            <select name="categorie" onChange={handleChange} value={showData.name}>
+                            {categories.map((categorie, i) => {
+                            return(
+                              <option key={i} value={categorie.id}>{categorie.name}</option>
+                            )})}
+                            </select>
+                        <label>Année de création</label>
+                        <input type='text' placeholder='année de création' name='year_creation' onChange={handleChange} value={showData.year_creation} />
+                        <label>Description</label>
+                        <input type='text' placeholder='content' name='content' onChange={handleChange} value={showData.content} />
+                        <p>URL de la vidéo de présentation du spectacle (embed sur YouTube, ex : https://www.youtube.com/embed/JZlo) </p>
+                        <input type='url' name='url_video' onChange={handleChange} value={showData.url_video} />
+                        <p>Télécharger les photos du spectacle</p>
+                        <input type='file' name='url_pictures' multiple />
+                        <input type='submit' value='Valider'/>
+                    </form>
+                </Fragment>
+            )}
+            
+            {/* si la variable pictures est définie et n'est pas null :
+            - Map pour afficher la liste des images à partir de la variable pictures.
+            - L'indice de l'image dans la liste est stocké dans la variable i.
+            - Style sur l'image sélectionnée si l'indice i correspond à la valeur de l'état pictureSelected.
+            - Quand on clique sur une image, la fonction setPictureSelected est appelée 
+            pour mettre à jour la valeur de l'état pictureSelected avec l'indice de l'image sélectionnée.
+            */}
+            
+            {pictures &&
+                <Fragment>
+                    <p>Sélectionne la photo d'illustration</p>
+                    {pictures.map((e,i) => {
+                        return (<img key={i} style={i === pictureSelected ? {border:"1px solid red"} : {}} onClick={() => setPictureSelected(i)} src={`${BASE_IMG}/${e}`}/>)
+                    })}
+                    <button onClick={submitMainPicture}>Valider</button>
+                </Fragment>
+            }
+            </Fragment>
     )
 }
 

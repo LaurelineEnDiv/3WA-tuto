@@ -21,7 +21,7 @@ const ListShows = () => {
                 return(
                 
                     <div key={i}>
-                        <img src={`${BASE_IMG}/${show.image_selected}`} />
+                        <img src={`${BASE_IMG}/${show.image}`} />
                         <p><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></p>
                         <p>{show.name}</p>
                         <p>{show.year_creation}</p>

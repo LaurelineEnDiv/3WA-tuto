@@ -26,6 +26,7 @@ export default (req, res, next) => {
     form.parse(req, async (err, fields, files) => {
       
       console.log({fields, files})
+      console.log(fields)
         //form.parse prend en entrée la requête HTTP (req) et appelle une fonction de rappel (callback) en fournissant des erreurs éventuelles (err), 
         //les champs sous forme de objet (fields) et les fichiers téléchargés (files) extraits de la requête HTTP.
         if (err) {
@@ -38,9 +39,9 @@ export default (req, res, next) => {
         let images = files.files;
 
         // si on n'a pas de fichier
-        // if (!images || (Array.isArray(images) && images.length === 0) || (!Array.isArray(images) && images.size === 0)) {
-        //   return res.status(400).json({ error: 'Aucun fichier n\'a été téléchargé.' });
-        // }
+        if (!images || (Array.isArray(images) && images.length === 0) || (!Array.isArray(images) && images.size === 0)) {
+          return res.status(400).json({ error: 'Aucun fichier n\'a été téléchargé.' });
+        }
     
         const newFilenames = [];
     
@@ -65,19 +66,6 @@ export default (req, res, next) => {
         try {
             await fs.promises.copyFile(image.filepath, newPath);
             
-            const sql = "INSERT INTO shows (title, content, year_creation, url_video, image, category_id) VALUES (?,?,?,?,?,1)"
-            const {title, content, year_creation, url_video} = fields
-            const paramsSql = [title, content, year_creation, url_video, newFilename]
-            const result = await asyncQuery(sql,paramsSql)
-            
-            // console.log(result.insertId)
-            
-            const sqlPictures = "INSERT INTO pictures (show_id, url_pictures) VALUES (?,?)";
-            const {url_pictures} = fields
-            const paramsSqlPictures = [result.insertId, url_pictures];
-            const resultPictures = await asyncQuery(sqlPictures, paramsSqlPictures);
-            
-            res.json({result, /*resultPictures*/}) 
             // return res.json({ success: true });
         } catch (e) {
             console.log(e)
@@ -89,7 +77,33 @@ export default (req, res, next) => {
 
     req.body = fields;
     req.body.files = newFilenames;
-    next();
+    try {
+      const sql = "INSERT INTO shows (title, content, year_creation, url_video, category_id) VALUES (?,?,?,?,1)"
+      const {title, content, year_creation, url_video, category_id} = fields
+      const paramsSql = [title, content, year_creation, url_video, category_id]
+      const result = await asyncQuery(sql,paramsSql)
+      
+      const paramsSqlPictures = []
+      
+      newFilenames.forEach((e) => {
+        paramsSqlPictures.push([result.insertId,e])
+      })
+      
+      
+      // const paramsSqlPictures = [
+      //   [34,]  
+      // ]
+      
+      
+      const sqlPictures = "INSERT INTO pictures (show_id, url_pictures) VALUES ?";
+      const resultPictures = await asyncQuery(sqlPictures, [paramsSqlPictures]);
+      
+      res.json({result, resultPictures, newFilenames}) 
+    } catch(e) {
+    
+      console.log(e)
+      res.json({error:e})
+    }
     });
 };
 
