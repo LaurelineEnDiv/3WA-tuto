@@ -1,9 +1,12 @@
+import { useContext } from "react"
+import { StoreContext } from "../tools/context.js"
 import {useState} from "react"
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
 import inputCheck from "../tools/inputLength.js"
 
 const Login = () => {
+    const [state, dispatch] = useContext(StoreContext)
     const initialState = {email:'',password:''}
     const [info, setInfo] = useState(initialState)
     
@@ -20,6 +23,7 @@ const Login = () => {
             axios.post(`${BASE_URL}/login`,{password:info.password, email:info.email})
             .then(res => {
                 if(res.data.response) {
+                    dispatch({type:'LOGIN', payload:res.data.response}) // A TESTER
                     localStorage.setItem('jwtToken', res.data.response.token)
                     axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.response.token
                     setInfo(initialState)

@@ -23,7 +23,7 @@ const ListDates = () => {
                         <p>{date.formattedDate}</p>
                         <p>{date.title}</p>
                         <a href={date.site_web} target="_blank">{date.nom_lieu}</a>
-                        <p>{date.ville}{date.departement}</p>
+                        <p>{date.ville} ({date.departement})</p>
                     </div>
                 )
             })}

@@ -1,9 +1,13 @@
 const reducer = (state, action) =>{
     switch(action.type){
-        case 'INCREMENTER':
+        case 'LOGIN':
             return {
                 ...state,
-                count:state.count + 1,
+                user:{
+                    isLogged:true,
+                    isAdmin:action.payload.admin,
+                    ...action.payload
+                }
             }
 
         default:

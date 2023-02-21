@@ -15,7 +15,7 @@ import selectedImageController from '../controllers/selectedImageController.js';
 
 import addAdminController from "../controllers/addAdminController.js";
 import loginController from "../controllers/loginControllerV2.js";
-import uploadFile from '../controllers/uploadFile.js';
+import checkToken from '../controllers/checkToken.js'
 
 const router = express.Router();
 
@@ -33,8 +33,7 @@ router.post("/selectedImage", selectedImageController);
 
 router.post("/addadmin", addAdminController);
 router.post("/login", middleware, loginController) ;
-router.post("/uploadFile", uploadFile);
-
+router.get("/relogged", checkToken)
 
 
 export default router;

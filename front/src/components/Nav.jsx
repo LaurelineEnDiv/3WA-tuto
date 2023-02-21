@@ -1,18 +1,12 @@
 import { NavLink } from "react-router-dom";
-// import {useEffect} from 'react';
-// import axios from 'axios';
 import img from "../assets/img/logo-Hommes_Sensibles.png";
+import {useContext, Fragment} from "react"
+import { StoreContext } from "../tools/context.js"
 
 const Nav = (props) => {
+      const [state, dispatch] = useContext(StoreContext)
+
   
-  // useEffect(() => {
-  //   if(!axios.defaults.headers.common['Authorization']){
-  //     const token = localStorage.getItem("jwtToken")
-  //     if(token){
-  //       axios.defaults.headers.common['Authorization'] = 'Bearer '+token
-  //     }
-  //   }
-  // },[])
   
   return (
     <nav>
@@ -41,21 +35,25 @@ const Nav = (props) => {
            Connexion
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/addadmin">
-           Ajouter un admin
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/addshow">
-           Ajouter un spectacle
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/adddate">
-           Ajouter une date
-          </NavLink>
-        </li>
+        { state.user.isAdmin && (
+        <Fragment>
+          <li>
+            <NavLink to="/addadmin">
+             Ajouter un admin
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/addshow">
+             Ajouter un spectacle
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/adddate">
+             Ajouter une date
+            </NavLink>
+          </li>
+        </Fragment>
+        )}
       </ul>
     </nav>
   );
