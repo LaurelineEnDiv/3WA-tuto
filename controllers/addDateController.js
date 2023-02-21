@@ -1,4 +1,3 @@
-// import {pool} from "../config/database.js"
 import {asyncQuery} from "../config/database.js";
 
 export default async (req, res) => {
@@ -27,10 +26,6 @@ export default async (req, res) => {
         res.sendStatus(500)
     }
         
-            
-// pool.query(sql,paramsSql,(err, result) => {
-//         if(err) throw err
-//         res.json({result})
-//     })
+
 }
 

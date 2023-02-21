@@ -20,9 +20,9 @@ const ListDates = () => {
                 return(
                 
                     <div key={i}>
-                        <p>{date.date}</p>
+                        <p>{date.formattedDate}</p>
                         <p>{date.title}</p>
-                        <p>{date.nom_lieu}</p>
+                        <a href={date.site_web} target="_blank">{date.nom_lieu}</a>
                         <p>{date.ville}{date.departement}</p>
                     </div>
                 )
