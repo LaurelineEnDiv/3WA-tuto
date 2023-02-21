@@ -4,23 +4,26 @@ export default async (req, res) => {
     const sqlShow = `
     SELECT shows.title, shows.content, shows.url_video, shows_categories.name
     FROM shows 
-    JOIN shows_categories 
-    ON shows_categories.id = shows.category_id 
+    JOIN shows_categories ON shows_categories.id = shows.category_id 
     WHERE shows.id = ?
     `
-    const paramsSQLShow = [id]
+    const paramsSQL = [id]
+    
+    const sqlPictures = `
+    SELECT url_pictures, image_selected, show_id
+    FROM pictures 
+    WHERE show_id = ?
+    `
     
     try{
-        const showList = await asyncQuery(sqlShow,paramsSQLShow)
-        res.json({result:showList})
+        const showData = await asyncQuery(sqlShow,paramsSQL)
+        const showPictures = await asyncQuery(sqlPictures,paramsSQL)
+        res.json({sqlShow:showData, sqlPictures:showPictures})
     } catch(err) {
         console.log(err)
         res.sendStatus(500)
     }
     
-    // pool.query(sql,paramsSQL,(err, result) =>{
-    //     if(err) throw err
-    //     res.json({result})
-    // })
+  
 }
 

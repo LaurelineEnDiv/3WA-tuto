@@ -11,8 +11,6 @@ const ListShows = () => {
         .then(res => setShows(res.data.result))
     },[])
     
-    
-    
     return (
         <Fragment>
         {!shows && (<p>loading</p>) }
@@ -21,7 +19,6 @@ const ListShows = () => {
             {shows.length > 0 && shows.map((show, i) => {
                 if (show.image_selected === 1) {
                 return(
-                
                     <div key={i}>
                         <img src={`${BASE_IMG}/${show.url_pictures}`} />
                         <p><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></p>

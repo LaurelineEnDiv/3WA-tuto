@@ -1,36 +1,45 @@
 import axios from "axios";
 import YoutubePlayer from './YoutubePlayer.jsx'
 import {useParams} from "react-router-dom";
-import {BASE_URL} from '../tools/constante.js';
-import {useState, useEffect} from "react";
+import {BASE_URL, BASE_IMG} from '../tools/constante.js';
+import {Fragment, useState, useEffect} from "react";
 
 const Show = () => {
-    const [show, setShow] = useState([])
+    const [show, setShow] = useState(null)
     const {id} = useParams()
     
     
     useEffect(() => {
         axios.post(`${BASE_URL}/show`,{id})
         .then(res => {
-        setShow(res.data.result)
+        setShow(res.data)
+        console.log (res.data)
         })
     .catch(err => console.log(err))
     },[id])
     
+            console.log(show)
     
     return (
+        <Fragment>
+        {!show && (<p>loading</p>) }
         <div>
-            {show.map((data, i) => {
-                return(
-                    <div key={i}>
-                        <p>{data.title}</p>
-                        <p>{data.name}</p>
-                        {data.url_video && <YoutubePlayer url_video={data.url_video}/>}
-                        <p>{data.content}</p>
-                    </div>
-                )
-            })}
+            {show && 
+                <div>
+                    <p>{show.sqlShow[0].title}</p>
+                    <p>{show.sqlShow[0].name}</p>
+                    {show.sqlShow[0].url_video && <YoutubePlayer url_video={show.sqlShow[0].url_video}/>}
+                    <p>{show.sqlShow[0].content}</p>
+                    {show.sqlPictures.map((e,i) =>{
+                    
+                        return(
+                            <img key={i} src={`${BASE_IMG}/${e.url_pictures}`} />
+                        )
+                    })}
+                </div>
+            }
         </div>    
+        </Fragment>
     )
 }
 
