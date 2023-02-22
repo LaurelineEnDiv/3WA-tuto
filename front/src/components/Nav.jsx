@@ -38,8 +38,8 @@ const Nav = (props) => {
         { state.user.isAdmin && (
         <Fragment>
           <li>
-            <NavLink to="/addadmin">
-             Ajouter un admin
+            <NavLink to="/admin">
+             Gérer les utilisateurs
             </NavLink>
           </li>
           <li>

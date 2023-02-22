@@ -14,7 +14,7 @@ import getShowByIdController from '../controllers/getShowByIdController.js';
 import selectedImageController from '../controllers/selectedImageController.js';
 
 import addAdminController from "../controllers/addAdminController.js";
-import listAdminController from "../controllers/listAdminController.js";
+import adminController from "../controllers/adminController.js";
 import deleteAdminController from "../controllers/deleteAdminController.js";
 import getAdminByIdController from "../controllers/getAdminByIdController.js";
 import editAdminByIdController from "../controllers/editAdminByIdController.js";
@@ -35,7 +35,7 @@ router.post("/show", showController);
 router.post("/getShowById", getShowByIdController);
 router.post("/selectedImage", selectedImageController);
 
-router.get("/listadmin", listAdminController);
+router.get("/admin", adminController);
 router.post("/addadmin", addAdminController);
 router.post("/deleteAdmin", deleteAdminController);
 router.post("/getAdminById", getAdminByIdController);

@@ -31,7 +31,7 @@ export default async (req, res) => {
         
             // error a la vérification de l'email
             if(emailPresent === undefined){
-                return res.json({error:"une erreur c'est produit"})
+                return res.json({error:"une erreur s'est produite"})
             }
             
             // Email deja present en BDD 
