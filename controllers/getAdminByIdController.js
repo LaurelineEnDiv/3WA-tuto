@@ -10,9 +10,6 @@ export default (req, res) => {
         res.json({result})
     })
 }
-
-
-
         
     //     try {
     //         const result = await this.asyncQuery(sql, [id])

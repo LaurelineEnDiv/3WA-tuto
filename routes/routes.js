@@ -14,8 +14,12 @@ import getShowByIdController from '../controllers/getShowByIdController.js';
 import selectedImageController from '../controllers/selectedImageController.js';
 
 import addAdminController from "../controllers/addAdminController.js";
+import listAdminController from "../controllers/listAdminController.js";
+import deleteAdminController from "../controllers/deleteAdminController.js";
+import getAdminByIdController from "../controllers/getAdminByIdController.js";
+import editAdminByIdController from "../controllers/editAdminByIdController.js";
 import loginController from "../controllers/loginControllerV2.js";
-import checkToken from '../controllers/checkToken.js'
+import checkToken from '../controllers/checkToken.js';
 
 const router = express.Router();
 
@@ -31,9 +35,14 @@ router.post("/show", showController);
 router.post("/getShowById", getShowByIdController);
 router.post("/selectedImage", selectedImageController);
 
+router.get("/listadmin", listAdminController);
 router.post("/addadmin", addAdminController);
+router.post("/deleteAdmin", deleteAdminController);
+router.post("/getAdminById", getAdminByIdController);
+router.post("/editAdminById", editAdminByIdController);
+
 router.post("/login", middleware, loginController) ;
-router.get("/relogged", checkToken)
+router.get("/relogged", checkToken);
 
 
 export default router;

@@ -5,26 +5,23 @@ import {useEffect, useContext, useState} from 'react'
 import axios from 'axios'
 
 const PrivateRoute = ({children, auth = null}) => {
-    // permet de recuperer le pathname ex: http://najs02.ide.3wa.io:3000/login => /login
+    // permet de récuperer le pathname ex: http://najs02.ide.3wa.io:3000/login => /login
     const location = useLocation().pathname;
     const [loading, setLoading] = useState(true)
-    /** 
-    * On recuperer user qui se trouve dans notre state 
-    * du reducer grace au destructuring
-    **/
+    /** récupère user qui se trouve dans notre state du reducer grâce au destructuring**/
     const [{user}, dispatch] = useContext(StoreContext)
     
     useEffect(() => {
         console.log("ici")
-        // on verrifie que l'utilisateur n'est pas deja connecter
+        // on vérifie que l'utilisateur n'est pas déjà connecté
         if(user.id === null){
-          // on recupere le token dans le localStorage
+          // on récupère le token dans le localStorage
           const jwtToken = window.localStorage.getItem("jwtToken")
           // Si on a un token
           if (jwtToken) {
             // on met le token 
             axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`
-            // on verrifie le token puis on sauvegarde les donner dans le reducer
+            // on vérifie le token puis on sauvegarde les données dans le reducer
             axios.get(`${BASE_URL}/relogged`)
             .then(res => dispatch({type:"LOGIN", payload:res.data.result}))
             .catch(e => console.log(e))
@@ -32,24 +29,24 @@ const PrivateRoute = ({children, auth = null}) => {
         }
     },[])
   
-    // permet de bloquer le chargement des composent si l'utilisateur n'est pas logged ou que le route est securiser
+    // permet de bloquer le chargement des composants si l'utilisateur n'est pas logged
     useEffect(() => { if (user.id || !auth) setLoading(false) },[user, location])
     
-    // On recupere les variable qui permette de savoir si l'utilisateur est connecter et/ou admin
+    // On recupere les variables qui permettent de savoir si l'utilisateur est connecté et/ou admin
     const {isAdmin, isLogged} = user;
     
-    // On verrifie si a route est reserver au admin 
+    // On vérifie si la route est réservée à l'admin 
     const isLimitedToAdmin = auth === "admin";
-    // On verrifie si a route est reserver au utilisateur connecter
+    // On vérifie si la route est réservée à l'utilisateur connecté
     const isLimitedToConnected = auth === "user";
     
-    // si il n'y a pas de restriction sur cette route
+    // s'il n'y a pas de restriction sur cette route
     const isPublic = auth === null
   
     /* 
-    * Si la route est reserver aux admin et qu'il est connecter en tant qu'admin
+    * Si la route est réservée aux admin et qu'il est connecté en tant qu'admin
     * OU
-    * Si la route est reserver aux utilisateur et qu'il est connecter
+    * Si la route est réservée aux utilisateurs et qu'il est connecté
     */
     const isUserAuthorized = isPublic || (isLimitedToAdmin && isAdmin) || (isLimitedToConnected && isLogged);
 
