@@ -1,5 +1,6 @@
 import express from "express";
 import middleware from "../controllers/middlewareV2.js";
+import middlewareUploadFileMultiple from "../controllers/middlewareUploadFileMultiple.js";
 
 import listShowsController from "../controllers/listShowsController.js";
 import listDatesController from "../controllers/listDatesController.js";
@@ -50,7 +51,7 @@ router.get("/listdates", listDatesController);
 router.post("/adddate", addDateController);
 
 router.get("/admin", adminController);
-router.post("/addadmin", addAdminController);
+router.post("/addadmin", middlewareUploadFileMultiple, addAdminController);
 router.post("/deleteAdmin", deleteAdminController);
 router.post("/getAdminById", getAdminByIdController);
 router.post("/editAdminById", editAdminByIdController);
