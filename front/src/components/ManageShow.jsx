@@ -1,12 +1,27 @@
 import axios from "axios"
-import {Fragment} from 'react'
 import {BASE_URL, BASE_IMG} from '../tools/constante.js'
-import {useState, useEffect} from "react"
+import {useState, useEffect, Fragment} from "react"
 import inputCheck from '../tools/inputLength.js'
 import {NavLink} from 'react-router-dom'
 
 const ManageShow = () => {
+    const initialState = {
+        title:'',
+        categorie:'',
+        year_creation:'',
+        content:'',
+        url_video:'',
+        url_pictures:'',
+    }
+    
     const [showsList, setShowsList] = useState([])
+    const [showData, setShowData] = useState(initialState)
+    
+    const [categories, setCategories] = useState([])
+    const [pictures, setPictures] = useState(null) 
+    const [pictureSelected, setPictureSelected] = useState(null) 
+    
+    console.log({showsList, showData, categories, pictures, pictureSelected})
     
     useEffect(() => {
         if(showsList.length === 0){
@@ -29,20 +44,6 @@ const ManageShow = () => {
 
 ///////ADD SHOW////////
 
-
-    const initialState = {
-        title:'',
-        categorie:'',
-        year_creation:'',
-        content:'',
-        url_video:'',
-        url_pictures:'',
-    }
-    const [showData, setShowData] = useState(initialState)
-    
-    const [categories, setCategories] = useState([])
-    const [pictures, setPictures] = useState(null) 
-    const [pictureSelected, setPictureSelected] = useState(null) 
     
     useEffect(() => {
         axios.get(`${BASE_URL}/getCategories`)
@@ -85,7 +86,8 @@ const ManageShow = () => {
         
         axios.post(`${BASE_URL}/addshow`, dataFile)
         .then((res)=> {
-            setPictures(res.data.newFilenames)
+            console.log(res)
+            setPictures(res.data.files)
             setShowData(initialState)
         })
         .catch((err) => {
@@ -114,18 +116,20 @@ const ManageShow = () => {
     }
     
     return(
-        
         <div>
+            <h1>Gestion des spectacles</h1>
             <p>Cliquez sur le nom du spectacle à modifier</p>
                 <ul>
                   {showsList.map((show, i) => {
                     return (
+                      <Fragment>
                       <li key={i}>
                         <NavLink to={`/editshow/${show.id}`}>
                           {show.title}
                         </NavLink>
-                        <button onClick={() => deleteShow(show.id)}>X</button>
                       </li>
+                      <button onClick={() => deleteShow(show.id)}>Supprimer {show.title}</button>
+                      </Fragment>
                     );
                   })}
                 </ul>
@@ -142,6 +146,7 @@ const ManageShow = () => {
                         <div>
                             <label>Catégorie</label>
                             <select name="categorie" onChange={handleChange} value={showData.name}>
+                            <option value={undefined}>Choix d'option</option>
                             {categories.map((categorie, i) => {
                             return(
                             <option key={i} value={categorie.id}>{categorie.name}</option>

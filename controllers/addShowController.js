@@ -1,7 +1,6 @@
 import {asyncQuery} from "../config/database.js";
 
 export default async (req, res) => {
-    
       const sql = "INSERT INTO shows (title, content, year_creation, url_video, category_id) VALUES (?,?,?,?,1)"
       const {title, content, year_creation, url_video, category_id, files} = req.body
       const paramsSql = [title, content, year_creation, url_video, category_id]

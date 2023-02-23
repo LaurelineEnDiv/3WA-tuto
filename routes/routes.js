@@ -41,17 +41,17 @@ router.get("/listshows", listShowsController);
 router.post("/show", showController);
 ////ADMIN////
 router.get("/manageshows", manageShowsController);
-router.post("/addshow", addShowController);
+router.post("/addshow", middlewareUploadFileMultiple, addShowController);
+router.post("/editShowById", middlewareUploadFileMultiple, editShowByIdController);
 router.post("/deleteShow", deleteShowController);
 router.post("/getShowById", getShowByIdController);
-router.post("/editShowById", editShowByIdController);
 
 
 router.get("/listdates", listDatesController);
 router.post("/adddate", addDateController);
 
 router.get("/admin", adminController);
-router.post("/addadmin", middlewareUploadFileMultiple, addAdminController);
+router.post("/addadmin", addAdminController);
 router.post("/deleteAdmin", deleteAdminController);
 router.post("/getAdminById", getAdminByIdController);
 router.post("/editAdminById", editAdminByIdController);
