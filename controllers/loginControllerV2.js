@@ -75,6 +75,18 @@ export default async (req, res) => {
     const response = await generateResponse(result[0]);
     const passwordIsValid = await bcrypt.compare(password, result[0].password);
     res.json(passwordIsValid ? { response } : { response: null });
+    // const loginResponse = await login(email, password);
+    // if (loginResponse.response === true) {
+    //   const { token } = loginResponse;
+    //   res.json({
+    //     message: "Vous êtes connecté",
+    //     token,
+    //   });
+    // } else {
+    //   res.json({
+    //     message: loginResponse.response,
+    //   });
+    // }
   } catch (err) {
     console.log(err);
     res.sendStatus(500);

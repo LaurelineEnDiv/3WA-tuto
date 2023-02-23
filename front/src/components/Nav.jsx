@@ -27,6 +27,11 @@ const Nav = (props) => {
             Agenda
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/contact">
+            Contact
+          </NavLink>
+        </li>
       </ul>
       
       <ul>
@@ -43,8 +48,8 @@ const Nav = (props) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/addshow">
-             Ajouter un spectacle
+            <NavLink to="/manageshows">
+             Gérer les spectacles
             </NavLink>
           </li>
           <li>

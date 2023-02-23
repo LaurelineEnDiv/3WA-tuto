@@ -1,10 +1,35 @@
 import axios from "axios"
 import {Fragment} from 'react'
 import {BASE_URL, BASE_IMG} from '../tools/constante.js'
-import {useState, useEffect, useRef} from "react"
+import {useState, useEffect} from "react"
 import inputCheck from '../tools/inputLength.js'
+import {NavLink} from 'react-router-dom'
 
-const AddShow = () => {
+const ManageShow = () => {
+    const [showsList, setShowsList] = useState([])
+    
+    useEffect(() => {
+        if(showsList.length === 0){
+            axios.get(`${BASE_URL}/manageshows`)
+                .then(res => setShowsList(res.data.result))
+                .catch(err => console.log(err))
+        }
+    },[showsList])
+    
+    const deleteShow = (id) => {
+        axios.post(`${BASE_URL}/deleteShow`,{id})
+        .then(res => {
+      console.log(res)
+      // Mettre à jour la liste des spectacles en excluant le spectacle supprimé
+      setShowsList(showsList.filter(show => show.id !== id))
+    })
+    .catch(err => console.log(err))
+    }
+
+
+///////ADD SHOW////////
+
+
     const initialState = {
         title:'',
         categorie:'',
@@ -89,10 +114,28 @@ const AddShow = () => {
     }
     
     return(
+        
+        <div>
+            <p>Cliquez sur le nom du spectacle à modifier</p>
+                <ul>
+                  {showsList.map((show, i) => {
+                    return (
+                      <li key={i}>
+                        <NavLink to={`/editshow/${show.id}`}>
+                          {show.title}
+                        </NavLink>
+                        <button onClick={() => deleteShow(show.id)}>X</button>
+                      </li>
+                    );
+                  })}
+                </ul>
+            
+        <div>
+        
         <Fragment>
             {!pictures &&(
                 <Fragment>
-                    <h1>Ajouter un spectacle</h1>
+                    <p>Ajouter un spectacle</p>
                     <form onSubmit={submit} encType="multipart/form-data">
                         <label>Nom du spectacle</label>
                             <input type='text' placeholder='Titre' name='title' onChange={handleChange} value={showData.title} />
@@ -145,8 +188,11 @@ const AddShow = () => {
                     <button onClick={submitMainPicture}>Valider</button>
                 </Fragment>
             }
+            
             </Fragment>
+            </div>
+            </div>
     )
 }
 
-export default AddShow
+export default ManageShow

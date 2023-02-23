@@ -1,6 +1,6 @@
 import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
-import {useEffect, useState, Fragment} from "react"
+import {useEffect, useState} from "react"
 import {NavLink} from 'react-router-dom'
 
 const Admin = () => {
@@ -74,7 +74,9 @@ const Admin = () => {
                     );
                   })}
                 </ul>
+            
             <div>
+            
               <p>Ajouter un nouvel Admin</p>
               <form onSubmit={submit} method="post">
                 <div>
