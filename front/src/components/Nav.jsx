@@ -53,6 +53,11 @@ const Nav = (props) => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/managedates">
+             Gérer les dates
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/adddate">
              Ajouter une date
             </NavLink>

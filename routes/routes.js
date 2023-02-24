@@ -3,7 +3,7 @@ import middleware from "../controllers/middlewareV2.js";
 import middlewareUploadFileMultiple from "../controllers/middlewareUploadFileMultiple.js";
 
 import listShowsController from "../controllers/listShowsController.js";
-import listDatesController from "../controllers/listDatesController.js";
+
 
 import getCategoriesController from '../controllers/getCategoriesController.js';
 import getPicturesController from "../controllers/getPicturesController.js";
@@ -17,8 +17,10 @@ import editShowByIdController from "../controllers/editShowByIdController.js";
 import getShowByIdController from '../controllers/getShowByIdController.js';
 import showController from '../controllers/showController.js';
 
+import manageDatesController from "../controllers/manageDatesController.js";
 import addDateController from "../controllers/addDateController.js";
-
+import listDatesController from "../controllers/listDatesController.js";
+import deleteDateController from "../controllers/deleteDateController.js";
 
 import adminController from "../controllers/adminController.js";
 import addAdminController from "../controllers/addAdminController.js";
@@ -48,7 +50,10 @@ router.post("/getShowById", getShowByIdController);
 
 
 router.get("/listdates", listDatesController);
+////ADMIN////
+router.get("/managedates", manageDatesController);
 router.post("/adddate", addDateController);
+router.post("/deletedate", deleteDateController);
 
 router.get("/admin", adminController);
 router.post("/addadmin", addAdminController);

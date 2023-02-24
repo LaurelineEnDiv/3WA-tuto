@@ -5,6 +5,7 @@ import Logout from "../components/Logout";
 import Admin from "../components/Admin";
 import EditAdmin from "../components/EditAdmin";
 import ManageShow from "../components/ManageShow";
+import ManageDates from "../components/ManageDates";
 import EditShow from "../components/EditShow";
 import AddDate from "../components/AddDate";
 import ListDates from "../components/ListDates";
@@ -20,6 +21,7 @@ const routes = [
     {path:"/admin", component:<Admin />, auth:"admin"},
     {path:"/editadmin/:id", component:<EditAdmin />, auth:"admin"},
     {path:"/manageshows", component:<ManageShow />, auth:"admin"},
+    {path:"/managedates", component:<ManageDates />, auth:"admin"},
     {path:"/editshow/:id", component:<EditShow />, auth:"admin"},
     {path:"/adddate", component:<AddDate />, auth:"admin"},
     {path:"/listdates", component:<ListDates />},
