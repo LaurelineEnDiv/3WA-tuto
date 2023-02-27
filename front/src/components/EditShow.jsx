@@ -87,7 +87,6 @@ const EditShow = () => {
         <Fragment>
             { !pictures &&(
                 <Fragment>
-                <h1>Gestion des spectacles</h1>
                 <p>Modifier les données du spectacle</p>
                 <form onSubmit={submit} encType="multipart/form-data">
                 <label>Nom du spectacle</label>
@@ -117,7 +116,7 @@ const EditShow = () => {
                     <label>Ajouter de nouvelles photos</label>
                     <input type='file' name='url_pictures' multiple />
                 <div>
-                    <input type='submit' value='Valider les modifications' />
+                    <input type='submit' disabled={!show.categorie} value='Valider les modifications' />
                 </div>
                 </form>
                 </Fragment>

@@ -122,13 +122,13 @@ const ManageShow = () => {
                 <ul>
                   {showsList.map((show, i) => {
                     return (
-                      <Fragment>
-                      <li key={i}>
-                        <NavLink to={`/editshow/${show.id}`}>
-                          {show.title}
-                        </NavLink>
-                      </li>
-                      <button onClick={() => deleteShow(show.id)}>Supprimer {show.title}</button>
+                      <Fragment key={i}>
+                          <li>
+                            <NavLink to={`/editshow/${show.id}`}>
+                              {show.title}
+                            </NavLink>
+                          </li>
+                          <button onClick={() => deleteShow(show.id)}>Supprimer {show.title}</button>
                       </Fragment>
                     )
                   })}
