@@ -10,13 +10,8 @@ const Nav = (props) => {
   
   return (
     <nav>
-      <img src={img} alt='Les Hommes Sensibles - Logo'/>
+      <a href="/"><img src={img} alt='Les Hommes Sensibles - Logo'/>< /a >
       <ul>
-        <li>
-          <NavLink to="/">
-            HOME
-          </NavLink>
-        </li>
         <li>
           <NavLink to="/listshows">
             Spectacles
@@ -55,11 +50,6 @@ const Nav = (props) => {
           <li>
             <NavLink to="/managedates">
              Gérer les dates
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/adddate">
-             Ajouter une date
             </NavLink>
           </li>
         </Fragment>

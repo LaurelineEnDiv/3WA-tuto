@@ -8,7 +8,6 @@ const ListDates = () => {
     useEffect(() => {
         axios.get(`${BASE_URL}/listdates`)
         .then(res => setDates(res.data.result))
-        .then(res => console.log(dates))
     },[])
     
     

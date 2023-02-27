@@ -130,10 +130,9 @@ const ManageShow = () => {
                       </li>
                       <button onClick={() => deleteShow(show.id)}>Supprimer {show.title}</button>
                       </Fragment>
-                    );
+                    )
                   })}
                 </ul>
-            
         <div>
         
         <Fragment>

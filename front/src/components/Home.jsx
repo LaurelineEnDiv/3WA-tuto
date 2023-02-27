@@ -1,6 +1,27 @@
-import {Fragment} from 'react'
+import {Fragment,useState, useEffect} from 'react';
+import axios from "axios";
+import {BASE_URL, BASE_IMG} from "../tools/constante.js"
+import {NavLink} from "react-router-dom"
 
 const Home = () => {
+    const [shows, setShows] = useState([])
+    const [dates, setDates] = useState([])
+    
+    useEffect(() => {
+        axios.get(`${BASE_URL}/listshows`)
+        .then(res => setShows(res.data.result))
+    },[])
+    
+    useEffect(() => {
+        axios.get(`${BASE_URL}/listdates`)
+        .then(res => {
+            const data = res.data.result.slice(0, 3)
+            setDates(data)
+            
+        })
+        .then(res => console.log(dates))
+    },[])
+    
     return(
         <Fragment>
         <h1>Les Hommes Sensibles</h1>
@@ -8,6 +29,40 @@ const Home = () => {
         , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
         <p>Ses artistes ont comme points communs leurs sensibilités.
         Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
+        
+        
+        <div>
+        {!shows && (<p>loading</p>) }
+        <div>
+        <h2>Les Spectacles</h2>
+            {shows.length > 0 && shows.map((show, i) => {
+                if (show.image_selected === 1) {
+                return(
+                    <div key={i}>
+                        <img src={`${BASE_IMG}/${show.url_pictures}`} />
+                        <p><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></p>
+                    </div>
+                )
+                }
+            })}
+        </div>
+        </div>
+        
+        <div>
+        <h2>Agenda</h2>
+        {dates.length > 0 && dates.map((date, i) => {
+            console.log(date)
+                return(
+                
+                    <div key={i}>
+                        <p>{date.formattedDate}</p>
+                        <p>{date.title}</p>
+                        <a href={date.site_web} target="_blank">{date.nom_lieu}</a>
+                        <p>{date.ville} ({date.departement})</p>
+                    </div>
+                )
+            })}
+        </div>
         </Fragment>
     )
 }

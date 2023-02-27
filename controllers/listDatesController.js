@@ -7,6 +7,7 @@ export default (req, res) => {
     FROM agenda 
     JOIN shows ON shows.id = agenda.show_id
     JOIN lieux ON lieux.id = agenda.lieu_id
+    ORDER BY date
     `
     
     pool.query(sql,(err, result) =>{
