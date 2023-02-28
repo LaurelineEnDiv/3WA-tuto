@@ -8,7 +8,7 @@ const Nav = (props) => {
 
   
   return (
-    <nav>
+    <nav class="fixed-top">
       <a href="/"><img src={img} alt='Les Hommes Sensibles - Logo'/></a>
       <ul>
       <li>
