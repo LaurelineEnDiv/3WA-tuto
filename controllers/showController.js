@@ -12,7 +12,7 @@ export default async (req, res) => {
     const sqlPictures = `
     SELECT url_pictures, image_selected, show_id
     FROM pictures 
-    WHERE show_id = ?
+    WHERE show_id = ? AND image_selected = 0
     `
     
     try{

@@ -20,7 +20,7 @@ const Pro = () => {
                 return(
                     <div key={i}>
                         <p>{show.title}</p>
-                        <a href={`${BASE_URL}/pdf/${show.pdf}`} target="_blank" download>Télécharger</a>
+                        <a href={`${BASE_URL}/pdf/${show.pdf}`} target="_blank" download>Dossier de présentation</a>
                     </div>
                 )
             })}

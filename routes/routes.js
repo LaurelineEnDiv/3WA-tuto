@@ -30,8 +30,6 @@ import getLieuController from "../controllers/getLieuController.js";
 
 /////////PRO///////////
 import addPdfController from "../controllers/addPdfController.js";
-// import deletePdfController from "../controllers/deletePDFController.js";
-
 
 /////////USERS///////////
 import adminController from "../controllers/adminController.js";

@@ -1,5 +1,4 @@
-// Le reducer est utilisé pour gérer l'état de l'application en fonction de l'action spécifiée. 
-// Dans ce cas, il est utilisé pour gérer l'authentification de l'utilisateur et le rôle de l'administrateur.
+// Le reducer est utilisé ici pour gérer l'authentification de l'utilisateur et le rôle de l'administrateur.
 
 const reducer = (state, action) =>{
     switch(action.type){

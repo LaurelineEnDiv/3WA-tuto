@@ -67,7 +67,7 @@ const ManagePro = () => {
                           <Fragment>
                                 <form onSubmit={(e) => submit(e, show.id)} encType="multipart/form-data">
                                     <div>
-                                        <label>Ajouter des documents (.pdf)</label>
+                                        <label>Ajouter le dossier de présentation)</label>
                                         <input type='file' name='pdf' multiple />
                                     </div>
                                     <div>

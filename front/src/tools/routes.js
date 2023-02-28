@@ -1,6 +1,11 @@
-import Error404 from "../components/Error404.jsx"
-import Home from "../components/Home.jsx"
-import Compagnie from "../components/Compagnie.jsx"
+import Error404 from "../components/Error404.jsx";
+import Home from "../components/Home.jsx";
+import Compagnie from "../components/Compagnie.jsx";
+import ListDates from "../components/ListDates";
+import ListShows from "../components/ListShows";
+import Show from "../components/Show";
+import Contact from "../components/Contact";
+import Pro from "../components/Pro";
 import Login from "../components/Login";
 import Logout from "../components/Logout";
 import Admin from "../components/Admin";
@@ -9,11 +14,6 @@ import ManageShow from "../components/ManageShow";
 import ManageDates from "../components/ManageDates";
 import ManagePro from "../components/ManagePro";
 import EditShow from "../components/EditShow";
-import ListDates from "../components/ListDates";
-import ListShows from "../components/ListShows";
-import Show from "../components/Show";
-import Contact from "../components/Contact";
-import Pro from "../components/Pro";
 
 
 const routes = [
