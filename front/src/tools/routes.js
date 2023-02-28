@@ -7,11 +7,13 @@ import Admin from "../components/Admin";
 import EditAdmin from "../components/EditAdmin";
 import ManageShow from "../components/ManageShow";
 import ManageDates from "../components/ManageDates";
+import ManagePro from "../components/ManagePro";
 import EditShow from "../components/EditShow";
 import ListDates from "../components/ListDates";
 import ListShows from "../components/ListShows";
 import Show from "../components/Show";
 import Contact from "../components/Contact";
+import Pro from "../components/Pro";
 
 
 const routes = [
@@ -21,6 +23,7 @@ const routes = [
     {path:"/listshows", component:<ListShows />},
     {path:"/show/:id", component:<Show />},
     {path:"/contact", component:<Contact />},
+    {path:"/pro", component:<Pro />},
     
     {path:"/login", component:<Login />},
     {path:"/logout", component:<Logout />},
@@ -29,6 +32,7 @@ const routes = [
     {path:"/manageshows", component:<ManageShow />, auth:"admin"},
     {path:"/editshow/:id", component:<EditShow />, auth:"admin"},
     {path:"/managedates", component:<ManageDates />, auth:"admin"},
+    {path:"/managepro", component:<ManagePro />, auth:"admin"},
     
     {path:"*", component:<Error404 />},
    

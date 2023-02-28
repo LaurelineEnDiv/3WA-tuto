@@ -17,6 +17,7 @@ const form = formidable({
 
 
 const checkAcceptedExtensions = (file) => {
+  console.log(file.mimetype)
     const type = file.mimetype.split('/').pop();
     //divise la chaîne de caractères file.mimetype en un tableau de sous-chaînes en utilisant le séparateur '/'.
     //La méthode .pop() est ensuite utilisée pour extraire le dernier élément du tableau, qui représente le type de fichier (extension).

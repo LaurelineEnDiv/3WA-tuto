@@ -1,12 +1,14 @@
 import express from "express";
 import middleware from "../controllers/middlewareV2.js";
 import middlewareUploadFileMultiple from "../controllers/middlewareUploadFileMultiple.js";
+import middlewareUploadPdf from "../controllers/middlewareUploadPdf.js";
 
 /////////////////////////AFFICHAGE/////////////////////
 import listShowsController from "../controllers/listShowsController.js";
 import showController from '../controllers/showController.js';
 import listDatesController from "../controllers/listDatesController.js";
 import selectShowController from "../controllers/selectShowController.js";
+import listProController from "../controllers/listProController.js";
 
 //////////////////////ADMIN/////////////////////////////
 
@@ -26,6 +28,11 @@ import addDateController from "../controllers/addDateController.js";
 import deleteDateController from "../controllers/deleteDateController.js";
 import getLieuController from "../controllers/getLieuController.js";
 
+/////////PRO///////////
+import addPdfController from "../controllers/addPdfController.js";
+// import deletePdfController from "../controllers/deletePDFController.js";
+
+
 /////////USERS///////////
 import adminController from "../controllers/adminController.js";
 import addAdminController from "../controllers/addAdminController.js";
@@ -42,6 +49,7 @@ router.get("/listshows", listShowsController);
 router.post("/show", showController);
 router.get("/listdates", listDatesController);
 router.get("/selectshow", selectShowController);
+router.get("/listpro", listProController);
 
 ///////////////ADMIN///////////////////
 
@@ -61,6 +69,11 @@ router.get("/managedates", manageDatesController);
 router.post("/adddate", addDateController);
 router.post("/deletedate", deleteDateController);
 router.get("/getLieu", middleware, getLieuController) ;
+
+
+/////////PRO////////////
+router.post("/addpdf", middlewareUploadPdf, addPdfController);
+// router.post("/deletePdf", deletePdfController);
 
 //////////USER//////////////////
 router.get("/admin", adminController);

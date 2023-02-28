@@ -7,10 +7,9 @@ const Nav = (props) => {
       const [state, dispatch] = useContext(StoreContext)
 
   
-  
   return (
     <nav>
-      <a href="/"><img src={img} alt='Les Hommes Sensibles - Logo'/>< /a >
+      <a href="/"><img src={img} alt='Les Hommes Sensibles - Logo'/></a>
       <ul>
       <li>
           <NavLink to="/la-compagnie">
@@ -19,7 +18,7 @@ const Nav = (props) => {
         </li>
         <li>
           <NavLink to="/listshows">
-             Les projets
+             Les Projets
           </NavLink>
         </li>
         <li>
@@ -30,6 +29,11 @@ const Nav = (props) => {
         <li>
           <NavLink to="/contact">
             Contact
+          </NavLink>
+        </li>
+         <li>
+          <NavLink to="/pro">
+            Pro
           </NavLink>
         </li>
       </ul>
@@ -57,11 +61,16 @@ const Nav = (props) => {
              Gérer les dates
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/managepro">
+             Gérer l'espace pro
+            </NavLink>
+          </li>
         </Fragment>
         )}
       </ul>
     </nav>
-  );
-};
+  )
+}
 
 export default Nav;

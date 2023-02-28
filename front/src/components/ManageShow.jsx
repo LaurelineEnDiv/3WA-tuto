@@ -11,6 +11,7 @@ const ManageShow = () => {
         year_creation:'',
         content:'',
         url_video:'',
+        pdf:'',
         url_pictures:'',
     }
     
@@ -163,7 +164,7 @@ const ManageShow = () => {
                         <div>
                             <label>URL de la vidéo de présentation du spectacle (embed sur YouTube, ex : https://www.youtube.com/embed/JZlo) </label>
                             <input type='url' name='url_video' onChange={handleChange} value={showData.url_video} />
-                        </div> 
+                        </div>
                         <div>
                             <label>Télécharger les photos du spectacle</label>
                             <input type='file' name='url_pictures' multiple />
