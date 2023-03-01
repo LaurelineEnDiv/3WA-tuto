@@ -26,7 +26,7 @@ const routes = [
     {path:"/pro", component:<Pro />},
     
     {path:"/login", component:<Login />},
-    {path:"/logout", component:<Logout />},
+    {path:"/logout", component:<Logout />, auth:"admin"},
     {path:"/admin", component:<Admin />, auth:"admin"},
     {path:"/editadmin/:id", component:<EditAdmin />, auth:"admin"},
     {path:"/manageshows", component:<ManageShow />, auth:"admin"},

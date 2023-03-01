@@ -11,7 +11,7 @@ const Nav = (props) => {
     <nav class="fixed-top">
       <a href="/"><img src={img} alt='Les Hommes Sensibles - Logo'/></a>
       <ul>
-      <li>
+        <li>
           <NavLink to="/la-compagnie">
             Qui sommes-nous ?
           </NavLink>
@@ -36,16 +36,21 @@ const Nav = (props) => {
             Pro
           </NavLink>
         </li>
-      </ul>
-      
-      <ul>
         <li>
           <NavLink to="/login">
            Connexion
           </NavLink>
         </li>
+      </ul>
+        
         { state.user.isAdmin && (
         <Fragment>
+        <ul class="navadmin">
+          <li>
+            <NavLink to="/logout">
+             Déconnexion
+            </NavLink>
+          </li>
           <li>
             <NavLink to="/admin">
              Gérer les utilisateurs
@@ -66,9 +71,10 @@ const Nav = (props) => {
              Gérer l'espace pro
             </NavLink>
           </li>
+        </ul>
         </Fragment>
         )}
-      </ul>
+      
     </nav>
   )
 }

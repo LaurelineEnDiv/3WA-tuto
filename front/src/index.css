@@ -17,6 +17,9 @@ html {
 /* Body */
 body {
 	font-size: 1.6rem;
+	width: auto;
+	/*max-width: 1140px;  Ajout de la largeur maximale */
+
 }
 
 
@@ -49,8 +52,7 @@ HEADER
 nav {
   background-color: #212529;
   color: #fff;
-  padding-top : 1rem;
-  padding-bottom : 1rem;
+  padding : 2rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -58,16 +60,16 @@ nav {
 }
 
 
-.fixed-top {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-}
+/*.fixed-top {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    left: 0;*/
+/*    z-index: 1030;*/
+/*}*/
 
 nav img {
-  height: 1.5rem;
+  height: 2rem;
   vertical-align: middle;
 }
 
@@ -82,4 +84,30 @@ nav a {
 
 nav a:hover {
   color: #fed136;
+}
+
+
+.navadmin {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+
+@media screen and (min-width: 980px) {
+  
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  nav ul li {
+    margin-left : 2rem;
+    
+  }
+  
+
+
 }
