@@ -4,13 +4,15 @@ import {useContext, Fragment} from "react"
 import { StoreContext } from "../tools/context.js"
 
 const Nav = (props) => {
-      const [state, dispatch] = useContext(StoreContext)
+      const [state] = useContext(StoreContext)
 
   
   return (
-    <nav class="fixed-top">
+    <header className="fixed-top">
+    <nav>
+      <div className="navblack">
       <a href="/"><img src={img} alt='Les Hommes Sensibles - Logo'/></a>
-      <ul>
+      <ul className="navuser">
         <li>
           <NavLink to="/la-compagnie">
             Qui sommes-nous ?
@@ -42,15 +44,12 @@ const Nav = (props) => {
           </NavLink>
         </li>
       </ul>
+      </div>
+      
         
         { state.user.isAdmin && (
         <Fragment>
-        <ul class="navadmin">
-          <li>
-            <NavLink to="/logout">
-             Déconnexion
-            </NavLink>
-          </li>
+        <ul className="navadmin">
           <li>
             <NavLink to="/admin">
              Gérer les utilisateurs
@@ -71,11 +70,16 @@ const Nav = (props) => {
              Gérer l'espace pro
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/logout">
+             Déconnexion
+            </NavLink>
+          </li>
         </ul>
         </Fragment>
         )}
-      
-    </nav>
+      </nav>
+    </header>
   )
 }
 

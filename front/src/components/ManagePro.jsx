@@ -1,5 +1,5 @@
 import axios from "axios"
-import {BASE_URL, BASE_IMG} from '../tools/constante.js'
+import {BASE_URL} from '../tools/constante.js'
 import {useState, useEffect, Fragment} from "react"
 
 const ManagePro = () => {
@@ -10,9 +10,6 @@ const ManagePro = () => {
     const [showsList, setShowsList] = useState([])
     const [showData, setShowData] = useState(initialState)
     const [pdf, setPdf] = useState(null) 
-    
-    
-    console.log({showsList, showData, pdf})
     
     useEffect(() => {
         if(showsList.length === 0){
@@ -30,9 +27,6 @@ const ManagePro = () => {
         
         const dataFile = new FormData();
         const files = [...e.target.pdf.files];
-        
-        
-        console.log(files)
 
         
         // ajouter tous les fichiers à FormData
@@ -46,7 +40,6 @@ const ManagePro = () => {
         
         axios.post(`${BASE_URL}/addpdf`, dataFile)
         .then((res)=> {
-            console.log(res)
             setPdf(res.data.files)
             setShowData(initialState)
         })
@@ -67,7 +60,7 @@ const ManagePro = () => {
                           <Fragment>
                                 <form onSubmit={(e) => submit(e, show.id)} encType="multipart/form-data">
                                     <div>
-                                        <label>Ajouter le dossier de présentation)</label>
+                                        <label>Ajouter le dossier de présentation</label>
                                         <input type='file' name='pdf' multiple />
                                     </div>
                                     <div>

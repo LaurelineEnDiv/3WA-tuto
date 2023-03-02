@@ -22,24 +22,21 @@ const ManageShow = () => {
     const [pictures, setPictures] = useState(null) 
     const [pictureSelected, setPictureSelected] = useState(null) 
     
-    console.log({showsList, showData, categories, pictures, pictureSelected})
-    
     useEffect(() => {
         if(showsList.length === 0){
             axios.get(`${BASE_URL}/manageshows`)
-                .then(res => setShowsList(res.data.result))
-                .catch(err => console.log(err))
+            .then(res => setShowsList(res.data.result))
+            .catch(err => console.log(err))
         }
     },[showsList])
     
     const deleteShow = (id) => {
         axios.post(`${BASE_URL}/deleteShow`,{id})
         .then(res => {
-      console.log(res)
-      // Mettre à jour la liste des spectacles en excluant le spectacle supprimé
-      setShowsList(showsList.filter(show => show.id !== id))
-    })
-    .catch(err => console.log(err))
+          // Mettre à jour la liste des spectacles en excluant le spectacle supprimé
+          setShowsList(showsList.filter(show => show.id !== id))
+        })
+        .catch(err => console.log(err))
     }
 
 
@@ -62,14 +59,12 @@ const ManageShow = () => {
         
         if(!inputCheck(showData.title, 255, 1) || /*!inputCheck(showData.content, 255, 1) 
             ||*/ !inputCheck(showData.year_creation, 4, 4) /*|| !inputCheck(showData.url_video, 255, 1)*/) {
-            console.log("Les données saisies ne sont pas valides.")
+            alert("Les données saisies ne sont pas valides.")
             return
         }
         
         const dataFile = new FormData();
         const files = [...e.target.url_pictures.files];
-        
-        console.log(files)
 
         // ajouter d'autre inputs au formulaire
         dataFile.append('title', showData.title)
@@ -87,7 +82,6 @@ const ManageShow = () => {
         
         axios.post(`${BASE_URL}/addshow`, dataFile)
         .then((res)=> {
-            console.log(res)
             setPictures(res.data.files)
             setShowData(initialState)
         })
@@ -102,11 +96,9 @@ const ManageShow = () => {
     
     const submitMainPicture = () => {
         const urlPicture = pictures[pictureSelected]
-        console.log(urlPicture)
         
         axios.post(`${BASE_URL}/selectedImage`, {url_pictures:urlPicture})
         .then((res)=> {
-            console.log(res)
             res.data.response && console.log('succesfully selected');
             setPictures(null)
             setPictureSelected(null)
@@ -148,9 +140,10 @@ const ManageShow = () => {
                             <select name="categorie" onChange={handleChange} value={showData.name}>
                             <option value={undefined}>Choix d'option</option>
                             {categories.map((categorie, i) => {
-                            return(
-                            <option key={i} value={categorie.id}>{categorie.name}</option>
-                            )})}
+                                return(
+                                    <option key={i} value={categorie.id}>{categorie.name}</option>
+                                )
+                            })}
                             </select>
                         </div>
                         <div>

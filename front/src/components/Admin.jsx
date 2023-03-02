@@ -3,35 +3,39 @@ import {BASE_URL} from '../tools/constante.js'
 import {useEffect, useState} from "react"
 import {NavLink} from 'react-router-dom'
 
+
 const Admin = () => {
     const [usersList, setUsersList] = useState([])
     
+//////////////LIST USERS///////////////////    
     useEffect(() => {
         if(usersList.length === 0){
             axios.get(`${BASE_URL}/admin`)
-                .then(res => setUsersList(res.data.result))
+                .then(res => {
+                setUsersList(res.data.result)
+                })
                 .catch(err => console.log(err))
         }
     },[usersList])
     
+////////////////DELETE USER//////////////
     const deleteUser = (id) => {
         axios.post(`${BASE_URL}/deleteAdmin`,{id})
         .then(res => {
-      console.log(res)
       // Mettre à jour la liste des utilisateurs en excluant l'utilisateur supprimé
       setUsersList(usersList.filter(user => user.id !== id))
     })
     .catch(err => console.log(err))
     }
     
-    ///////ADD USER////////
-    
+////////////////ADD USER///////////////////
     const initialValue = {
         nom:'',
         prenom:'',
         email:'',
         password:''
     }
+    
     const [userData, setUserData] = useState(initialValue)
     
     const handleChange = (e) => {
@@ -41,20 +45,22 @@ const Admin = () => {
     
     const submit = (e) => {
         if(userData.nom === "" || userData.prenom === "" || userData.email === "" || userData.password === ""){
-            console.log("Veuillez remplir tous les champs")
+            alert("Veuillez remplir tous les champs")
         }
         e.preventDefault()
-        axios.post(`${BASE_URL}/addadmin`,{
+        const data = {
           nom : userData.nom.trim(),
           prenom: userData.prenom.trim(),
           email: userData.email.trim(),
           password:userData.password.trim(),
-          
-      })
+        }
+      
+        axios.post(`${BASE_URL}/addadmin`,data)
         .then(res => {
-            console.log(res)
-            alert(res.data.response)
-        })
+                alert(res.data.response)
+                    setUsersList([...usersList, data])
+                })
+                .catch(err => console.log(err))
         setUserData(initialValue)
     }
     

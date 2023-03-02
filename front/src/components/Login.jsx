@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { StoreContext } from "../tools/context.js"
-import {useState} from "react"
+import {useState, Fragment} from "react"
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
 import inputCheck from "../tools/inputLength.js"
@@ -35,11 +35,14 @@ const Login = () => {
     
     
     return(
+        <Fragment>
+        <h1>Connexion</h1>
         <form onSubmit={submit}>
             <input type='text' name='email' value={info.email} onChange={handleChange} placeholder='email' />
             <input type='password' name='password' value={info.password} onChange={handleChange} placeholder='password' />
             <input type="submit" />
         </form>
+        </Fragment>
     )
 }
 

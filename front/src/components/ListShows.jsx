@@ -9,6 +9,7 @@ const ListShows = () => {
     useEffect(() => {
         axios.get(`${BASE_URL}/listshows`)
         .then(res => setShows(res.data.result))
+        .catch(e => console.log(e))
     },[])
     
     return (
@@ -20,7 +21,9 @@ const ListShows = () => {
                 if (show.image_selected === 1) {
                 return(
                     <div key={i}>
-                        <img src={`${BASE_IMG}/${show.url_pictures}`} />
+                        <a href={`/show/${show.id}`}>
+                            <img src={`${BASE_IMG}/${show.url_pictures}`} />
+                        </a>
                         <p><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></p>
                         <p>{show.name}</p>
                         <p>{show.year_creation}</p>

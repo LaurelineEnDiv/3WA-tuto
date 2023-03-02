@@ -12,7 +12,6 @@ const PrivateRoute = ({children, auth = null}) => {
     const [{user}, dispatch] = useContext(StoreContext)
     
     useEffect(() => {
-        console.log("ici")
         // on vérifie que l'utilisateur n'est pas déjà connecté
         if(user.id === null){
           // on récupère le token dans le localStorage

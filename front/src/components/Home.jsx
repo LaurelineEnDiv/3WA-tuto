@@ -10,6 +10,7 @@ const Home = () => {
     useEffect(() => {
         axios.get(`${BASE_URL}/listshows`)
         .then(res => setShows(res.data.result))
+        .catch(e => console.log(e))
     },[])
     
     useEffect(() => {
@@ -17,9 +18,8 @@ const Home = () => {
         .then(res => {
             const data = res.data.result.slice(0, 3)
             setDates(data)
-            
         })
-        .then(res => console.log(dates))
+        .catch(e => console.log(e))
     },[])
     
     return(
@@ -51,7 +51,6 @@ const Home = () => {
         <div>
         <h2>Agenda</h2>
         {dates.length > 0 && dates.map((date, i) => {
-            console.log(date)
                 return(
                 
                     <div key={i}>

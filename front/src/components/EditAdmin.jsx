@@ -23,7 +23,7 @@ const EditAdmin = () => {
     const submit = (e) => {
         e.preventDefault()
         axios.post(`${BASE_URL}/editAdminById`,{...user})
-        .then(res => console.log(res))
+        .then(res => alert("modifications effectuer"))
         .catch(err => console.log(err))
     }
     

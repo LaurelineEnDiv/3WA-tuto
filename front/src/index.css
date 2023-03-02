@@ -18,7 +18,7 @@ html {
 body {
 	font-size: 1.6rem;
 	width: auto;
-	/*max-width: 1140px;  Ajout de la largeur maximale */
+	/*max-width: 1400px;  */
 
 }
 
@@ -29,8 +29,8 @@ GENERALITIES
 
 body {
   
-  margin: 0;
-	padding: 0;
+  margin: auto;
+	
 	
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, 
   "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", 
@@ -43,20 +43,17 @@ code {
 }
 
 
-
-
 /* *****************************************************************
 HEADER
 ***************************************************************** */
 
-nav {
+header {
   background-color: #212529;
-  color: #fff;
-  padding : 2rem;
+}
+
+.navblack {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
 }
 
 
@@ -68,16 +65,20 @@ nav {
 /*    z-index: 1030;*/
 /*}*/
 
-nav img {
+header img {
   height: 2rem;
   vertical-align: middle;
 }
 
-nav ul {
+header ul {
   list-style: none;
 }
 
-nav a {
+header ul li {
+  padding-right : 1.5rem;
+}
+
+header a {
   text-decoration: none;
   color: #fff;
 }
@@ -86,28 +87,48 @@ nav a:hover {
   color: #fed136;
 }
 
-
+/*////////NAV ADMIN///////////////*/
 .navadmin {
-    display: flex;
-    flex-wrap: wrap;
-    
+    background-color: #fed136;
   }
+
+.navadmin a {
+  color: #212529;
+}
+
+.navadmin a:hover {
+  color: #fff;
+}
+
+
+/* *****************************************************************
+AGENDA
+***************************************************************** */
+
+.date {
+  border: 0.2rem solid;
+  margin-bottom: 1.5rem;
+}
 
 
 @media screen and (min-width: 980px) {
   
-
-nav ul {
+.navuser {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+  }
+
+.navadmin {
+    padding:1rem;
+    display: flex;
     align-items: center;
   }
   
-  nav ul li {
-    margin-left : 2rem;
-    
-  }
   
+
+
+
 
 
 }

@@ -11,14 +11,9 @@ const Show = () => {
     
     useEffect(() => {
         axios.post(`${BASE_URL}/show`,{id})
-        .then(res => {
-        setShow(res.data)
-        console.log (res.data)
-        })
-    .catch(err => console.log(err))
+        .then(res => setShow(res.data))
+        .catch(err => console.log(err))
     },[id])
-    
-            console.log(show)
     
     return (
         <Fragment>
