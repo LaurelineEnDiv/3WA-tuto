@@ -2,6 +2,7 @@ import {useParams} from "react-router-dom"
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
 import {useState, useEffect, Fragment} from "react"
+import {NavLink} from 'react-router-dom'
 
 const EditAdmin = () => {
     const {id} = useParams()
@@ -23,24 +24,23 @@ const EditAdmin = () => {
     const submit = (e) => {
         e.preventDefault()
         axios.post(`${BASE_URL}/editAdminById`,{...user})
-        .then(res => alert("modifications effectuer"))
+        .then(res => alert("modifications effectuées"))
         .catch(err => console.log(err))
     }
     
     return (
         <Fragment>
             { user && (
+                <Fragment>
+                <p>Modifier les coordonnées de l'utilisateur</p>
                 <form onSubmit={submit}>
                     <input type='text' name='nom' placeholder='nom' onChange={handleChange} value={user.nom} />
                     <input type='text' name='prenom' placeholder='prenom' onChange={handleChange} value={user.prenom} />
                     <input type='text' name='email' placeholder='email' onChange={handleChange} value={user.email} />
-                    <input type='text' name='password' placeholder='password' onChange={handleChange} value={user.password} />
-                    {/* <select onChange={null} value={null}>
-                        <option value='6'>Admin</option>
-                        <option value='5'>user</option>
-                    </select>*/}
                     <input type='submit' />
                 </form>
+                <p><NavLink to={`/editpassword/${user.id}`}>Modifier le mot de passe</NavLink></p>
+                </Fragment>
             )}
         </Fragment>
     )

@@ -24,23 +24,20 @@ const ManagePro = () => {
     
     const submit = (e, id) => {
         e.preventDefault()
-        
         const dataFile = new FormData();
         const files = [...e.target.pdf.files];
-
         
         // ajouter tous les fichiers à FormData
         for (let i = 0; i < files.length; i++) {
             dataFile.append('files', files[i], files[i].name)
         }
         
-        
         dataFile.append('show_id', id)
 
-        
         axios.post(`${BASE_URL}/addpdf`, dataFile)
         .then((res)=> {
-            setPdf(res.data.files)
+            alert("PDF ajouté avec succès")
+            setPdf(res.data.files) 
             setShowData(initialState)
         })
         .catch((err) => {

@@ -10,6 +10,7 @@ import Login from "../components/Login";
 import Logout from "../components/Logout";
 import Admin from "../components/Admin";
 import EditAdmin from "../components/EditAdmin";
+import EditPassword from "../components/EditPassword";
 import ManageShow from "../components/ManageShow";
 import ManageDates from "../components/ManageDates";
 import ManagePro from "../components/ManagePro";
@@ -29,6 +30,7 @@ const routes = [
     {path:"/logout", component:<Logout />, auth:"admin"},
     {path:"/admin", component:<Admin />, auth:"admin"},
     {path:"/editadmin/:id", component:<EditAdmin />, auth:"admin"},
+    {path:"/editpassword/:id", component:<EditPassword />, auth:"admin"},
     {path:"/manageshows", component:<ManageShow />, auth:"admin"},
     {path:"/editshow/:id", component:<EditShow />, auth:"admin"},
     {path:"/managedates", component:<ManageDates />, auth:"admin"},

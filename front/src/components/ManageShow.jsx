@@ -82,8 +82,14 @@ const ManageShow = () => {
         
         axios.post(`${BASE_URL}/addshow`, dataFile)
         .then((res)=> {
-            setPictures(res.data.files)
+            const data = {
+                id:res.data.result.insertId,
+                title:showData.title
+            }
+            setShowsList([...showsList, data])
             setShowData(initialState)
+            setPictures(res.data.files)
+            
         })
         .catch((err) => {
             console.log(err)
@@ -102,6 +108,9 @@ const ManageShow = () => {
             res.data.response && console.log('succesfully selected');
             setPictures(null)
             setPictureSelected(null)
+            
+            // Mettre à jour la liste des spectacles avec le nouveau spectacle ajouté
+            
         })
         .catch((err) => {
             console.log(err)

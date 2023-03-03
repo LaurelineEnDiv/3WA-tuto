@@ -67,7 +67,7 @@ const Admin = () => {
     
     return(
         <div>
-            <p>Liste des utilisateurs admin</p>
+            <p>Modifier ou supprimer un administrateur</p>
                 <ul>
                   {usersList.map((user, i) => {
                     return (
@@ -83,7 +83,7 @@ const Admin = () => {
             
             <div>
             
-              <p>Ajouter un nouvel Admin</p>
+              <p>Ajouter un nouvel administrateur</p>
               <form onSubmit={submit} method="post">
                 <div>
                   <input
@@ -119,7 +119,7 @@ const Admin = () => {
                   <input
                     type="password"
                     name="password"
-                    placeholder="Mot de passe"
+                    placeholder="Mot de passe (8 caractères minimum)"
                     onChange={handleChange}
                     value={userData.password}
                     maxLength="250"
