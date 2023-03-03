@@ -14,8 +14,8 @@ export default async (req, res) => {
         const saltRounds = 10
         const sql = "INSERT INTO users (nom, prenom, email, password) VALUES (?,?,?,?)"
         
-        if(password.length <= 8){
-            return res.json({response:'mdp trop court'})
+        if(password.length < 8){
+            return res.json({response:'votre mot de passe doit contenir au moins 8 caractères'})
         }
         
         else if(nom.length > 255 || prenom.length > 255 || email.length > 255 || password.length > 255){
@@ -46,11 +46,11 @@ export default async (req, res) => {
             // on créé la liste des params pour add user
             const paramsSql = [nom, prenom, email, mpdHash]
             
-            // on fait la requete
+            // on fait la requête
             const createUser = await asyncQuery(sql,paramsSql)
             
             // on retourne la réponse
-            return res.json({response:createUser, response:'Votre compte est bien créé, vous pouvez désormais vous connecter'})
+            return res.json({response:createUser, response:'Votre compte admin est bien créé!'})
         }catch(err){
             console.log(err)
             return res.json({error:err})

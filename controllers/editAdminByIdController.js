@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 
 export default async (req, res) => {
     const {nom, prenom, email, id, password} = req.body
+    console.log({test:"test", nom, prenom, email, id, password})
     const saltRounds = 10
     let sql = "UPDATE users SET "
     let paramsSQL = []

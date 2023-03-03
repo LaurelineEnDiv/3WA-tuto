@@ -7,7 +7,8 @@ import {NavLink} from 'react-router-dom'
 const Admin = () => {
     const [usersList, setUsersList] = useState([])
     
-//////////////LIST USERS///////////////////    
+
+// Récupération de la liste des utilisateurs
     useEffect(() => {
         if(usersList.length === 0){
             axios.get(`${BASE_URL}/admin`)
@@ -37,6 +38,7 @@ const Admin = () => {
     }
     
     const [userData, setUserData] = useState(initialValue)
+    const [newUser, setnewUser] = useState(false)
     
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -57,12 +59,25 @@ const Admin = () => {
       
         axios.post(`${BASE_URL}/addadmin`,data)
         .then(res => {
-                alert(res.data.response)
-                    setUsersList([...usersList, data])
-                })
-                .catch(err => console.log(err))
+            alert(res.data.response)
+            setnewUser(true)
+        })
+        .catch(err => console.log(err))
         setUserData(initialValue)
     }
+
+
+useEffect(() => {
+    if(newUser){
+        axios.get(`${BASE_URL}/admin`)
+        .then(res => {
+            setUsersList(res.data.result)
+        })
+        .catch(err => console.log(err))
+        setnewUser(false)
+    }
+},[newUser])
+    
     
     
     return(

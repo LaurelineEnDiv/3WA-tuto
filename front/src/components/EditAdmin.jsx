@@ -11,7 +11,11 @@ const EditAdmin = () => {
     
     useEffect(() => {
         axios.post(`${BASE_URL}/getAdminById`,{id})
-            .then(res => setUser(res.data.result[0]))
+            .then(res => {
+                const data = res.data.result[0]
+                delete data.password
+                setUser(data)
+            })
             .catch(err => console.log(err))
     },[id])
     
