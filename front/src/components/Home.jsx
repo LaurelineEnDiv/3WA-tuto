@@ -24,6 +24,7 @@ const Home = () => {
     
     return(
         <Fragment>
+        <div class="container-center">
         <h1>Les Hommes Sensibles</h1>
         <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
         , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
@@ -39,7 +40,7 @@ const Home = () => {
                 if (show.image_selected === 1) {
                 return(
                     <div key={i}>
-                        <img src={`${BASE_IMG}/${show.url_pictures}`} />
+                        <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`}/>
                         <p><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></p>
                     </div>
                 )
@@ -61,6 +62,8 @@ const Home = () => {
                     </div>
                 )
             })}
+            <p><NavLink to={`/listdates`}>Voir toutes les dates</NavLink></p>
+        </div>
         </div>
         </Fragment>
     )

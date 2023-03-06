@@ -13,7 +13,7 @@ const ListDates = () => {
     
     
     return (
-        <div>
+        <div class="container-center">
         <h1>Agenda</h1>
             {dates.length > 0 && dates.map((date, i) => {
                 return(

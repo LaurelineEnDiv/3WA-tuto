@@ -36,12 +36,14 @@ const Login = () => {
     
     return(
         <Fragment>
+        <div class="container-center">
         <h1>Connexion</h1>
         <form onSubmit={submit}>
             <input type='text' name='email' value={info.email} onChange={handleChange} placeholder='email' />
             <input type='password' name='password' value={info.password} onChange={handleChange} placeholder='password' />
             <input type="submit" />
         </form>
+        </div>
         </Fragment>
     )
 }

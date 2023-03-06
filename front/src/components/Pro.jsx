@@ -13,7 +13,7 @@ const Pro = () => {
     return (
         <Fragment>
         {!shows && (<p>loading</p>) }
-        <div>
+        <div class="container-center">
         <h1>Espace Pro</h1>
             {shows.length > 0 && shows.map((show, i) => {
                
