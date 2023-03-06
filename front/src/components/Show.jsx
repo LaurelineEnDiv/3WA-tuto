@@ -18,13 +18,13 @@ const Show = () => {
     return (
         <Fragment>
         {!show && (<p>loading</p>) }
-        <div className="container-center">
+        <div className="container container-center">
             {show && 
                 <div>
                     <p>{show.sqlShow[0].title}</p>
                     <p>{show.sqlShow[0].name}</p>
                     {show.sqlShow[0].url_video && <YoutubePlayer url_video={show.sqlShow[0].url_video}/>}
-                    <p>{show.sqlShow[0].content}</p>
+                    <p className="show-description">{show.sqlShow[0].content}</p>
                     {show.sqlPictures.map((e,i) =>{
                     
                         return(
