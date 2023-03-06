@@ -1,7 +1,9 @@
 import express from "express";
-import middleware from "../controllers/middlewareV2.js";
-import middlewareUploadFileMultiple from "../controllers/middlewareUploadFileMultiple.js";
-import middlewareUploadPdf from "../controllers/middlewareUploadPdf.js";
+
+/////////////////////////MIDDLEWARES/////////////////////
+import middleware from "../controllers/middlewares/middleware.js";
+import middlewareUploadFileMultiple from "../controllers/middlewares/middlewareUploadFileMultiple.js";
+import middlewareUploadPdf from "../controllers/middlewares/middlewareUploadPdf.js";
 
 /////////////////////////AFFICHAGE/////////////////////
 import listShowsController from "../controllers/listShowsController.js";
@@ -13,32 +15,32 @@ import listProController from "../controllers/listProController.js";
 //////////////////////ADMIN/////////////////////////////
 
 /////////SHOWS///////////
-import manageShowsController from "../controllers/manageShowsController.js";
-import addShowController from "../controllers/addShowController.js";
-import deleteShowController from "../controllers/deleteShowController.js";
-import editShowByIdController from "../controllers/editShowByIdController.js";
-import getShowByIdController from '../controllers/getShowByIdController.js';
-import getCategoriesController from '../controllers/getCategoriesController.js';
-import getPicturesController from "../controllers/getPicturesController.js";
-import selectedImageController from '../controllers/selectedImageController.js';
+import manageShowsController from "../controllers/admin-shows/manageShowsController.js";
+import addShowController from "../controllers/admin-shows/addShowController.js";
+import deleteShowController from "../controllers/admin-shows/deleteShowController.js";
+import editShowByIdController from "../controllers/admin-shows/editShowByIdController.js";
+import getShowByIdController from '../controllers/admin-shows/getShowByIdController.js';
+import getCategoriesController from '../controllers/admin-shows/getCategoriesController.js';
+import getPicturesController from "../controllers/admin-shows/getPicturesController.js";
+import selectedImageController from '../controllers/admin-shows/selectedImageController.js';
 
 /////////AGENDA///////////
-import manageDatesController from "../controllers/manageDatesController.js";
-import addDateController from "../controllers/addDateController.js";
-import deleteDateController from "../controllers/deleteDateController.js";
-import getLieuController from "../controllers/getLieuController.js";
+import manageDatesController from "../controllers/admin-agenda/manageDatesController.js";
+import addDateController from "../controllers/admin-agenda/addDateController.js";
+import deleteDateController from "../controllers/admin-agenda/deleteDateController.js";
+import getLieuController from "../controllers/admin-agenda/getLieuController.js";
 
 /////////PRO///////////
-import addPdfController from "../controllers/addPdfController.js";
+import addPdfController from "../controllers/admin-pro/addPdfController.js";
 
 /////////USERS///////////
-import adminController from "../controllers/adminController.js";
-import addAdminController from "../controllers/addAdminController.js";
-import deleteAdminController from "../controllers/deleteAdminController.js";
-import getAdminByIdController from "../controllers/getAdminByIdController.js";
-import editAdminByIdController from "../controllers/editAdminByIdController.js";
-import loginController from "../controllers/loginControllerV2.js";
-import checkToken from '../controllers/checkToken.js';
+import adminController from "../controllers/admin-users/adminController.js";
+import addAdminController from "../controllers/admin-users/addAdminController.js";
+import deleteAdminController from "../controllers/admin-users/deleteAdminController.js";
+import getAdminByIdController from "../controllers/admin-users/getAdminByIdController.js";
+import editAdminByIdController from "../controllers/admin-users/editAdminByIdController.js";
+import loginController from "../controllers/admin-users/loginController.js";
+import checkToken from '../controllers/admin-users/checkToken.js';
 
 const router = express.Router();
 

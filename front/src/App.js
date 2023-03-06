@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import Router from "./components/Router.jsx"
+import Router from "./components/routes/Router.jsx"
 import Nav from "./components/Nav";
 
 function App() {

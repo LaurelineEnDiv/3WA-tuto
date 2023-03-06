@@ -7,14 +7,15 @@ import Show from "../components/Show";
 import Contact from "../components/Contact";
 import Pro from "../components/Pro";
 import Login from "../components/Login";
-import Logout from "../components/Logout";
-import Admin from "../components/Admin";
-import EditAdmin from "../components/EditAdmin";
-import EditPassword from "../components/EditPassword";
-import ManageShow from "../components/ManageShow";
-import ManageDates from "../components/ManageDates";
-import ManagePro from "../components/ManagePro";
-import EditShow from "../components/EditShow";
+/////////////////////ADMIN///////////////////////
+import Logout from "../components/admin/Logout";
+import Admin from "../components/admin/Admin";
+import EditAdmin from "../components/admin/EditAdmin";
+import EditPassword from "../components/admin/EditPassword";
+import ManageShow from "../components/admin/ManageShow";
+import ManageDates from "../components/admin/ManageDates";
+import ManagePro from "../components/admin/ManagePro";
+import EditShow from "../components/admin/EditShow";
 
 
 const routes = [
@@ -25,8 +26,8 @@ const routes = [
     {path:"/show/:id", component:<Show />},
     {path:"/contact", component:<Contact />},
     {path:"/pro", component:<Pro />},
-    
     {path:"/login", component:<Login />},
+/////////////////////ADMIN///////////////////////    
     {path:"/logout", component:<Logout />, auth:"admin"},
     {path:"/admin", component:<Admin />, auth:"admin"},
     {path:"/editadmin/:id", component:<EditAdmin />, auth:"admin"},
