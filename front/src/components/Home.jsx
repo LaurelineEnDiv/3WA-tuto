@@ -24,7 +24,7 @@ const Home = () => {
     
     return(
         <Fragment>
-        <div class="container-center">
+        <div className="container-center">
         <h1>Les Hommes Sensibles</h1>
         <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
         , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>

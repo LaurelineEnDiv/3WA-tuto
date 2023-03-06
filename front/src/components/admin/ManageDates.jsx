@@ -23,8 +23,6 @@ const ManageDates = () => {
     const [shows, setShows] = useState([])
     const [date, setDate] = useState(initialValue)
     
-    console.log(dates)
-    
     useEffect(() => {
         axios.get(`${BASE_URL}/managedates`)
         .then(res => setDates(res.data.result))
@@ -85,11 +83,8 @@ const ManageDates = () => {
             data.lieu_id = lieuSelect;
         }
         
-        console.log(data)
-        
         axios.post(`${BASE_URL}/adddate`,data)
         .then((res) => {
-            console.log(res.data.result.insertId)
             alert("Date ajoutée avec succès")
             setDate(initialValue) // Réinitialiser le formulaire
             setLieuSelect(-1)

@@ -18,7 +18,7 @@ const Show = () => {
     return (
         <Fragment>
         {!show && (<p>loading</p>) }
-        <div>
+        <div className="container-center">
             {show && 
                 <div>
                     <p>{show.sqlShow[0].title}</p>

@@ -8,8 +8,8 @@ const ManagePro = () => {
     }
     
     const [showsList, setShowsList] = useState([])
-    const [setShowData] = useState(initialState)
-    const [setPdf] = useState(null) 
+    const [showData, setShowData] = useState(initialState)
+    const [pdf, setPdf] = useState(null) 
     
     useEffect(() => {
         if(showsList.length === 0){
@@ -48,7 +48,7 @@ const ManagePro = () => {
     
     return(
         <div>
-            <h1>Gestion de l'epace pro</h1>
+            <h1>Gestion de l'espace pro</h1>
                 <ul>
                   {showsList.map((show, i) => {
                     return (

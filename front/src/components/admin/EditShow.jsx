@@ -68,11 +68,9 @@ const EditShow = () => {
     
     const submitMainPicture = () => {
         const urlPicture = pictures[pictureSelected]
-        console.log(urlPicture)
         
         axios.post(`${BASE_URL}/selectedImage`, {url_pictures:urlPicture})
         .then((res)=> {
-            console.log(res)
             res.data.response && console.log('succesfully selected');
             setPictures(null)
             setPictureSelected(null)
