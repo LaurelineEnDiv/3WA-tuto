@@ -1,5 +1,4 @@
 
-
 /* *****************************************************************
 TOOLS
 ***************************************************************** */
@@ -24,11 +23,11 @@ body {
 }
 
 .container {
-    /*width: 100%;*/
-    padding-right: 4rem;
-    padding-left: 4rem;
-    /*margin-right: auto;*/
-    /*margin-left: auto;*/
+    width: 100%;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .container-center {
@@ -54,6 +53,10 @@ code {
     monospace;
 }
 
+ul {
+  list-style: none;
+}
+
 
 /* *****************************************************************
 HEADER
@@ -67,9 +70,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*padding:1.5rem;*/
+  padding:1rem;
 }
-
 
 /*.fixed-top {*/
 /*    position: fixed;*/
@@ -81,12 +83,10 @@ header {
 
 header img {
   height: 3rem;
+  margin-bottom:1rem;
   vertical-align: middle;
 }
 
-header ul {
-  list-style: none;
-}
 
 header a {
   text-decoration: none;
@@ -114,14 +114,24 @@ nav a:hover {
 
 
 /* *****************************************************************
-MAIN
+PRESENTATION
 ***************************************************************** */
-
 
 .show-description {
   text-align:left;
 }
 
+/* *****************************************************************
+EQUIPE
+***************************************************************** */
+.team img {
+    width: 20rem;
+    
+    border-radius: 50%;
+    border: 0.5rem solid rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    vertical-align: middle;
+}
 
 
 /* *****************************************************************
@@ -132,7 +142,6 @@ AGENDA
   border: 0.2rem solid;
   margin-bottom: 1.5rem;
 }
-
 
 
 /* *****************************************************************
@@ -158,6 +167,20 @@ VERSION TABLETTE
 }
 
 
+.team {
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.team-member {
+  width:50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+
 }
 /* *****************************************************************
 VERSION DESKTOP
@@ -171,10 +194,15 @@ VERSION DESKTOP
     justify-content:space-around;
     align-items: center;
   }
+  
+.team {
+  justify-content:center;
+}
 
-
-
-
+.team-member {
+  width:30%;
+  
+}
 
 
 }

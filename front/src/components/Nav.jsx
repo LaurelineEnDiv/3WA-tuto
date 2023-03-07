@@ -48,8 +48,8 @@ const Nav = (props) => {
       
         
         { state.user.isAdmin && (
-        <Fragment>
-        <div className="navyellow">
+        
+        
         <ul className="navadmin">
           <li>
             <NavLink to="/admin">
@@ -77,8 +77,8 @@ const Nav = (props) => {
             </NavLink>
           </li>
         </ul>
-        </div>
-        </Fragment>
+        
+       
         )}
       </nav>
     </header>

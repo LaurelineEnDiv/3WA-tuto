@@ -24,7 +24,7 @@ const Home = () => {
     
     return(
         <Fragment>
-        <div className="container-center">
+        <div className="container container-center">
         <h1>Les Hommes Sensibles</h1>
         <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
         , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
@@ -34,7 +34,7 @@ const Home = () => {
         
         <div>
         {!shows && (<p>loading</p>) }
-        <div>
+        <div className="list-show">
         <h2>Les Spectacles</h2>
             {shows.length > 0 && shows.map((show, i) => {
                 if (show.image_selected === 1) {
