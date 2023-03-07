@@ -19,12 +19,12 @@ const Nav = (props) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/listshows">
+          <NavLink to="/spectacles">
              Les Projets
           </NavLink>
         </li>
         <li>
-          <NavLink to="/listdates">
+          <NavLink to="/agenda">
             Agenda
           </NavLink>
         </li>
@@ -57,17 +57,17 @@ const Nav = (props) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/manageshows">
+            <NavLink to="/gestion-spectacles">
              Gérer les spectacles
             </NavLink>
           </li>
           <li>
-            <NavLink to="/managedates">
+            <NavLink to="/gestion-agenda">
              Gérer les dates
             </NavLink>
           </li>
           <li>
-            <NavLink to="/managepro">
+            <NavLink to="/gestion-pro">
              Gérer l'espace pro
             </NavLink>
           </li>

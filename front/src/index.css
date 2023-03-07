@@ -57,6 +57,10 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 
 /* *****************************************************************
 HEADER
@@ -89,7 +93,6 @@ header img {
 
 
 header a {
-  text-decoration: none;
   color: #fff;
 }
 
@@ -119,6 +122,18 @@ PRESENTATION
 
 .show-description {
   text-align:left;
+}
+
+.show-item, .date-item {
+  border: 0.1rem solid; 
+  width: 80%;
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+  margin:2rem auto;
+}
+
+.show-item img {
+  width:100%;
 }
 
 /* *****************************************************************
@@ -166,14 +181,19 @@ VERSION TABLETTE
   justify-content:space-around;
 }
 
+/*////////////////////////////*/
 
-.team {
+
+.team, .list-shows {
   display:flex;
   flex-wrap:wrap;
+  justify-content:center;
 }
 
-.team-member {
-  width:50%;
+
+
+.team-member, .show-item {
+  width:45%;
   display: flex;
   flex-direction: column;
   align-items: center;

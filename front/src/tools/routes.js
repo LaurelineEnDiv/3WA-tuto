@@ -17,12 +17,11 @@ import ManageDates from "../components/admin/ManageDates";
 import ManagePro from "../components/admin/ManagePro";
 import EditShow from "../components/admin/EditShow";
 
-
 const routes = [
     {path:"/", component:<Home />},
     {path:"/la-compagnie", component:<Compagnie />},
-    {path:"/listdates", component:<ListDates />},
-    {path:"/listshows", component:<ListShows />},
+    {path:"/agenda", component:<ListDates />},
+    {path:"/spectacles", component:<ListShows />},
     {path:"/show/:id", component:<Show />},
     {path:"/contact", component:<Contact />},
     {path:"/pro", component:<Pro />},
@@ -32,10 +31,10 @@ const routes = [
     {path:"/admin", component:<Admin />, auth:"admin"},
     {path:"/editadmin/:id", component:<EditAdmin />, auth:"admin"},
     {path:"/editpassword/:id", component:<EditPassword />, auth:"admin"},
-    {path:"/manageshows", component:<ManageShow />, auth:"admin"},
+    {path:"/gestion-spectacles", component:<ManageShow />, auth:"admin"},
     {path:"/editshow/:id", component:<EditShow />, auth:"admin"},
-    {path:"/managedates", component:<ManageDates />, auth:"admin"},
-    {path:"/managepro", component:<ManagePro />, auth:"admin"},
+    {path:"/gestion-agenda", component:<ManageDates />, auth:"admin"},
+    {path:"/gestion-pro", component:<ManagePro />, auth:"admin"},
     
     {path:"*", component:<Error404 />},
    

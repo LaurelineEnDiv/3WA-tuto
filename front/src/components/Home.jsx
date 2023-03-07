@@ -14,13 +14,17 @@ const Home = () => {
     },[])
     
     useEffect(() => {
-        axios.get(`${BASE_URL}/listdates`)
-        .then(res => {
-            const data = res.data.result.slice(0, 3)
-            setDates(data)
-        })
-        .catch(e => console.log(e))
-    },[])
+    axios.get(`${BASE_URL}/listdates`)
+      .then(res => {
+        const today = new Date()
+        const data = res.data.result
+          .filter(date => new Date(date.formattedDate) > today) // filtrer les dates futures
+          .sort((a, b) => new Date(a.formattedDate) - new Date(b.formattedDate)) // trier par date croissante
+          .slice(0, 3) // récupérer les trois premières dates
+        setDates(data)
+      })
+      .catch(e => console.log(e))
+  }, [])
     
     return(
         <Fragment>
@@ -31,17 +35,18 @@ const Home = () => {
         <p>Ses artistes ont comme points communs leurs sensibilités.
         Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
         
-        
         <div>
         {!shows && (<p>loading</p>) }
-        <div className="list-show">
+        
         <h2>Les Spectacles</h2>
+        <div className="list-shows">
             {shows.length > 0 && shows.map((show, i) => {
                 if (show.image_selected === 1) {
                 return(
-                    <div key={i}>
+                    <div className="show-item" key={i}>
                         <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`}/>
-                        <p><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></p>
+                        <h3><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></h3>
+                        <p>{show.name} - {show.year_creation}</p>
                     </div>
                 )
                 }
@@ -49,16 +54,15 @@ const Home = () => {
         </div>
         </div>
         
-        <div>
+        <div className="list-dates">
         <h2>Agenda</h2>
+        <p>Les prochaines dates</p>
         {dates.length > 0 && dates.map((date, i) => {
                 return(
-                
-                    <div key={i}>
+                    <div className="date-item" key={i}>
                         <p>{date.formattedDate}</p>
                         <p>{date.title}</p>
-                        <a href={date.site_web} target="_blank">{date.nom_lieu}</a>
-                        <p>{date.ville} ({date.departement})</p>
+                        <p><a href={date.site_web} target="_blank">{date.nom_lieu}</a> {date.ville} ({date.departement})</p>
                     </div>
                 )
             })}
