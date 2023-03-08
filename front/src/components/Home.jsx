@@ -66,7 +66,7 @@ const Home = () => {
                     </div>
                 )
             })}
-            <p><NavLink to={`/listdates`}>Voir toutes les dates</NavLink></p>
+            <p><NavLink to={`/agenda`}>Voir toutes les dates</NavLink></p>
         </div>
         </div>
         </Fragment>

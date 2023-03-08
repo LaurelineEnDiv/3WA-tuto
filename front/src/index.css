@@ -148,6 +148,14 @@ EQUIPE
     vertical-align: middle;
 }
 
+/* *****************************************************************
+EQUIPE
+***************************************************************** */
+
+.contact {
+  margin:2rem;
+}
+
 
 /* *****************************************************************
 AGENDA
@@ -190,14 +198,17 @@ VERSION TABLETTE
   justify-content:center;
 }
 
-
-
 .team-member, .show-item {
   width:45%;
   display: flex;
   flex-direction: column;
   align-items: center;
   
+}
+
+.contact-col {
+  display:flex;
+  justify-content:center;
 }
 
 
