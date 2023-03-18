@@ -30,6 +30,7 @@ const Home = () => {
     
     return(
         <Fragment>
+        <section className="section-margin-top">
             <video className="video" loop autoPlay muted>
                 <source src={video}/>
             </video>
@@ -40,6 +41,7 @@ const Home = () => {
                 <p>Ses artistes ont comme points communs leurs sensibilités.
                 Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
             </div>
+        </section>
             
         <section className="background-image">
         {!shows && (<p>loading</p>) }

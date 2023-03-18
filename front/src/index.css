@@ -93,6 +93,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
 }
 
 .navblack {
@@ -114,7 +115,6 @@ header a {
 
 .video {
   width:100%;
-  margin-top: 80px;
  
 }
 
@@ -228,7 +228,7 @@ VERSION TABLETTE
 @media screen and (min-width: 760px) {
   
 .section-margin-top {
-  margin-top: 100px;
+  margin-top: 80px;
 }
   
 .navuser {
