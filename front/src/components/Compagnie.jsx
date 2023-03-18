@@ -9,6 +9,7 @@ import imgRobin from "../assets/img/equipe/Robin-Socasau.jpg";
 const Compagnie = () => {
     return(
         <Fragment>
+        <section className="section-margin-top">
         <div className="container container-center">
             <h1>Les Hommes Sensibles</h1>
                 <div className="show-description">
@@ -62,6 +63,7 @@ const Compagnie = () => {
                 </div>
             
             </div>
+            </section>
         </Fragment>
     )
 }

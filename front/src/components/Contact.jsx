@@ -3,7 +3,8 @@ import {Fragment} from 'react'
 const Contact = () => {
     return(
         <Fragment>
-        <div className="container-center">
+        <section className="section-margin-top">
+        <div className="container container-center">
             <h1>Contact</h1>
             <h2>Artistique</h2>
                 <div className="contact-col">
@@ -35,6 +36,7 @@ const Contact = () => {
                 <p>SIRET : 898 459 771 000 17 - APE  90.01Z</p>
                 <p>Licence 2 : PLATESV-D-2021-002810 et licence 3 - PLATESV-D-2021-002811 le 07/05/2021.</p>
         </div>
+        </section>
         </Fragment>
     )
 }

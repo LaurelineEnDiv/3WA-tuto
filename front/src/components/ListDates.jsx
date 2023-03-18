@@ -25,7 +25,8 @@ const ListDates = () => {
   };
     
     return (
-        <div className="container-center">
+        <section className="section-margin-top">
+        <div className="background-black background-image-dates container container-center">
         <h1>Agenda</h1>
             <div className="year-filter">
                 <button onClick={() => handleYearChange(2023)}>2023</button>
@@ -35,7 +36,7 @@ const ListDates = () => {
             {dates.length > 0 && dates.map((date, i) => {
                 return(
                 
-                    <div key={i}>
+                    <div className="list-dates" key={i}>
                     <div className="date">
                         <p>{date.formattedDate}</p>
                         <p>{date.title}</p>
@@ -45,7 +46,8 @@ const ListDates = () => {
                     </div>
                 )
             })}
-        </div>    
+        </div> 
+        </section>
     )
 }
 

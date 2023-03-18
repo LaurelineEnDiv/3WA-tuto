@@ -14,23 +14,26 @@ const ListShows = () => {
     
     return (
         <Fragment>
+        <section className="section-margin-top">
         {!shows && (<p>loading</p>) }
-        <div className="container-center">
+        <div className="container container-center">
         <h1>Les Projets</h1>
+        <div className="list-shows">
             {shows.length > 0 && shows.map((show, i) => {
                 if (show.image_selected === 1) {
                 return(
-                    <div key={i}>
-                        <a href={`/show/${show.id}`}>
-                            <img src={`${BASE_IMG}/${show.url_pictures}`} />
-                        </a>
-                        <p><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></p>
-                        <p>{show.name}</p>
-                        <p>{show.year_creation}</p>
+                    <div className="show-item" key={i}>
+                        <NavLink to={`/show/${show.id}`}><img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`} /></NavLink>
+                        <div className="item-caption">
+                            <h3><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></h3>
+                            <p>{show.name} - {show.year_creation}</p>
+                        </div>
                     </div>
                 )
             }})}
         </div>  
+        </div>
+        </section>
        </Fragment>
     )
 }

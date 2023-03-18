@@ -49,7 +49,6 @@ const Nav = (props) => {
         
         { state.user.isAdmin && (
         
-        
         <ul className="navadmin">
           <li>
             <NavLink to="/admin">

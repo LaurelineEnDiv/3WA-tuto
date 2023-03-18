@@ -2,6 +2,8 @@ import {Fragment,useState, useEffect} from 'react';
 import axios from "axios";
 import {BASE_URL, BASE_IMG} from "../tools/constante.js"
 import {NavLink} from "react-router-dom"
+import video from "../assets/video/bateau.webm";
+
 
 const Home = () => {
     const [shows, setShows] = useState([])
@@ -28,46 +30,51 @@ const Home = () => {
     
     return(
         <Fragment>
-        <div className="container container-center">
-        <h1>Les Hommes Sensibles</h1>
-        <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
-        , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
-        <p>Ses artistes ont comme points communs leurs sensibilités.
-        Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
-        
-        <div>
+            <video className="video" loop autoPlay muted>
+                <source src={video}/>
+            </video>
+            <div className="contaner container-center">
+                <h1>Les Hommes Sensibles</h1>
+                <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
+                , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
+                <p>Ses artistes ont comme points communs leurs sensibilités.
+                Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
+            </div>
+            
+        <section className="background-image">
         {!shows && (<p>loading</p>) }
-        
-        <h2>Les Spectacles</h2>
-        <div className="list-shows">
-            {shows.length > 0 && shows.map((show, i) => {
-                if (show.image_selected === 1) {
-                return(
-                    <div className="show-item" key={i}>
-                        <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`}/>
-                        <h3><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></h3>
-                        <p>{show.name} - {show.year_creation}</p>
-                    </div>
-                )
-                }
-            })}
+        <div className="container container-center">
+            <h2 className="title-white">Les Spectacles</h2>
+            <div className="list-shows">
+                {shows.length > 0 && shows.map((show, i) => {
+                    if (show.image_selected === 1) {
+                    return(
+                        <div className="show-item" key={i}>
+                            <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`}/>
+                            <div className="item-caption">
+                            <h3><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></h3>
+                            <p>{show.name} - {show.year_creation}</p>
+                            </div>
+                        </div>
+                    )
+                    }
+                })}
+            </div>
         </div>
-        </div>
+        </section>
+       
         
-        <div className="list-dates">
+        <div className="background-black container container-center">
         <h2>Agenda</h2>
-        <p>Les prochaines dates</p>
         {dates.length > 0 && dates.map((date, i) => {
                 return(
                     <div className="date-item" key={i}>
                         <p>{date.formattedDate}</p>
-                        <p>{date.title}</p>
-                        <p><a href={date.site_web} target="_blank">{date.nom_lieu}</a> {date.ville} ({date.departement})</p>
+                        <p>{date.title} - <a href={date.site_web} target="_blank">{date.nom_lieu}</a> {date.ville} ({date.departement})</p>
                     </div>
                 )
             })}
-            <p><NavLink to={`/agenda`}>Voir toutes les dates</NavLink></p>
-        </div>
+            <button className="button-white"><NavLink to={`/agenda`}>Voir toutes les dates</NavLink></button>
         </div>
         </Fragment>
     )
