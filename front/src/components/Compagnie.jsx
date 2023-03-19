@@ -9,8 +9,7 @@ import imgRobin from "../assets/img/equipe/Robin-Socasau.jpg";
 const Compagnie = () => {
     return(
         <Fragment>
-        <section className="section-margin-top">
-        <div className="container container-center">
+        <div className="container section-margin-top">
             <h1>Les Hommes Sensibles</h1>
                 <div className="show-description">
                     <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie, danse, théâtre d’objet, 
@@ -63,7 +62,6 @@ const Compagnie = () => {
                 </div>
             
             </div>
-            </section>
         </Fragment>
     )
 }

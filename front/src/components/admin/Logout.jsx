@@ -15,7 +15,9 @@ const [state, dispatch] = useContext(StoreContext)
     
     return(
         
-        <div>Vous êtes déconnecté</div> 
+        <div className=" container admin-margin-top">
+        Vous êtes déconnecté
+        </div> 
         
     )   
 }

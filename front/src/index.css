@@ -20,19 +20,20 @@ body {
 	/*max-width: 1400px;  */
 }
 
-.section-margin-top {
-  margin-top: 180px;
-}
-
 .container {
     width: 100%;
     padding: 2rem 3rem;
     margin-right: auto;
     margin-left: auto;
+    text-align:center;
 }
 
-.container-center {
-  text-align:center;
+.section-margin-top {
+  margin-top: 180px;
+}
+
+.admin-margin-top {
+  margin-top: 300px;
 }
 
 .background-black {
@@ -56,9 +57,7 @@ GENERALITIES
 ***************************************************************** */
 
 body {
-  
   margin: auto;
-	
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, 
   "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", 
   "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -230,6 +229,10 @@ VERSION TABLETTE
 .section-margin-top {
   margin-top: 80px;
 }
+
+.admin-margin-top {
+  margin-top: 150px;
+}
   
 .navuser {
     display: flex;
@@ -277,17 +280,6 @@ VERSION DESKTOP
 
 @media screen and (min-width: 980px) {
 
-.navblack, .navuser {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    align-items: center;
-  }
-  
-.section-margin-top {
-  margin-top: 40px;
-}
-  
 .container {
     width: 100%;
     padding-right: 5rem;
@@ -295,6 +287,17 @@ VERSION DESKTOP
     margin-right: auto;
     margin-left: auto;
 }
+
+.section-margin-top {
+  margin-top: 40px;
+}
+
+.navblack, .navuser {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+  }
   
 .team {
   justify-content:center;

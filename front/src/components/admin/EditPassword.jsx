@@ -18,6 +18,7 @@ const EditPassword = () => {
     
     return (
                 <Fragment>
+                <div className=" container admin-margin-top">
                 <p>Définissez votre nouveau mot de passe (8 caractères minimum)</p>
                 <form onSubmit={submit}>
                     <input
@@ -29,6 +30,7 @@ const EditPassword = () => {
                     />
                     <button type="submit">Valider</button>
                 </form>
+                </div>
                 </Fragment>
     )
 }

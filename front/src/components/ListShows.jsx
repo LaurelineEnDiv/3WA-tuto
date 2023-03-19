@@ -14,9 +14,8 @@ const ListShows = () => {
     
     return (
         <Fragment>
-        <section className="section-margin-top">
         {!shows && (<p>loading</p>) }
-        <div className="container container-center">
+        <div className="container section-margin-top">
         <h1>Les Projets</h1>
         <div className="list-shows">
             {shows.length > 0 && shows.map((show, i) => {
@@ -33,7 +32,6 @@ const ListShows = () => {
             }})}
         </div>  
         </div>
-        </section>
        </Fragment>
     )
 }

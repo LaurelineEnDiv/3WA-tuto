@@ -36,7 +36,7 @@ const Login = () => {
     
     return(
         <Fragment>
-        <div className="container-center">
+        <div className="container section-margin-top">
         <h1>Connexion</h1>
         <form onSubmit={submit}>
             <input type='text' name='email' value={info.email} onChange={handleChange} placeholder='email' />

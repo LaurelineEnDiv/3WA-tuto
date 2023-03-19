@@ -83,6 +83,7 @@ const EditShow = () => {
     return (
         
         <Fragment>
+        <div className=" container admin-margin-top">
             { !pictures &&(
                 <Fragment>
                 <p>Modifier les données du spectacle</p>
@@ -129,7 +130,7 @@ const EditShow = () => {
                     <button onClick={submitMainPicture}>Valider</button>
                 </Fragment>
         }    
-            
+        </div>
         </Fragment>
     )
 }

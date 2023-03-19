@@ -47,7 +47,7 @@ const ManagePro = () => {
     }
     
     return(
-        <div>
+        <div className=" container admin-margin-top">
             <h1>Gestion de l'espace pro</h1>
                 <ul>
                   {showsList.map((show, i) => {

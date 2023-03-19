@@ -34,6 +34,7 @@ const EditAdmin = () => {
     
     return (
         <Fragment>
+        <div className=" container admin-margin-top">
             { user && (
                 <Fragment>
                 <p>Modifier les coordonnées de l'utilisateur</p>
@@ -46,6 +47,7 @@ const EditAdmin = () => {
                 <p><NavLink to={`/editpassword/${user.id}`}>Modifier le mot de passe</NavLink></p>
                 </Fragment>
             )}
+        </div>
         </Fragment>
     )
 }

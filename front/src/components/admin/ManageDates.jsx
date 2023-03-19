@@ -103,7 +103,7 @@ const ManageDates = () => {
     }
      
     return (
-        <div>
+        <div className=" container admin-margin-top">
         <h1>Supprimer une date</h1>
             <ul>
             {dates.length > 0 && dates.map((date, i) => {

@@ -119,7 +119,7 @@ const ManageShow = () => {
     }
     
     return(
-        <div>
+        <div className=" container admin-margin-top">
             <h1>Gestion des spectacles</h1>
             <p>Cliquez sur le nom du spectacle à modifier</p>
                 <ul>

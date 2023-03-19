@@ -34,7 +34,7 @@ const Home = () => {
             <video className="video" loop autoPlay muted>
                 <source src={video}/>
             </video>
-            <div className="contaner container-center">
+            <div className="container">
                 <h1>Les Hommes Sensibles</h1>
                 <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
                 , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
