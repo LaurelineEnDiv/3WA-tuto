@@ -3,6 +3,7 @@ import axios from "axios";
 import {BASE_URL, BASE_IMG} from "../tools/constante.js"
 import {NavLink} from "react-router-dom"
 import video from "../assets/video/bateau.webm";
+import baleine from "../assets/img/baleine.png";
 
 
 const Home = () => {
@@ -36,10 +37,14 @@ const Home = () => {
             </video>
             <div className="container">
                 <h1>Les Hommes Sensibles</h1>
-                <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
-                , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
-                <p>Ses artistes ont comme points communs leurs sensibilités.
-                Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
+                    <div className="text-description">
+                        <img src={baleine} className="img-1"/>
+                        <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
+                        , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
+                        <p>Ses artistes ont comme points communs leurs sensibilités.
+                        Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
+                        <button className="button-white"><NavLink to={`/la-compagnie`}>Tout sur la compagnie</NavLink></button>
+                    </div>
             </div>
         </section>
             

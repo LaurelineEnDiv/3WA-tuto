@@ -21,7 +21,7 @@ const Show = () => {
         <div className="container section-margin-top">
             {show && 
                 <div>
-                    <p>{show.sqlShow[0].title}</p>
+                    <h1>{show.sqlShow[0].title}</h1>
                     <p>{show.sqlShow[0].name}</p>
                     {show.sqlShow[0].url_video && <YoutubePlayer url_video={show.sqlShow[0].url_video}/>}
                     <p className="show-description">{show.sqlShow[0].content}</p>
