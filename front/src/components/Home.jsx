@@ -35,24 +35,23 @@ const Home = () => {
             <video className="video" loop autoPlay muted>
                 <source src={video}/>
             </video>
-            <div className="container">
+         </section>
+         <div className="container">
                 <h1>Les Hommes Sensibles</h1>
                     <div className="text-description">
-                        <img src={baleine} className="img-1"/>
+                        <img src={baleine} className="img-baleine"/>
                         <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
                         , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
                         <p>Ses artistes ont comme points communs leurs sensibilités.
                         Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
                         <button className="button-white"><NavLink to={`/la-compagnie`}>Tout sur la compagnie</NavLink></button>
                     </div>
-            </div>
-        </section>
-            
-        <section className="background-image">
-        {!shows && (<p>loading</p>) }
-        <div className="container container-center">
-            <h2 className="title-white">Les Spectacles</h2>
-            <div className="list-shows">
+         </div>
+            <section className="home-background-image">
+            {!shows && (<p>loading</p>) }
+            <div className="container">
+                <h2 className="titre-spectacles">Les Spectacles</h2>
+                <div className="list-shows">
                 {shows.length > 0 && shows.map((show, i) => {
                     if (show.image_selected === 1) {
                     return(
@@ -66,23 +65,24 @@ const Home = () => {
                     )
                     }
                 })}
-            </div>
-        </div>
-        </section>
+                </div>
+                </div>
+            </section>
        
         
-        <div className="background-black container container-center">
-        <h2>Agenda</h2>
-        {dates.length > 0 && dates.map((date, i) => {
-                return(
-                    <div className="date-item" key={i}>
-                        <p>{date.formattedDate}</p>
-                        <p>{date.title} - <a href={date.site_web} target="_blank">{date.nom_lieu}</a> {date.ville} ({date.departement})</p>
-                    </div>
-                )
-            })}
-            <button className="button-white"><NavLink to={`/agenda`}>Voir toutes les dates</NavLink></button>
-        </div>
+            <div className="background-black container">
+            <h2>Agenda</h2>
+            {dates.length > 0 && dates.map((date, i) => {
+                    return(
+                        <div className="date-item" key={i}>
+                            <p>{date.formattedDate}</p>
+                            <p>{date.title} - <a href={date.site_web} target="_blank">{date.nom_lieu}</a> {date.ville} ({date.departement})</p>
+                        </div>
+                    )
+                })}
+                <button className="button-white"><NavLink to={`/agenda`}>Voir toutes les dates</NavLink></button>
+            </div>
+       
         </Fragment>
     )
 }

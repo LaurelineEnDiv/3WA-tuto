@@ -16,7 +16,7 @@ html {
 /* Body */
 body {
 	font-size: 1.6rem;
-	line-height: 1.75;
+	line-height: 1.5;
 	width: auto;
 	/*max-width: 1400px;  */
 }
@@ -44,6 +44,7 @@ body {
 
 .title-white {
   color: #fff;
+  padding:1rem;
 }
 
 .button-white {
@@ -85,7 +86,9 @@ a {
   text-decoration: none;
 }
 
-
+header a:hover, h3 a:hover {
+  color: #fed136;
+}
 
 
 /* *****************************************************************
@@ -117,10 +120,6 @@ header a {
   color: #fff;
 }
 
-header a:hover {
-  color: #fed136;
-}
-
 .video {
   width:100%;
  
@@ -149,18 +148,27 @@ HOME
   text-align: justify;
 }
 
-.img-1 {
+.img-baleine {
   width: 150px;
   float: left;
   margin-right: 2rem;
 }
 
-.background-image {
-  background-image: url("assets/img/background-image.jpg");
+.titre-spectacles {
+  color:#fed136;
+  padding:1.5rem;
+  display:inline;
+}
+
+.home-background-image {
+  background-image: url("assets/img/background/background-image-bateau.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .show-item {
-  width: 80%;
+  width: 60%;
   margin:2rem auto;
   background-color:#fff;
 }
@@ -170,8 +178,19 @@ HOME
 }
 
 .item-caption {
- padding-bottom:2rem;
+ padding-bottom:1rem;
 }
+
+/* *****************************************************************
+SHOWS
+***************************************************************** */
+.shows-background-image {
+  background-image: url("assets/img/background/shows-background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 
 
 /* *****************************************************************
@@ -179,7 +198,7 @@ AGENDA
 ***************************************************************** */
 
 .background-image-dates {
-  background-image: url("assets/img/background-image-dates.jpg");
+  background-image: url("assets/img/background/background-image-dates.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -210,9 +229,23 @@ AGENDA
   background-color:#fed136;
 }
 
+
 /* *****************************************************************
-EQUIPE
+COMPAGNIE
 ***************************************************************** */
+
+.img-mouette {
+  width: 80px;
+  float: right;
+  margin-left: 3rem;
+}
+
+.img-bateau {
+  width: 120px;
+  float: left;
+  margin-right: 3rem;
+}
+
 .team img {
     width: 20rem;
     border-radius: 50%;
@@ -221,22 +254,23 @@ EQUIPE
     vertical-align: middle;
 }
 
-
-/* *****************************************************************
-COMPAGNIE
-***************************************************************** */
-
-
-.img-2 {
-  width: 80px;
-  float: right;
-  margin-left: 2rem;
+.team-background-image {
+  background-image: url("assets/img/background/background-image-bouchons.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.img-3 {
-  width: 120px;
-  float: left;
-  margin-right: 2rem;
+.team-member h3 {
+  color:#fed136;
+  background-color: #fff;
+  padding:1rem;
+}
+
+.team-member p {
+  margin:0 0 2.5rem 0;
+  color:#fff;
+  font-weight:bold;
 }
 
 /* *****************************************************************
@@ -245,6 +279,13 @@ CONTACT
 
 .contact {
   margin:2rem;
+}
+
+.contact-background-image {
+  background-image: url("assets/img/background/background-mouettes.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 
@@ -287,7 +328,7 @@ VERSION TABLETTE
 }
 
 .team-member, .show-item {
-  width:45%;
+  width:40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -330,9 +371,13 @@ VERSION DESKTOP
   justify-content:center;
 }
 
-.team-member {
+.team-member, .show-item {
   width:30%;
 }
 
+.list-shows {
+  flex-direction: row;
+  justify-content: flex-start;
+}
 
 }

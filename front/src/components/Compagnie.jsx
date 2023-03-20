@@ -16,23 +16,19 @@ const Compagnie = () => {
             <h1>Les Hommes Sensibles</h1>
                 <div className="text-description">
                     <div>
-                    <img src={baleine} className="img-1"/>
+                    <img src={petitBateau} className="img-bateau"/>
                     <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie, danse, théâtre d’objet, 
-                    musique, culture Hip-hop et magie (au sens large... très large).
-                    </p>
-                    </div>
-                    
-                    <div>
+                    musique, culture Hip-hop et magie (au sens large... très large).</p>
                     <p>Ses artistes ont comme points communs leurs sensibilités.</p>
                     <p>Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
-                    <img src={mouette} className="img-2"/>
                     <p>Représentant ainsi l'évolution contemporaine de la virilité, où l'homme, en crise identitaire, redevient simplement 
                     un homme de sens, poétique, un Homme Sensible.</p>
                     <p>Loin d’être masculiniste ou révolutionnaire, l’Homme Sensible est ce qu'il est, un homme nouveau, avec toute sa bêtise et toute sa beauté.</p>
                     </div>
                     
+                    
                     <div>
-                    <img src={petitBateau} className="img-3"/>
+                    <img src={mouette} className="img-mouette"/>
                     <p>Au cœur du travail artistique de la compagnie se trouvent les failles et les doutes de ses artistes interprètes, 
                     leur confiance, leur auto-dérision, mais surtout leurs désirs. </p>
                     <p>Désirs de déplacer les esprits, de partager 
@@ -42,8 +38,11 @@ const Compagnie = () => {
                     les enfants, les personnes âgées, les personnes ayant un handicap, les super héros, bref, pour tout le monde.</p>
                     </div>
                 </div>
+            </div>
                 
-            <h2>Equipe</h2>
+            <section className="team-background-image"> 
+            <div className="container">
+            <h2 className="title-white">Equipe</h2>
                 <div className="team">
                     <div className="team-member">
                         <img src={imgJean} alt='Jean Couhet-Guichot'/>
@@ -76,8 +75,9 @@ const Compagnie = () => {
                         <p>Regard extérieur</p>
                     </div>
                 </div>
-            
             </div>
+            </section>
+            
         </Fragment>
     )
 }

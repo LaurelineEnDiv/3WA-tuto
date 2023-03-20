@@ -12,6 +12,7 @@ const Pro = () => {
     
     return (
         <Fragment>
+        <section className="pro-background-image">
         {!shows && (<p>loading</p>) }
         <div className="container section-margin-top">
         <h1>Espace Pro</h1>
@@ -25,6 +26,7 @@ const Pro = () => {
                 )
             })}
         </div>
+        </section>
        </Fragment>
     )
 }
