@@ -19,8 +19,7 @@ const Compagnie = () => {
                     <img src={petitBateau} className="img-bateau"/>
                     <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie, danse, théâtre d’objet, 
                     musique, culture Hip-hop et magie (au sens large... très large).</p>
-                    <p>Ses artistes ont comme points communs leurs sensibilités.</p>
-                    <p>Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
+                    <p>Ses artistes ont comme points communs leurs sensibilités. Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
                     <p>Représentant ainsi l'évolution contemporaine de la virilité, où l'homme, en crise identitaire, redevient simplement 
                     un homme de sens, poétique, un Homme Sensible.</p>
                     <p>Loin d’être masculiniste ou révolutionnaire, l’Homme Sensible est ce qu'il est, un homme nouveau, avec toute sa bêtise et toute sa beauté.</p>

@@ -1,6 +1,7 @@
 import axios from "axios";
-import {BASE_URL} from "../tools/constante.js"
+import {BASE_URL} from "../tools/constante.js";
 import {Fragment, useState, useEffect} from "react";
+import mouettes from "../assets/img/mouettes.jpg";
 
 const Pro = () => {
     const [shows, setShows] = useState([])
@@ -12,7 +13,7 @@ const Pro = () => {
     
     return (
         <Fragment>
-        <section className="pro-background-image">
+        
         {!shows && (<p>loading</p>) }
         <div className="container section-margin-top">
         <h1>Espace Pro</h1>
@@ -26,7 +27,8 @@ const Pro = () => {
                 )
             })}
         </div>
-        </section>
+        <img src={mouettes} className="img-mouettes"/>
+        
        </Fragment>
     )
 }

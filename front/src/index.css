@@ -161,7 +161,7 @@ HOME
 }
 
 .home-background-image {
-  background-image: url("assets/img/background/background-image-bateau.jpg");
+  background-image: url("assets/img/background/bouchon.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -185,7 +185,7 @@ HOME
 SHOWS
 ***************************************************************** */
 .shows-background-image {
-  background-image: url("assets/img/background/shows-background.jpg");
+  background-image: url("assets/img/background/bateau-pirate.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -197,8 +197,8 @@ SHOWS
 AGENDA
 ***************************************************************** */
 
-.background-image-dates {
-  background-image: url("assets/img/background/background-image-dates.jpg");
+.dates-background-image {
+  background-image: url("assets/img/background/attaque-pirate.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -255,7 +255,7 @@ COMPAGNIE
 }
 
 .team-background-image {
-  background-image: url("assets/img/background/background-image-bouchons.jpg");
+  background-image: url("assets/img/background/bateau-chaussure.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -282,13 +282,18 @@ CONTACT
 }
 
 .contact-background-image {
-  background-image: url("assets/img/background/background-mouettes.jpg");
+  background-image: url("assets/img/background/evolution.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-
+/* *****************************************************************
+PRO
+***************************************************************** */
+.img-mouettes {
+  width:100%;
+}
 
 /* *****************************************************************
 VERSION TABLETTE
@@ -378,6 +383,11 @@ VERSION DESKTOP
 .list-shows {
   flex-direction: row;
   justify-content: flex-start;
+}
+
+
+.pro-background-image {
+  background-size: cover;
 }
 
 }

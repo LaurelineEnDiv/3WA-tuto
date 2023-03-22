@@ -25,7 +25,7 @@ const ListDates = () => {
   };
     
     return (
-        <div className="background-black background-image-dates container section-margin-top">
+        <div className="background-black dates-background-image container section-margin-top">
         <h1>Agenda</h1>
             <div className="year-filter">
                 <button onClick={() => handleYearChange(2023)}>2023</button>
