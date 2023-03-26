@@ -56,8 +56,9 @@ body {
 
 .button-white:hover {
   background-color:#fed136;
-  color: black;
-  
+}
+.button-white a:hover {
+  color: #fff;
 }
 
 /* *****************************************************************
@@ -71,11 +72,6 @@ body {
   "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 ul {
   list-style: none;
   padding: 0;
@@ -84,9 +80,10 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
-header a:hover, h3 a:hover {
+a:hover {
   color: #fed136;
 }
 
@@ -106,6 +103,7 @@ header {
 .navblack {
   display: flex;
   flex-direction: column;
+  text-transform: uppercase;
   align-items: center;
   padding:2rem;
 }
@@ -174,7 +172,8 @@ HOME
 }
 
 .show-item img {
-  width:100%;
+  width:90%;
+  margin-top: 1em;
 }
 
 .item-caption {
@@ -212,6 +211,7 @@ AGENDA
 
 .date {
   width:50%;
+  background-color: rgba(128, 128, 128, 0.8);
   border: 0.2rem solid;
   margin-bottom: 1.5rem;
 }
