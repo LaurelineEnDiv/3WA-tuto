@@ -45,42 +45,42 @@ const Compagnie = () => {
                 <div className="team">
                     <div className="team-member">
                         <img src={imgJean} alt='Jean Couhet-Guichot'/>
-                        <div className="nom-role">
+                        <div className="nom-role background-lightgrey">
                         <h3>Jean Couhet-Guichot</h3>
                         <span className="role">Artiste</span>
                         </div>
                     </div>
                     <div className="team-member">
                         <img src={imgRick} alt='Rick Pulford'/>
-                        <div className="nom-role">
+                        <div className="nom-role background-lightgrey">
                         <h3>Rick Pulford</h3>
                         <span className="role">Artiste</span>
                         </div>
                     </div>
                     <div className="team-member">
                         <img src={imgArthur} alt='Arthur Amouroux'/>
-                        <div className="nom-role">
+                        <div className="nom-role background-lightgrey">
                         <h3>Arthur Amouroux</h3>
                         <span className="role">Artiste</span>
                         </div>
                     </div>
                     <div className="team-member">
                         <img src={imgJustine} alt='Justine Swygedauw'/>
-                        <div className="nom-role">
+                        <div className="nom-role background-lightgrey">
                         <h3>Justine Swygedauw</h3>
                         <span className="role">Diffusion</span>
                         </div>
                     </div>
                     <div className="team-member">
                         <img src={imgElise} alt='Elise Girard'/>
-                        <div className="nom-role">
+                        <div className="nom-role background-lightgrey">
                         <h3>Elise Girard</h3>
                         <span className="role">Administration</span>
                         </div>
                     </div>
                     <div className="team-member">
                         <img src={imgRobin} alt='Robin Socasau'/>
-                        <div className="nom-role">
+                        <div className="nom-role background-lightgrey">
                         <h3>Robin Socasau</h3>
                         <span className="role">Regard extérieur</span>
                         </div>

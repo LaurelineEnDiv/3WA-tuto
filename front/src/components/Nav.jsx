@@ -13,6 +13,11 @@ const Nav = (props) => {
       <div className="navblack">
       <a href="/"><img src={img} alt='Les Hommes Sensibles - Logo'/></a>
       <ul className="navuser">
+      <li>
+          <NavLink to="/">
+           Accueil
+          </NavLink>
+        </li>
         <li>
           <NavLink to="/la-compagnie">
             Qui sommes-nous ?
@@ -36,11 +41,6 @@ const Nav = (props) => {
          <li>
           <NavLink to="/pro">
             Pro
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login">
-           Connexion
           </NavLink>
         </li>
       </ul>

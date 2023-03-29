@@ -36,11 +36,10 @@ const ListDates = () => {
                 return(
                 
                     <div className="list-dates" key={i}>
-                    <div className="date">
-                        <p>{date.formattedDate}</p>
-                        <p>{date.title}</p>
-                        <a href={date.site_web} target="_blank">{date.nom_lieu}</a>
-                        <p>{date.ville} ({date.departement})</p>
+                    <div className="date-item background-grey">
+                        <p className="date">{date.formattedDate}</p>
+                        <h2>{date.title}</h2>
+                        <p className="date-lieu"><a href={date.site_web} target="_blank">{date.nom_lieu}</a> - {date.ville} ({date.departement})</p>
                     </div>
                     </div>
                 )

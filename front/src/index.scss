@@ -5,7 +5,6 @@ $white: #fff;
 $yellow: #fed136;
 
 //FONTS
-$montserrat: 'Montserrat', Arial, helvetica, sans-serif;
 $satoshi: 'Satoshi-Regular', Arial, helvetica, sans-serif;
 $clashGrotesk: 'ClashGrotesk-Semibold', Arial, helvetica, sans-serif;
 
@@ -66,26 +65,42 @@ body {
 }
 
 .background-black {
-  background-color:#212529;
-  color: #fff;
+  background-color:$black;
+  color: $white;
+}
+
+.background-grey {
+background-color: rgba(128, 128, 128, 0.8);
+}
+
+.background-lightgrey {
+background-color: rgba(255, 255, 255, 0.7);
+}
+
+.background-white {
+background-color: rgba(340, 340, 340, 0.7);
 }
 
 .title-white {
-  color: #fff;
+  color: $white;
+}
+
+.title-yellow {
+  color: $yellow;
 }
 
 .button-white {
-  background-color:#fff;
-  color: #212529;
+  background-color:$white;
+  color: $black;
   padding:1rem;
   margin:1.5rem;
 }
 
 .button-white:hover {
-  background-color:#fed136;
+  background-color:$yellow;
 }
 .button-white a:hover {
-  color: #fff;
+  color: $white;
 }
 
 /* *****************************************************************
@@ -95,41 +110,42 @@ GENERALITIES
 body {
   margin: auto;
   font-family: "Satoshi-Regular";
+  color:$black;
+  
+
+    h1, h2, h3 {
+      font-family: "ClashGrotesk-Semibold";
+      text-transform: uppercase;
+    }
+    
+    h1 {
+      font-size: 36px;
+    }
+    
+    h2 {
+      font-size: 28px;
+    }
+    
+    h3 {
+      font-size: 20px;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    a:hover {
+      color: #fed136;
+    }
+
 }
-
-  h1, h2, h3 {
-    font-family: "ClashGrotesk-Semibold";
-    text-transform: uppercase;
-  }
-  
-  h1 {
-    font-size: 38px;
-  }
-  
-  h2 {
-    font-size: 32px;
-  }
-  
-  h3 {
-    font-size: 24px;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  a:hover {
-    color: #fed136;
-  }
-
-
 
 /* *****************************************************************
 HEADER
@@ -252,12 +268,18 @@ AGENDA
   align-items:center;
 }
 
-.date {
+.date-item {
   width:50%;
-  background-color: rgba(128, 128, 128, 0.8);
   border: 0.2rem solid;
   margin-bottom: 1.5rem;
 }
+
+.date, .date-lieu {
+  font-size:2rem;
+  font-weight:bold;
+  letter-spacing: 0.0625em;
+}
+
 
 .year-filter {
   padding:2rem;
@@ -312,7 +334,6 @@ COMPAGNIE
 }
 
 .nom-role {
-  background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
   margin:1rem;
   padding:1rem;
@@ -337,9 +358,17 @@ CONTACT
 
 .contact-background-image {
   background-image: url("assets/img/background/evolution.jpg");
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.contact-container {
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align:center;
+  padding:2rem;
 }
 
 /* *****************************************************************
