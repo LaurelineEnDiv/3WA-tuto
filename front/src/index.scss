@@ -64,6 +64,12 @@ body {
   margin-top: 400px;
 }
 
+.column {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
 .background-black {
   background-color:$black;
   color: $white;
@@ -152,6 +158,12 @@ body {
 
 }
 
+.text-description {
+  text-align:left;
+  text-align: justify;
+  margin-bottom:2rem;
+}
+
 /* *****************************************************************
 HEADER
 ***************************************************************** */
@@ -211,20 +223,14 @@ header {
 /* *****************************************************************
 HOME
 ***************************************************************** */
-.text-description {
-  text-align:left;
-  text-align: justify;
-  margin-bottom:2rem;
+.home-background-image {
+  background-image: url("assets/img/background/bouchon.jpg");
 }
 
 .img-baleine {
   width: 150px;
   float: left;
   margin-right: 2rem;
-}
-
-.home-background-image {
-  background-image: url("assets/img/background/bouchon.jpg");
 }
 
 .show-item {
@@ -254,6 +260,28 @@ SHOWS
   background-image: url("assets/img/background/bateau-pirate.jpg");
 }
 
+/* *****************************************************************
+SHOW
+***************************************************************** */
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Ratio 16:9 */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.show-picture {
+  width:100%;
+  padding:2rem 0;
+}
 
 /* *****************************************************************
 AGENDA
@@ -265,12 +293,6 @@ AGENDA
 
 .year-filter {
   padding:2rem;
-}
-
-.list-dates {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
 }
 
 .date-item {
@@ -308,9 +330,6 @@ COMPAGNIE
 }
 
 .team-member {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding:1rem;
 }
 
@@ -400,9 +419,10 @@ VERSION TABLETTE
 }
 
 
-.team, .list-shows {
+.team, .list-shows, .show-pictures {
   display:flex;
   flex-wrap:wrap;
+  flex-direction: row;
   justify-content:center;
 }
 
@@ -414,11 +434,15 @@ VERSION TABLETTE
   
 }
 
+.show-picture {
+  width:50%;
+  padding:2rem;
+}
+
 .contact-col {
   display:flex;
   justify-content:center;
 }
-
 
 }
 /* *****************************************************************
@@ -454,7 +478,7 @@ VERSION DESKTOP
   width:30%;
 }
 
-.list-shows {
+.list-shows, .show-pictures {
   flex-direction: row;
   justify-content: flex-start;
 }
