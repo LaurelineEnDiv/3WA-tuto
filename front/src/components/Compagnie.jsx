@@ -37,18 +37,19 @@ const Compagnie = () => {
                     les enfants, les personnes âgées, les personnes ayant un handicap, les super héros, bref, pour tout le monde.</p>
                     </div>
                 </div>
+            
+            <h2>L'équipage à bord</h2>
             </div>
-                
-            <section className="team-background-image"> 
+            
+            <section className="background-image team-background-image">
             <div className="container">
-            <h2 className="title-white">Equipe</h2>
-                <div className="team">
+                    <div className="team">
                     <div className="team-member">
                         <img src={imgJean} alt='Jean Couhet-Guichot'/>
                         <div className="nom-role background-lightgrey">
                         <h3>Jean Couhet-Guichot</h3>
                         <span className="role">Artiste</span>
-                        </div>
+                    </div>
                     </div>
                     <div className="team-member">
                         <img src={imgRick} alt='Rick Pulford'/>
@@ -85,7 +86,7 @@ const Compagnie = () => {
                         <span className="role">Regard extérieur</span>
                         </div>
                     </div>
-                </div>
+                    </div>
             </div>
             </section>
             

@@ -14,7 +14,7 @@ const ListShows = () => {
     
     return (
         <Fragment>
-        <section className="shows-background-image">
+        <section className="background-image shows-background-image">
         {!shows && (<p>loading</p>) }
         <div className="container section-margin-top">
         <h1 className="title-white">Les Projets</h1>
@@ -23,11 +23,13 @@ const ListShows = () => {
                 if (show.image_selected === 1) {
                 return(
                     <div className="show-item" key={i}>
+                        <NavLink to={`/show/${show.id}`}>
                         <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`} />
                         <div className="item-caption">
-                            <h3><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></h3>
+                            <h3>{show.title}</h3>
                             <p>{show.name} - {show.year_creation}</p>
                         </div>
+                        </NavLink>
                     </div>
                 )
             }})}

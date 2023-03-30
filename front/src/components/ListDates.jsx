@@ -25,18 +25,18 @@ const ListDates = () => {
   };
     
     return (
-        <div className="background-black dates-background-image container section-margin-top">
-        <h1>Agenda</h1>
+        <div className="background-image dates-background-image container section-margin-top">
+        <h1 className="title-white">Agenda</h1>
             <div className="year-filter">
-                <button onClick={() => handleYearChange(2023)}>2023</button>
-                <button onClick={() => handleYearChange(2022)}>2022</button>
-                <button onClick={() => handleYearChange(2021)}>2021</button>
+                <button className="button-white" onClick={() => handleYearChange(2023)}>2023</button>
+                <button className="button-white" onClick={() => handleYearChange(2022)}>2022</button>
+                <button className="button-white" onClick={() => handleYearChange(2021)}>2021</button>
             </div>
             {dates.length > 0 && dates.map((date, i) => {
                 return(
                 
                     <div className="list-dates" key={i}>
-                    <div className="date-item background-grey">
+                    <div className="date-item background-lightgrey">
                         <p className="date">{date.formattedDate}</p>
                         <h2>{date.title}</h2>
                         <p className="date-lieu"><a href={date.site_web} target="_blank">{date.nom_lieu}</a> - {date.ville} ({date.departement})</p>

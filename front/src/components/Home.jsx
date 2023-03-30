@@ -44,23 +44,26 @@ const Home = () => {
                         , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
                         <p>Ses artistes ont comme points communs leurs sensibilités.
                         Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
-                        <button className="button-white"><NavLink to={`/la-compagnie`}>Tout sur la compagnie</NavLink></button>
                     </div>
+                    <NavLink to={`/la-compagnie`}><button className="button-white">Tout sur la compagnie</button></NavLink>
+                    
          </div>
-            <section className="home-background-image">
+            <section className="background-image home-background-image">
             {!shows && (<p>loading</p>) }
             <div className="container">
-                <h2 className="titre-spectacles">Les Spectacles</h2>
+                <h2 className="title-yellow">Les Spectacles</h2>
                 <div className="list-shows">
                 {shows.length > 0 && shows.map((show, i) => {
                     if (show.image_selected === 1) {
                     return(
                         <div className="show-item" key={i}>
+                        <NavLink to={`/show/${show.id}`}>
                             <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`}/>
                             <div className="item-caption">
-                            <h3><NavLink to={`/show/${show.id}`}>{show.title}</NavLink></h3>
+                            <h3>{show.title}</h3>
                             <p>{show.name} - {show.year_creation}</p>
                             </div>
+                        </NavLink>
                         </div>
                     )
                     }
@@ -77,13 +80,13 @@ const Home = () => {
                     <div className="list-dates">
                         <div className="date-item" key={i}>
                             <p className="date">{date.formattedDate}</p>
-                            <p>{date.title} - <a href={date.site_web} target="_blank">{date.nom_lieu}</a> {date.ville} ({date.departement})</p>
+                            <p>{date.title} - <a href={date.site_web} target="_blank">{date.nom_lieu}</a> à {date.ville} ({date.departement})</p>
                         </div>
                     </div>
                         
                     )
                 })}
-                <button className="button-white"><NavLink to={`/agenda`}>Voir toutes les dates</NavLink></button>
+                <NavLink to={`/agenda`}><button className="button-white">Voir toutes les dates</button></NavLink>
             </div>
        
         </Fragment>

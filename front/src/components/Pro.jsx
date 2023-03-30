@@ -21,8 +21,8 @@ const Pro = () => {
                
                 return(
                     <div key={i}>
-                        <p>{show.title}</p>
-                        <a href={`${BASE_URL}/pdf/${show.pdf}`} target="_blank" download>Dossier de présentation</a>
+                        <h2 className="title-yellow">{show.title}</h2>
+                        <a href={`${BASE_URL}/pdf/${show.pdf}`} target="_blank" download><button className="button-white">Dossier de présentation</button></a>
                     </div>
                 )
             })}

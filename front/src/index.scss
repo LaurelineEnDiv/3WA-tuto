@@ -57,20 +57,16 @@ body {
 }
 
 .section-margin-top {
-  margin-top: 220px;
+  margin-top: 200px;
 }
 
 .admin-margin-top {
-  margin-top: 300px;
+  margin-top: 400px;
 }
 
 .background-black {
   background-color:$black;
   color: $white;
-}
-
-.background-grey {
-background-color: rgba(128, 128, 128, 0.8);
 }
 
 .background-lightgrey {
@@ -79,6 +75,12 @@ background-color: rgba(255, 255, 255, 0.7);
 
 .background-white {
 background-color: rgba(340, 340, 340, 0.7);
+}
+
+.background-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .title-white {
@@ -92,16 +94,19 @@ background-color: rgba(340, 340, 340, 0.7);
 .button-white {
   background-color:$white;
   color: $black;
-  padding:1rem;
+  padding:1rem 2rem;
   margin:1.5rem;
+  border: 1px solid black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
 }
 
 .button-white:hover {
   background-color:$yellow;
 }
-.button-white a:hover {
-  color: $white;
-}
+
 
 /* *****************************************************************
 GENERALITIES
@@ -152,57 +157,64 @@ HEADER
 ***************************************************************** */
 
 header {
-  background-color: #212529;
+  background-color: $black;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 9999;
 }
 
-.navblack {
-  display: flex;
-  flex-direction: column;
-  text-transform: uppercase;
-  align-items: center;
-  padding:2rem;
-}
+  .navblack {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    align-items: center;
+    padding:2rem;
+  }
+  
+  .navuser {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+  }
+  
+  header img {
+    height: 5rem;
+    padding:1rem;
+    vertical-align: middle;
+  }
+  
+  header a {
+    color: $white;
+  }
 
-header img {
-  height: 5rem;
-  padding:1rem;
-  vertical-align: middle;
-}
+/*////////NAV ADMIN///////////////*/
+.navadmin {
+    background-color: $yellow;
+    padding:1.5rem;
+    text-align:center;
+  
+  a {
+    color: $black;
+  }
+  
+  a:hover {
+  color: $white;
+  }
 
-header a {
-  color: #fff;
 }
 
 .video {
   width:100%;
- 
-}
-
-/*////////NAV ADMIN///////////////*/
-.navadmin {
-    background-color: #fed136;
-    padding:1.5rem;
-    text-align:center;
-  }
-
-.navadmin a {
-  color: #212529;
-}
-
-.navadmin a:hover {
-  color: #fff;
 }
 
 /* *****************************************************************
 HOME
 ***************************************************************** */
-.text-description p {
+.text-description {
   text-align:left;
   text-align: justify;
+  margin-bottom:2rem;
 }
 
 .img-baleine {
@@ -211,23 +223,19 @@ HOME
   margin-right: 2rem;
 }
 
-.titre-spectacles {
-  color:#fed136;
-  padding:1.5rem;
-  display:inline;
-}
-
 .home-background-image {
   background-image: url("assets/img/background/bouchon.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .show-item {
   width: 60%;
   margin:2rem auto;
-  background-color:#fff;
+  background-color:$white;
+  transition: transform 0.3s ease-out;
+}
+
+.show-item:hover {
+  transform: scale(1.1);
 }
 
 .show-item img {
@@ -244,11 +252,7 @@ SHOWS
 ***************************************************************** */
 .shows-background-image {
   background-image: url("assets/img/background/bateau-pirate.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-
 
 
 /* *****************************************************************
@@ -257,9 +261,10 @@ AGENDA
 
 .dates-background-image {
   background-image: url("assets/img/background/attaque-pirate.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+.year-filter {
+  padding:2rem;
 }
 
 .list-dates {
@@ -281,19 +286,6 @@ AGENDA
 }
 
 
-.year-filter {
-  padding:2rem;
-}
-
-.year-filter button {
-  padding:1rem 3rem;
-  margin:1.5rem;
-}
-
-.year-filter button:hover {
-  background-color:#fed136;
-}
-
 
 /* *****************************************************************
 COMPAGNIE
@@ -313,9 +305,6 @@ COMPAGNIE
 
 .team-background-image {
   background-image: url("assets/img/background/bateau-chaussure.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .team-member {
@@ -378,6 +367,8 @@ PRO
   width:100%;
 }
 
+
+
 /* *****************************************************************
 VERSION TABLETTE
 ***************************************************************** */
@@ -393,7 +384,7 @@ VERSION TABLETTE
 }
   
 .navuser {
-    display: flex;
+    flex-direction:row;
     justify-content:space-around;
     align-items: center;
 }
