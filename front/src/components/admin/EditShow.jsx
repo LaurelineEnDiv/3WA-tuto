@@ -86,7 +86,7 @@ const EditShow = () => {
         <div className=" container admin-margin-top">
             { !pictures &&(
                 <Fragment>
-                <p>Modifier les données du spectacle</p>
+                <h2>Modifier les données du spectacle</h2>
                 <form onSubmit={submit} encType="multipart/form-data">
                 <label>Nom du spectacle</label>
                     <input type='text' name='title' onChange={handleChange} value={show.title} />
@@ -106,7 +106,7 @@ const EditShow = () => {
                 </div>
                 <div>
                 <label>Description</label>
-                    <input type='text' name='content' onChange={handleChange} value={show.content} />
+                    <textarea rows='4' cols='50' type='text' name='content' onChange={handleChange} value={show.content} />
                 </div>
                 <div>
                 <label>Vidéo (URL YouTube embed)</label>

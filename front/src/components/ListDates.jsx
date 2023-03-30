@@ -35,7 +35,7 @@ const ListDates = () => {
             {dates.length > 0 && dates.map((date, i) => {
                 return(
                 
-                    <div className="list-dates" key={i}>
+                    <div className="column" key={i}>
                     <div className="date-item background-lightgrey">
                         <p className="date">{date.formattedDate}</p>
                         <h2>{date.title}</h2>

@@ -45,7 +45,6 @@ body {
 	font-size: 1.6rem;
 	line-height: 1.5;
 	width: auto;
-	/*max-width: 1400px;  */
 }
 
 .container {
@@ -113,6 +112,12 @@ background-color: rgba(340, 340, 340, 0.7);
   background-color:$yellow;
 }
 
+.text-description {
+  text-align:left;
+  text-align: justify;
+  margin-bottom:2rem;
+}
+
 
 /* *****************************************************************
 GENERALITIES
@@ -155,14 +160,47 @@ body {
     a:hover {
       color: #fed136;
     }
-
+    
 }
 
-.text-description {
-  text-align:left;
-  text-align: justify;
-  margin-bottom:2rem;
-}
+/* *****************************************************************
+ADMIN
+***************************************************************** */
+
+input, select, textarea {
+      border: 1px solid #ccc; 
+      padding: 1rem;
+      margin:1rem;
+      border-radius: 4px; 
+      font-size: 1.6rem; 
+    }
+    
+    .li-admin {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .delete {
+      background-color: $white;
+      color: #f00;
+      border: 1px solid #f00;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 5px 10px;
+    }
+    
+    form textarea {
+      height: 100px;
+      width: 100%;
+      resize: vertical;
+    }
+
+
 
 /* *****************************************************************
 HEADER
@@ -241,7 +279,7 @@ HOME
 }
 
 .show-item:hover {
-  transform: scale(1.1);
+  transform: scale(1.04);
 }
 
 .show-item img {
@@ -313,6 +351,10 @@ AGENDA
 COMPAGNIE
 ***************************************************************** */
 
+.team-background-image {
+  background-image: url("assets/img/background/bateau-chaussure.jpg");
+} 
+
 .img-mouette {
   width: 80px;
   float: right;
@@ -323,10 +365,6 @@ COMPAGNIE
   width: 120px;
   float: left;
   margin-right: 3rem;
-}
-
-.team-background-image {
-  background-image: url("assets/img/background/bateau-chaussure.jpg");
 }
 
 .team-member {
@@ -394,14 +432,6 @@ VERSION TABLETTE
 
 @media screen and (min-width: 760px) {
   
-.section-margin-top {
-  margin-top: 100px;
-}
-
-.admin-margin-top {
-  margin-top: 150px;
-}
-  
 .navuser {
     flex-direction:row;
     justify-content:space-around;
@@ -418,6 +448,13 @@ VERSION TABLETTE
   justify-content:space-around;
 }
 
+.section-margin-top {
+  margin-top: 100px;
+}
+
+.admin-margin-top {
+  margin-top: 150px;
+}
 
 .team, .list-shows, .show-pictures {
   display:flex;
@@ -445,6 +482,7 @@ VERSION TABLETTE
 }
 
 }
+
 /* *****************************************************************
 VERSION DESKTOP
 ***************************************************************** */
@@ -452,11 +490,8 @@ VERSION DESKTOP
 @media screen and (min-width: 980px) {
 
 .container {
-    width: 100%;
     padding-right: 8rem;
     padding-left: 8rem;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 .section-margin-top {
@@ -481,11 +516,6 @@ VERSION DESKTOP
 .list-shows, .show-pictures {
   flex-direction: row;
   justify-content: flex-start;
-}
-
-
-.pro-background-image {
-  background-size: cover;
 }
 
 }

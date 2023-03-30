@@ -40,8 +40,8 @@ const Login = () => {
         <h1>Connexion</h1>
         <form onSubmit={submit}>
             <input type='text' name='email' value={info.email} onChange={handleChange} placeholder='email' />
-            <input type='password' name='password' value={info.password} onChange={handleChange} placeholder='password' />
-            <input type="submit" />
+            <input type='password' name='password' value={info.password} onChange={handleChange} placeholder='mot de passe' />
+            <input className="button-white" type="submit" value="Go !" />
         </form>
         </div>
         </Fragment>

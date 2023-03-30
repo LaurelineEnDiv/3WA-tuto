@@ -28,7 +28,7 @@ const EditPassword = () => {
                       onChange={(e) => setNewPassword(e.target.value)}
                       maxLength="250"
                     />
-                    <button type="submit">Valider</button>
+                    <button className="button-white" type="submit">Valider</button>
                 </form>
                 </div>
                 </Fragment>

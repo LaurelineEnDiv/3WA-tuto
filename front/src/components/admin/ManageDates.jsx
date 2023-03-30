@@ -104,14 +104,14 @@ const ManageDates = () => {
      
     return (
         <div className=" container admin-margin-top">
-        <h1>Supprimer une date</h1>
+        <h2>Supprimer une date</h2>
             <ul>
             {dates.length > 0 && dates.map((date, i) => {
                 return(
                     <Fragment key={i}>
-                        <li>
+                        <li className="li-admin">
                             {date.formattedDate}
-                            <button onClick={() => deleteDate(date.id)}>X</button>
+                            <button className="delete" onClick={() => deleteDate(date.id)}>X</button>
                         </li>
                     </Fragment>
                 )
@@ -119,7 +119,7 @@ const ManageDates = () => {
             </ul>
         <div>
         <Fragment>
-            <h1>Ajouter une nouvelle date</h1>
+            <h2>Ajouter une date</h2>
             <form onSubmit={submit} method="post">
                 <div>
                     <label>Date</label>
@@ -165,7 +165,7 @@ const ManageDates = () => {
                             <input type="text" name="pays" placeholder="Pays" onChange={handleChange} value={date.pays} maxLength="100"/>
                     </div>
                 </Fragment>
-                <button type="submit">VALIDER</button>
+                <button className="button-white" type="submit">VALIDER</button>
                 </div>
             </form>
         </Fragment>

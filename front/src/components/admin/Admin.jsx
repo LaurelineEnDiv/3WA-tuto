@@ -82,15 +82,15 @@ useEffect(() => {
     
     return(
         <div className=" container admin-margin-top">
-            <p>Modifier ou supprimer un administrateur</p>
+            <h2>Modifier ou supprimer un administrateur</h2>
                 <ul>
                   {usersList.map((user, i) => {
                     return (
-                      <li key={i}>
+                      <li className="li-admin" key={i}>
                         <NavLink to={`/editadmin/${user.id}`}>
                           {user.nom} {user.prenom}
                         </NavLink>
-                        <button onClick={() => deleteUser(user.id)}>X</button>
+                        <button className="delete" onClick={() => deleteUser(user.id)}>X</button>
                       </li>
                     );
                   })}
@@ -98,7 +98,7 @@ useEffect(() => {
             
             <div>
             
-              <p>Ajouter un nouvel administrateur</p>
+              <h2>Ajouter un nouvel administrateur</h2>
               <form onSubmit={submit} method="post">
                 <div>
                   <input
@@ -134,13 +134,13 @@ useEffect(() => {
                   <input
                     type="password"
                     name="password"
-                    placeholder="Mot de passe (8 caractères minimum)"
+                    placeholder="Mot de passe (8 caractères min)"
                     onChange={handleChange}
                     value={userData.password}
                     maxLength="250"
                   />
                 </div>
-                <button type="submit">VALIDER</button>
+                <button className="button-white" type="submit">VALIDER</button>
               </form>
             </div>
   </div>

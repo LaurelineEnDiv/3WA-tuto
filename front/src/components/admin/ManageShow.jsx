@@ -121,17 +121,17 @@ const ManageShow = () => {
     return(
         <div className=" container admin-margin-top">
             <h1>Gestion des spectacles</h1>
-            <p>Cliquez sur le nom du spectacle à modifier</p>
+             <h2>Modifier ou supprimer un spectacle</h2>
                 <ul>
                   {showsList.map((show, i) => {
                     return (
                       <Fragment key={i}>
-                          <li>
+                          <li className="li-admin">
                             <NavLink to={`/editshow/${show.id}`}>
                               {show.title}
                             </NavLink>
+                            <button className="delete" onClick={() => deleteShow(show.id)}>X</button>
                           </li>
-                          <button onClick={() => deleteShow(show.id)}>Supprimer {show.title}</button>
                       </Fragment>
                     )
                   })}
@@ -141,10 +141,10 @@ const ManageShow = () => {
         <Fragment>
             {!pictures &&(
                 <Fragment>
-                    <p>Ajouter un spectacle</p>
+                    <h2>Ajouter un spectacle</h2>
                     <form onSubmit={submit} encType="multipart/form-data">
                         <label>Nom du spectacle</label>
-                            <input type='text' placeholder='Titre' name='title' onChange={handleChange} value={showData.title} />
+                            <input type='text' name='title' onChange={handleChange} value={showData.title} />
                         <div>
                             <label>Catégorie</label>
                             <select name="categorie" onChange={handleChange} value={showData.name}>
@@ -158,11 +158,11 @@ const ManageShow = () => {
                         </div>
                         <div>
                             <label>Année de création</label>
-                            <input type='text' placeholder='Année de création' name='year_creation' onChange={handleChange} value={showData.year_creation} />
+                            <input type='text' name='year_creation' onChange={handleChange} value={showData.year_creation} />
                          </div> 
                          <div>
                             <label>Description</label>
-                            <input type='text' placeholder='Description' name='content' onChange={handleChange} value={showData.content} />
+                            <input type='text' name='content' onChange={handleChange} value={showData.content} />
                         </div> 
                         <div>
                             <label>URL de la vidéo de présentation du spectacle (embed sur YouTube, ex : https://www.youtube.com/embed/JZlo) </label>
@@ -173,7 +173,7 @@ const ManageShow = () => {
                             <input type='file' name='url_pictures' multiple />
                         </div>
                         <div>
-                        <input type='submit' value='Valider'/>
+                        <input className="button-white" type='submit' value='Valider'/>
                         </div>
                     </form>
                 </Fragment>

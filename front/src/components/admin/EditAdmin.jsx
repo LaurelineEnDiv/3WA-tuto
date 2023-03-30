@@ -37,14 +37,14 @@ const EditAdmin = () => {
         <div className=" container admin-margin-top">
             { user && (
                 <Fragment>
-                <p>Modifier les coordonnées de l'utilisateur</p>
+                <h2>Modifier les coordonnées de l'utilisateur</h2>
                 <form onSubmit={submit}>
                     <input type='text' name='nom' placeholder='nom' onChange={handleChange} value={user.nom} />
                     <input type='text' name='prenom' placeholder='prenom' onChange={handleChange} value={user.prenom} />
                     <input type='text' name='email' placeholder='email' onChange={handleChange} value={user.email} />
-                    <input type='submit' />
+                    <input className="button-white" type='submit'value="Valider" />
                 </form>
-                <p><NavLink to={`/editpassword/${user.id}`}>Modifier le mot de passe</NavLink></p>
+                <p>Pour modifier votre mot de passe, <NavLink to={`/editpassword/${user.id}`}>c'est par ici !</NavLink></p>
                 </Fragment>
             )}
         </div>

@@ -21,8 +21,8 @@ const Home = () => {
       .then(res => {
         const today = new Date()
         const data = res.data.result
-          .filter(date => new Date(date.formattedDate) > today) // filtrer les dates futures
-          .sort((a, b) => new Date(a.formattedDate) - new Date(b.formattedDate)) // trier par date croissante
+          .filter(date => new Date(date.date) > today) // filtrer les dates futures
+          .sort((a, b) => new Date(a.date) - new Date(b.date)) // trier par date croissante
           .slice(0, 3) // récupérer les trois premières dates
         setDates(data)
       })

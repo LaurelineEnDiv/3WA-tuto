@@ -48,20 +48,19 @@ const ManagePro = () => {
     
     return(
         <div className=" container admin-margin-top">
-            <h1>Gestion de l'espace pro</h1>
+            <h2>Ajouter un dossier de présentation</h2>
                 <ul>
                   {showsList.map((show, i) => {
                     return (
                       <Fragment key={i}>
-                          <li>{show.title}</li>
+                          <h3>{show.title}</h3>
                           <Fragment>
                                 <form onSubmit={(e) => submit(e, show.id)} encType="multipart/form-data">
                                     <div>
-                                        <label>Ajouter le dossier de présentation</label>
                                         <input type='file' name='pdf' multiple />
                                     </div>
                                     <div>
-                                    <input type='submit' value='Valider'/>
+                                    <input className="button-white" type='submit' value='Ajouter'/>
                                     </div>
                                 </form>
                             </Fragment>
