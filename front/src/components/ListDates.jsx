@@ -32,18 +32,17 @@ const ListDates = () => {
                 <button className="button-white" onClick={() => handleYearChange(2022)}>2022</button>
                 <button className="button-white" onClick={() => handleYearChange(2021)}>2021</button>
             </div>
+            <section className="column">
             {dates.length > 0 && dates.map((date, i) => {
                 return(
-                
-                    <div className="column" key={i}>
-                    <div className="date-item background-lightgrey">
-                        <p className="date">{date.formattedDate}</p>
-                        <h2>{date.title}</h2>
-                        <p className="date-lieu"><a href={date.site_web} target="_blank">{date.nom_lieu}</a> - {date.ville} ({date.departement})</p>
-                    </div>
+                    <div className="date-item background-lightgrey" key={i}>
+                        <h2 className="date">{date.formattedDate}</h2>
+                        <h3>{date.title}</h3>
+                        <h3 className="date-lieu"><a href={date.site_web} target="_blank">{date.nom_lieu}</a> - {date.ville} ({date.departement})</h3>
                     </div>
                 )
             })}
+            </section>     
         </div> 
     )
 }

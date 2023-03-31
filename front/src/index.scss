@@ -334,17 +334,11 @@ AGENDA
 }
 
 .date-item {
-  width:50%;
-  border: 0.2rem solid;
+  width:100%;
+  line-height:0.5;
+  border: 0.1rem solid;
   margin-bottom: 1.5rem;
 }
-
-.date, .date-lieu {
-  font-size:2rem;
-  font-weight:bold;
-  letter-spacing: 0.0625em;
-}
-
 
 
 /* *****************************************************************

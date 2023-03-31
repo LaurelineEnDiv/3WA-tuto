@@ -77,10 +77,11 @@ const Home = () => {
             <h2>Agenda</h2>
             {dates.length > 0 && dates.map((date, i) => {
                     return(
-                    <div className="column">
+                    <div className="list-dates column">
                         <div className="date-item" key={i}>
                             <p className="date">{date.formattedDate}</p>
-                            <p>{date.title} - <a href={date.site_web} target="_blank">{date.nom_lieu}</a> à {date.ville} ({date.departement})</p>
+                            <h3>{date.title}</h3>
+                            <p><a href={date.site_web} target="_blank">{date.nom_lieu}</a> à {date.ville} ({date.departement})</p>
                         </div>
                     </div>
                         
