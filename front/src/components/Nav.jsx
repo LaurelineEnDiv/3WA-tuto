@@ -6,49 +6,46 @@ import { StoreContext } from "../tools/context.js"
 const Nav = (props) => {
       const [state] = useContext(StoreContext)
 
-  
   return (
     <header>
-    <nav>
-      <div className="navblack">
-      <a href="/"><img src={img} alt='Les Hommes Sensibles - Logo'/></a>
-      <ul className="navuser">
-      <li>
-          <NavLink to="/">
-           Accueil
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/la-compagnie">
-            Qui sommes-nous ?
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/spectacles">
-             Les Projets
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/agenda">
-            Agenda
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/contact">
-            Contact
-          </NavLink>
-        </li>
-         <li>
-          <NavLink to="/pro">
-            Pro
-          </NavLink>
-        </li>
-      </ul>
-      </div>
+      <nav className="navblack column">
+        <a href="/"><img src={img} alt='Les Hommes Sensibles - Logo'/></a>
+          <ul className="navuser column">
+          <li>
+              <NavLink to="/">
+               Accueil
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/la-compagnie">
+                Qui sommes-nous ?
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/spectacles">
+                 Les Projets
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/agenda">
+                Agenda
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact">
+                Contact
+              </NavLink>
+            </li>
+             <li>
+              <NavLink to="/pro">
+                Pro
+              </NavLink>
+            </li>
+          </ul>
+      </nav>
       
-        
-        { state.user.isAdmin && (
-        
+      { state.user.isAdmin && (
+      <nav>  
         <ul className="navadmin">
           <li>
             <NavLink to="/admin">
@@ -76,10 +73,8 @@ const Nav = (props) => {
             </NavLink>
           </li>
         </ul>
-        
-       
-        )}
-      </nav>
+      </nav>  
+      )}
     </header>
   )
 }

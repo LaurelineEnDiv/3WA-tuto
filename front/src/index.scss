@@ -55,6 +55,10 @@ body {
     text-align:center;
 }
 
+.video {
+  width:100%;
+}
+
 .section-margin-top {
   margin-top: 200px;
 }
@@ -201,61 +205,70 @@ input, select, textarea {
     }
 
 
-
 /* *****************************************************************
 HEADER
 ***************************************************************** */
-
 header {
   background-color: $black;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9999;
-}
+  z-index: 5;
 
-  .navblack {
-    display: flex;
-    flex-direction: column;
-    text-transform: uppercase;
-    align-items: center;
-    padding:2rem;
-  }
-  
-  .navuser {
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-  }
-  
-  header img {
-    height: 5rem;
-    padding:1rem;
-    vertical-align: middle;
-  }
-  
-  header a {
-    color: $white;
-  }
+    .navblack {
+      text-transform: uppercase;
+      padding:2rem;
+      
+        @media screen and (min-width: 980px) {
+          flex-direction:row;
+          justify-content:space-around;
+        }
+    }
+    
+    .navuser {
+        @media screen and (min-width: 760px) {
+          flex-direction:row;
+          justify-content:space-around;
+        }
+    }
+      
+    .navuser li {
+        @media screen and (min-width: 760px) {
+          padding: 0 2rem; 
+        }  
+    }
+      
+    img {
+      height: 5rem;
+      padding:1rem;
+      vertical-align: middle;
+    }
+    
+    a {
+      color: $white;
+    }
 
-/*////////NAV ADMIN///////////////*/
-.navadmin {
-    background-color: $yellow;
-    padding:1.5rem;
-    text-align:center;
-  
-  a {
-    color: $black;
-  }
-  
-  a:hover {
-  color: $white;
-  }
-
-}
-
-.video {
-  width:100%;
+    .navadmin {
+        background-color: $yellow;
+        padding:1.5rem;
+        text-align:center;
+        
+         @media screen and (min-width: 760px) {
+            display: flex;
+            flex-direction: row;
+            justify-content:space-around;
+          }
+      
+        a {
+          color: $black;
+        }
+        
+        a:hover {
+        color: $white;
+        }
+      
+    }
+ 
 }
 
 /* *****************************************************************
@@ -426,22 +439,6 @@ VERSION TABLETTE
 
 @media screen and (min-width: 760px) {
   
-.navuser {
-    flex-direction:row;
-    justify-content:space-around;
-    align-items: center;
-}
-
-.navuser li {
-   padding: 0 2rem; 
-}
-
-.navadmin {
-  display: flex;
-  flex-direction: row;
-  justify-content:space-around;
-}
-
 .section-margin-top {
   margin-top: 100px;
 }
@@ -491,13 +488,6 @@ VERSION DESKTOP
 .section-margin-top {
   margin-top: 80px;
 }
-
-.navblack, .navuser {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    align-items: center;
-  }
   
 .team {
   justify-content:center;
