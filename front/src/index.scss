@@ -4,9 +4,6 @@ $black: #212529;
 $white: #fff;
 $yellow: #fed136;
 
-//SIZE
-
-
 //FONTS
 $satoshi: 'Satoshi-Regular', Arial, helvetica, sans-serif;
 $clashGrotesk: 'ClashGrotesk-Semibold', Arial, helvetica, sans-serif;
@@ -88,6 +85,15 @@ body {
   display:flex;
   flex-direction:column;
   align-items:center;
+}
+
+.row {
+  @media screen and (min-width: 760px) {
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+  }
 }
 
 .background-black {
@@ -264,19 +270,25 @@ HOME
 }
 
 .show-item {
-  width: 60%;
+  width: 70%;
   margin:2rem auto;
   background-color:$white;
   transition: transform 0.3s ease-out;
   
-  &:hover {
-    transform: scale(1.04);
-  }
-  
-  .item-caption {
-     padding-bottom:1rem;
-  }
-  
+    &:hover {
+      transform: scale(1.04);
+    }
+    
+    @media screen and (min-width: 760px) {
+      width:40%;
+    }
+    @media screen and (min-width: 980px) {
+      width:30%;
+    }
+}
+
+.item-caption {
+    padding-bottom:1rem;
 }
 
 .show-item img {
@@ -337,7 +349,6 @@ AGENDA
   margin-bottom: 1.5rem;
 }
 
-
 /* *****************************************************************
 COMPAGNIE
 ***************************************************************** */
@@ -360,29 +371,41 @@ COMPAGNIE
 
 .team-member {
   padding:1rem;
-}
-
-.team img {
-    width: 20rem;
-    border-radius: 50%;
-    border: 0.5rem solid rgba(0, 0, 0, 0.1);
-    border-color: rgba(255, 255, 255, 0.6);
-    vertical-align: middle;
-}
-
-.nom-role {
-  width: 100%;
-  margin:1rem;
-  padding:1rem;
-}
-
-.team-member h3 {
-  padding:1rem;
-  margin: 0;
-}
-
-.role {
-  font-weight: bold;
+  
+    @media screen and (min-width: 760px) {
+      width:40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    @media screen and (min-width: 980px) {
+      width:30%;
+    }
+    
+    img {
+      width: 20rem;
+      border-radius: 50%;
+      border: 0.5rem solid rgba(0, 0, 0, 0.1);
+      border-color: rgba(255, 255, 255, 0.6);
+      vertical-align: middle;
+    }
+    
+    .nom-role {
+      width: 100%;
+      margin:1rem;
+      padding:1rem;
+    }
+    
+    h3 {
+      padding:1rem;
+      margin: 0;
+    }
+    
+    .role {
+      font-weight: bold;
+    }
+    
 }
 
 /* *****************************************************************
@@ -451,45 +474,3 @@ input, select, textarea {
       width: 100%;
       resize: vertical;
     }
-
-/* *****************************************************************
-VERSION TABLETTE
-***************************************************************** */
-
-@media screen and (min-width: 760px) {
-  
-
-.list-shows, .show-pictures, .team {
-  display:flex;
-  flex-wrap:wrap;
-  flex-direction: row;
-  justify-content:center;
-}
-
-.team-member, .show-item {
-  width:40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-}
-
-
-}
-
-/* *****************************************************************
-VERSION DESKTOP
-***************************************************************** */
-
-@media screen and (min-width: 980px) {
-
-.team-member, .show-item {
-  width:30%;
-}
-
-.list-shows, .show-pictures {
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-}

@@ -18,7 +18,7 @@ const ListShows = () => {
         {!shows && (<p>loading</p>) }
         <div className="container section-margin-top">
         <h1 className="title-white">Les Projets</h1>
-        <div className="list-shows">
+        <div className="row">
             {shows.length > 0 && shows.map((show, i) => {
                 if (show.image_selected === 1) {
                 return(

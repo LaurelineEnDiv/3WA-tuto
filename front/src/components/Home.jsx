@@ -52,7 +52,7 @@ const Home = () => {
             {!shows && (<p>loading</p>) }
             <div className="container">
                 <h2 className="title-yellow">Les Spectacles</h2>
-                <div className="list-shows">
+                <div className="row">
                 {shows.length > 0 && shows.map((show, i) => {
                     if (show.image_selected === 1) {
                     return(

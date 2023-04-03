@@ -43,7 +43,7 @@ const Compagnie = () => {
             
             <section className="background-image team-background-image">
             <div className="container">
-                    <div className="team">
+                <div className="team row">
                     <div className="column team-member">
                         <img src={imgJean} alt='Jean Couhet-Guichot'/>
                         <div className="nom-role background-lightgrey">
@@ -86,7 +86,7 @@ const Compagnie = () => {
                         <span className="role">Regard extérieur</span>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
             </section>
             
