@@ -78,7 +78,7 @@ const Home = () => {
             {dates.length > 0 && dates.map((date, i) => {
                     return(
                     <div className="list-dates column">
-                        <div className="date-item" key={i}>
+                        <div className="date-item full-width" key={i}>
                             <p className="date">{date.formattedDate}</p>
                             <h3>{date.title}</h3>
                             <p><a href={date.site_web} target="_blank">{date.nom_lieu}</a> à {date.ville} ({date.departement})</p>
