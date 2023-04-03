@@ -32,7 +32,7 @@ const Show = () => {
                     <div className="column show-pictures">
                         {show.sqlPictures.map((e,i) =>{
                             return(
-                                <img className="show-picture" key={i} src={`${BASE_IMG}/${e.url_pictures}`} />
+                                <img className="show-picture full-width" key={i} src={`${BASE_IMG}/${e.url_pictures}`} />
                             )
                         })}
                     </div>

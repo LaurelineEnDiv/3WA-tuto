@@ -4,6 +4,9 @@ $black: #212529;
 $white: #fff;
 $yellow: #fed136;
 
+//SIZE
+
+
 //FONTS
 $satoshi: 'Satoshi-Regular', Arial, helvetica, sans-serif;
 $clashGrotesk: 'ClashGrotesk-Semibold', Arial, helvetica, sans-serif;
@@ -29,8 +32,6 @@ $clashGrotesk: 'ClashGrotesk-Semibold', Arial, helvetica, sans-serif;
 /* *****************************************************************
 TOOLS
 ***************************************************************** */
-
-/* Box sizing */
 * {
 	box-sizing: border-box;
 }
@@ -40,7 +41,6 @@ html {
 	font-size: 62.5%;
 }
 
-/* Body */
 body {
 	font-size: 1.6rem;
 	line-height: 1.5;
@@ -53,18 +53,35 @@ body {
     margin-right: auto;
     margin-left: auto;
     text-align:center;
+    
+      @media screen and (min-width: 760px) {
+        padding-right: 10rem;
+        padding-left: 10rem;
+      }
 }
 
-.video {
+.full-width {
   width:100%;
 }
 
 .section-margin-top {
   margin-top: 200px;
+  
+    @media screen and (min-width: 760px) {
+      margin-top: 100px;
+    }
+    
+    @media screen and (min-width: 980px) {
+      margin-top: 80px;
+    }
 }
 
 .admin-margin-top {
-  margin-top: 400px;
+  margin-top: 350px;
+  
+     @media screen and (min-width: 760px) {
+        margin-top: 150px;
+    }
 }
 
 .column {
@@ -129,12 +146,12 @@ GENERALITIES
 
 body {
   margin: auto;
-  font-family: "Satoshi-Regular";
+  font-family: $satoshi;
   color:$black;
   
 
     h1, h2, h3 {
-      font-family: "ClashGrotesk-Semibold";
+      font-family: $clashGrotesk;
       text-transform: uppercase;
     }
     
@@ -162,48 +179,10 @@ body {
     }
     
     a:hover {
-      color: #fed136;
+      color: $yellow;
     }
     
 }
-
-/* *****************************************************************
-ADMIN
-***************************************************************** */
-
-input, select, textarea {
-      border: 1px solid #ccc; 
-      padding: 1rem;
-      margin:1rem;
-      border-radius: 4px; 
-      font-size: 1.6rem; 
-    }
-    
-    .li-admin {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      margin-bottom: 1rem;
-    }
-
-    .delete {
-      background-color: $white;
-      color: #f00;
-      border: 1px solid #f00;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.2rem;
-      padding: 5px 10px;
-    }
-    
-    form textarea {
-      height: 100px;
-      width: 100%;
-      resize: vertical;
-    }
-
 
 /* *****************************************************************
 HEADER
@@ -289,10 +268,15 @@ HOME
   margin:2rem auto;
   background-color:$white;
   transition: transform 0.3s ease-out;
-}
-
-.show-item:hover {
-  transform: scale(1.04);
+  
+  &:hover {
+    transform: scale(1.04);
+  }
+  
+  .item-caption {
+     padding-bottom:1rem;
+  }
+  
 }
 
 .show-item img {
@@ -300,9 +284,6 @@ HOME
   margin-top: 1em;
 }
 
-.item-caption {
- padding-bottom:1rem;
-}
 
 /* *****************************************************************
 SHOWS
@@ -317,7 +298,6 @@ SHOW
 
 .video-container {
   position: relative;
-  width: 100%;
   padding-bottom: 56.25%; /* Ratio 16:9 */
 }
 
@@ -330,8 +310,12 @@ SHOW
 }
 
 .show-picture {
-  width:100%;
   padding:2rem 0;
+  
+    @media screen and (min-width: 760px) {
+      width:50%;
+      padding:2rem;
+    }
 }
 
 /* *****************************************************************
@@ -404,11 +388,6 @@ COMPAGNIE
 /* *****************************************************************
 CONTACT
 ***************************************************************** */
-
-.contact {
-  margin:2rem;
-}
-
 .contact-background-image {
   background-image: url("assets/img/background/evolution.jpg");
   background-size: contain;
@@ -422,16 +401,56 @@ CONTACT
   margin-left: auto;
   text-align:center;
   padding:2rem;
+  
+    .contact-col {
+      @media screen and (min-width: 760px) {
+        display:flex;
+        justify-content:center;
+      }
+    }
+  
+    .contact {
+      margin:2rem;
+    }
+    
 }
 
 /* *****************************************************************
-PRO
+ADMIN
 ***************************************************************** */
-.img-mouettes {
-  width:100%;
-}
 
+input, select, textarea {
+      border: 1px solid #ccc; 
+      padding: 1rem;
+      margin:1rem;
+      border-radius: 4px; 
+      font-size: 1.6rem; 
+    }
+    
+    .li-admin {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+    }
 
+    .delete {
+      background-color: $white;
+      color: #f00;
+      border: 1px solid #f00;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 5px 10px;
+    }
+    
+    form textarea {
+      height: 100px;
+      width: 100%;
+      resize: vertical;
+    }
 
 /* *****************************************************************
 VERSION TABLETTE
@@ -439,15 +458,8 @@ VERSION TABLETTE
 
 @media screen and (min-width: 760px) {
   
-.section-margin-top {
-  margin-top: 100px;
-}
 
-.admin-margin-top {
-  margin-top: 150px;
-}
-
-.team, .list-shows, .show-pictures {
+.list-shows, .show-pictures, .team {
   display:flex;
   flex-wrap:wrap;
   flex-direction: row;
@@ -462,15 +474,6 @@ VERSION TABLETTE
   
 }
 
-.show-picture {
-  width:50%;
-  padding:2rem;
-}
-
-.contact-col {
-  display:flex;
-  justify-content:center;
-}
 
 }
 
@@ -479,19 +482,6 @@ VERSION DESKTOP
 ***************************************************************** */
 
 @media screen and (min-width: 980px) {
-
-.container {
-    padding-right: 8rem;
-    padding-left: 8rem;
-}
-
-.section-margin-top {
-  margin-top: 80px;
-}
-  
-.team {
-  justify-content:center;
-}
 
 .team-member, .show-item {
   width:30%;

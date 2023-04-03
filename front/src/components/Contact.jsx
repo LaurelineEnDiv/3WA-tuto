@@ -8,16 +8,16 @@ const Contact = () => {
             <h1>Contact</h1>
             <h2 className="title-yellow">Artistique</h2>
                 <div className="contact-col">
-                <div className="contact">
-                    <p><strong>Jean Couhet-Guichot</strong></p> 
-                    <p><a href="mailto:leshommessensibles@gmail.com">leshommessensibles@gmail.com</a></p>
-                    <p><a href="tel:0645878618">06 45 87 86 18</a></p>
-                </div>
-                <div className="contact">
-                    <p><strong>Rick Pulford</strong></p>
-                    <p><a href="mailto:rick.pulford">rick.pulford@gmail.com</a></p>
-                    <p><a href="tel:0760355418">07 60 35 54 18</a></p>
-                </div>
+                    <div className="contact">
+                        <p><strong>Jean Couhet-Guichot</strong></p> 
+                        <p><a href="mailto:leshommessensibles@gmail.com">leshommessensibles@gmail.com</a></p>
+                        <p><a href="tel:0645878618">06 45 87 86 18</a></p>
+                    </div>
+                    <div className="contact">
+                        <p><strong>Rick Pulford</strong></p>
+                        <p><a href="mailto:rick.pulford">rick.pulford@gmail.com</a></p>
+                        <p><a href="tel:0760355418">07 60 35 54 18</a></p>
+                    </div>
                 </div>
             <h2 className="title-yellow">Production et diffusion</h2>
                 <div className="contact">

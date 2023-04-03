@@ -27,7 +27,7 @@ const Pro = () => {
                 )
             })}
         </div>
-        <img src={mouettes} className="img-mouettes"/>
+        <img src={mouettes} className="img-mouettes full-width"/>
         
        </Fragment>
     )

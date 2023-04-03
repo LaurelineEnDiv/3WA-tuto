@@ -32,7 +32,7 @@ const Home = () => {
     return(
         <Fragment>
         <section className="section-margin-top">
-            <video className="video" loop autoPlay muted>
+            <video className="full-width" loop autoPlay muted>
                 <source src={video}/>
             </video>
          </section>
