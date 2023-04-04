@@ -162,7 +162,7 @@ const ManageShow = () => {
                          </div> 
                          <div>
                             <label>Description</label>
-                            <input type='text' name='content' onChange={handleChange} value={showData.content} />
+                            <textarea rows='4' cols='50' type='text' name='content' onChange={handleChange} value={showData.content} />
                         </div> 
                         <div>
                             <label>URL de la vidéo de présentation du spectacle (embed sur YouTube, ex : https://www.youtube.com/embed/JZlo) </label>

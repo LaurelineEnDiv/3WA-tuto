@@ -9,7 +9,7 @@ export default (req, res) => {
     `
     pool.query(sql,(err, result) =>{
         if(err) throw err
-    // Format the date using toLocaleDateString()
+    // Formate la date avec toLocaleDateString()
     const formattedResult = result.map((row) => ({
       ...row,
       formattedDate: new Date(row.formattedDate).toLocaleDateString("fr-FR", {

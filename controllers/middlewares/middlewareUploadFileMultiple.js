@@ -44,7 +44,7 @@ export default async (req, res, next) => {
 
     // si pas de fichier
     if (!images || (Array.isArray(images) && images.length === 0) || (!Array.isArray(images) && images.size === 0)) {
-      return res.status(400).json({ error: 'Aucun fichier n\'a été téléchargé.' });
+      // return res.status(400).json({ error: 'Aucun fichier n\'a été téléchargé.' });
     }
 
     const newFilenames = [];

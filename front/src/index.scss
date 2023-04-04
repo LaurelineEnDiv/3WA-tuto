@@ -4,6 +4,10 @@ $black: #212529;
 $white: #fff;
 $yellow: #fed136;
 
+//RESPONSIVE
+$tab: '(min-width: 760px)';
+$desktop: '(min-width: 980px)';
+
 //FONTS
 $satoshi: 'Satoshi-Regular', Arial, helvetica, sans-serif;
 $clashGrotesk: 'ClashGrotesk-Semibold', Arial, helvetica, sans-serif;
@@ -51,7 +55,7 @@ body {
     margin-left: auto;
     text-align:center;
     
-      @media screen and (min-width: 760px) {
+      @media #{$tab} {
         padding-right: 10rem;
         padding-left: 10rem;
       }
@@ -64,11 +68,11 @@ body {
 .section-margin-top {
   margin-top: 200px;
   
-    @media screen and (min-width: 760px) {
+    @media  #{$tab} {
       margin-top: 100px;
     }
     
-    @media screen and (min-width: 980px) {
+    @media  (min-width: 980px) {
       margin-top: 80px;
     }
 }
@@ -76,7 +80,7 @@ body {
 .admin-margin-top {
   margin-top: 350px;
   
-     @media screen and (min-width: 760px) {
+     @media  #{$tab} {
         margin-top: 150px;
     }
 }
@@ -88,7 +92,7 @@ body {
 }
 
 .row {
-  @media screen and (min-width: 760px) {
+  @media  #{$tab} {
     display:flex;
     flex-direction: row;
     flex-wrap:wrap;
@@ -142,7 +146,8 @@ background-color: rgba(340, 340, 340, 0.7);
 .text-description {
   text-align:left;
   text-align: justify;
-  margin-bottom:2rem;
+  margin: 2rem auto 2rem;
+  max-width:700px;
 }
 
 
@@ -204,21 +209,21 @@ header {
       text-transform: uppercase;
       padding:2rem;
       
-        @media screen and (min-width: 980px) {
+        @media  (min-width: 980px) {
           flex-direction:row;
           justify-content:space-around;
         }
     }
     
     .navuser {
-        @media screen and (min-width: 760px) {
+        @media  #{$tab} {
           flex-direction:row;
           justify-content:space-around;
         }
     }
       
     .navuser li {
-        @media screen and (min-width: 760px) {
+        @media  #{$tab} {
           padding: 0 2rem; 
         }  
     }
@@ -238,7 +243,7 @@ header {
         padding:1.5rem;
         text-align:center;
         
-         @media screen and (min-width: 760px) {
+         @media  #{$tab} {
             display: flex;
             flex-direction: row;
             justify-content:space-around;
@@ -279,10 +284,10 @@ HOME
       transform: scale(1.04);
     }
     
-    @media screen and (min-width: 760px) {
+    @media  #{$tab} {
       width:40%;
     }
-    @media screen and (min-width: 980px) {
+    @media  (min-width: 980px) {
       width:30%;
     }
 }
@@ -324,7 +329,7 @@ SHOW
 .show-picture {
   padding:2rem 0;
   
-    @media screen and (min-width: 760px) {
+    @media  #{$tab} {
       width:50%;
       padding:2rem;
     }
@@ -382,14 +387,14 @@ COMPAGNIE
 .team-member {
   padding:1rem;
   
-    @media screen and (min-width: 760px) {
+    @media  #{$tab} {
       width:40%;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     
-    @media screen and (min-width: 980px) {
+    @media  (min-width: 980px) {
       width:30%;
     }
     
@@ -436,7 +441,7 @@ CONTACT
   padding:2rem;
   
     .contact-col {
-      @media screen and (min-width: 760px) {
+      @media  #{$tab} {
         display:flex;
         justify-content:center;
       }

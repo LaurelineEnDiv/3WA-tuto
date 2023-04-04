@@ -28,9 +28,9 @@ const ListDates = () => {
         <div className="background-image dates-background-image container section-margin-top">
         <h1 className="title-white">Agenda</h1>
             <div className="year-filter">
-                <button className="button-white" onClick={() => handleYearChange(2023)}>2023</button>
-                <button className="button-white" onClick={() => handleYearChange(2022)}>2022</button>
                 <button className="button-white" onClick={() => handleYearChange(2021)}>2021</button>
+                <button className="button-white" onClick={() => handleYearChange(2022)}>2022</button>
+                <button className="button-white" onClick={() => handleYearChange(2023)}>2023</button>
             </div>
             <section className="column">
             {dates.length > 0 && dates.map((date, i) => {
