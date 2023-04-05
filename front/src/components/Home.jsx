@@ -45,7 +45,7 @@ const Home = () => {
                         <p>Ses artistes ont comme points communs leurs sensibilités.
                         Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
                     </div>
-                    <NavLink to={`/la-compagnie`}><button className="button-white">Tout sur la compagnie</button></NavLink>
+                    <NavLink to={`/la-compagnie`}><button className="button">Tout sur la compagnie</button></NavLink>
                     
          </div>
             <section className="background-image home-background-image">
@@ -56,7 +56,7 @@ const Home = () => {
                 {shows.length > 0 && shows.map((show, i) => {
                     if (show.image_selected === 1) {
                     return(
-                        <div className="show-item" key={i}>
+                        <div className="show-item background-white" key={i}>
                         <NavLink to={`/show/${show.id}`}>
                             <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`}/>
                             <div className="item-caption">
@@ -87,7 +87,7 @@ const Home = () => {
                         
                     )
                 })}
-                <NavLink to={`/agenda`}><button className="button-white">Voir toutes les dates</button></NavLink>
+                <NavLink to={`/agenda`}><button className="button">Voir toutes les dates</button></NavLink>
             </div>
        
         </Fragment>

@@ -140,7 +140,7 @@ useEffect(() => {
                     maxLength="250"
                   />
                 </div>
-                <button className="button-white" type="submit">VALIDER</button>
+                <button className="button" type="submit">VALIDER</button>
               </form>
             </div>
   </div>

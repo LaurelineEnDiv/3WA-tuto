@@ -22,7 +22,7 @@ const ListShows = () => {
             {shows.length > 0 && shows.map((show, i) => {
                 if (show.image_selected === 1) {
                 return(
-                    <div className="show-item" key={i}>
+                    <div className="show-item background-white" key={i}>
                         <NavLink to={`/show/${show.id}`}>
                         <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`} />
                         <div className="item-caption">

@@ -173,7 +173,7 @@ const ManageShow = () => {
                             <input type='file' name='url_pictures' multiple />
                         </div>
                         <div>
-                        <input className="button-white" type='submit' value='Valider'/>
+                        <input className="button" type='submit' value='Valider'/>
                         </div>
                     </form>
                 </Fragment>

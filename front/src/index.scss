@@ -8,6 +8,11 @@ $yellow: #fed136;
 $tab: '(min-width: 760px)';
 $desktop: '(min-width: 980px)';
 
+//SIZE
+$small: 2rem;
+$medium: 2.8rem;
+$big: 3.4rem;
+
 //FONTS
 $satoshi: 'Satoshi-Regular', Arial, helvetica, sans-serif;
 $clashGrotesk: 'ClashGrotesk-Semibold', Arial, helvetica, sans-serif;
@@ -54,15 +59,6 @@ body {
     margin-right: auto;
     margin-left: auto;
     text-align:center;
-    
-      @media #{$tab} {
-        padding-right: 10rem;
-        padding-left: 10rem;
-      }
-}
-
-.full-width {
-  width:100%;
 }
 
 .section-margin-top {
@@ -72,7 +68,7 @@ body {
       margin-top: 100px;
     }
     
-    @media  (min-width: 980px) {
+    @media  #{$desktop} {
       margin-top: 80px;
     }
 }
@@ -83,6 +79,10 @@ body {
      @media  #{$tab} {
         margin-top: 150px;
     }
+}
+
+.full-width {
+  width:100%;
 }
 
 .column {
@@ -100,6 +100,12 @@ body {
   }
 }
 
+.background-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .background-black {
   background-color:$black;
   color: $white;
@@ -110,13 +116,7 @@ background-color: rgba(255, 255, 255, 0.7);
 }
 
 .background-white {
-background-color: rgba(340, 340, 340, 0.7);
-}
-
-.background-image {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+background-color: rgba(340, 340, 340, 0.8);
 }
 
 .title-white {
@@ -127,7 +127,7 @@ background-color: rgba(340, 340, 340, 0.7);
   color: $yellow;
 }
 
-.button-white {
+.button {
   background-color:$white;
   color: $black;
   padding:1rem 2rem;
@@ -137,19 +137,11 @@ background-color: rgba(340, 340, 340, 0.7);
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 5px;
-}
 
-.button-white:hover {
-  background-color:$yellow;
+    &:hover {
+      background-color:$yellow;
+    }
 }
-
-.text-description {
-  text-align:left;
-  text-align: justify;
-  margin: 2rem auto 2rem;
-  max-width:700px;
-}
-
 
 /* *****************************************************************
 GENERALITIES
@@ -167,15 +159,15 @@ body {
     }
     
     h1 {
-      font-size: 36px;
+      font-size: $big;
     }
     
     h2 {
-      font-size: 28px;
+      font-size: $medium;
     }
     
     h3 {
-      font-size: 20px;
+      font-size: $small;
     }
     
     ul {
@@ -187,10 +179,17 @@ body {
     a {
       text-decoration: none;
       color: inherit;
+        
+        &:hover {
+        color: $yellow;
+        }
     }
     
-    a:hover {
-      color: $yellow;
+    .text-description {
+      max-width:700px;
+      margin: 2rem auto 2rem;
+      text-align:left;
+      text-align: justify;
     }
     
 }
@@ -209,7 +208,7 @@ header {
       text-transform: uppercase;
       padding:2rem;
       
-        @media  (min-width: 980px) {
+        @media  #{$desktop} {
           flex-direction:row;
           justify-content:space-around;
         }
@@ -251,12 +250,11 @@ header {
       
         a {
           color: $black;
+          
+            &:hover {
+              color: $white;
+            }
         }
-        
-        a:hover {
-        color: $white;
-        }
-      
     }
  
 }
@@ -277,17 +275,18 @@ HOME
 .show-item {
   width: 70%;
   margin:2rem auto;
-  background-color:$white;
+  border-radius:4%;
   transition: transform 0.3s ease-out;
   
     &:hover {
       transform: scale(1.04);
+      background-color:$white;
     }
     
     @media  #{$tab} {
       width:40%;
     }
-    @media  (min-width: 980px) {
+    @media  #{$desktop} {
       width:30%;
     }
 }
@@ -298,7 +297,8 @@ HOME
 
 .show-item img {
   width:90%;
-  margin-top: 1em;
+  margin-top: 2rem;
+  border-radius:4%;
 }
 
 
@@ -359,7 +359,7 @@ AGENDA
         
         span {
           font-family: $clashGrotesk;
-          font-size:28px;
+          font-size:$medium;
         }
     }
 }
@@ -394,7 +394,7 @@ COMPAGNIE
       align-items: center;
     }
     
-    @media  (min-width: 980px) {
+    @media  #{$desktop} {
       width:30%;
     }
     
@@ -485,7 +485,7 @@ input, select, textarea {
     }
     
     form textarea {
-      height: 100px;
+      height: 10rem;
       width: 100%;
       resize: vertical;
     }

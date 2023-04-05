@@ -185,7 +185,7 @@ const ManageDates = () => {
                             <input type="text" name="pays" placeholder="Pays" onChange={handleChange} value={date.pays} maxLength="100"/>
                     </div>
                 </Fragment>
-                <button className="button-white" type="submit">VALIDER</button>
+                <button className="button" type="submit">VALIDER</button>
                 </div>
             </form>
         </Fragment>

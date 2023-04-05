@@ -60,7 +60,7 @@ const ManagePro = () => {
                                         <input type='file' name='pdf' multiple />
                                     </div>
                                     <div>
-                                    <input className="button-white" type='submit' value='Ajouter'/>
+                                    <input className="button" type='submit' value='Ajouter'/>
                                     </div>
                                 </form>
                             </Fragment>
