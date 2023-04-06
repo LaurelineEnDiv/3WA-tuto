@@ -3,7 +3,7 @@ import {pool} from "../../config/database.js"
 export default (req, res) => {
     let sql = `
     SELECT DATE_FORMAT(date, '%e %M %Y')
-    AS formattedDate, show_id, id 
+    AS formattedDate, date, show_id, id 
     FROM agenda
     ORDER BY date
     `

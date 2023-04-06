@@ -51,7 +51,7 @@ const Home = () => {
             <section className="background-image home-background-image">
             {!shows && (<p>loading</p>) }
             <div className="container">
-                <h2 className="title-yellow">Les Spectacles</h2>
+                <h2 className="title-white">Les Spectacles</h2>
                 <div className="row">
                 {shows.length > 0 && shows.map((show, i) => {
                     if (show.image_selected === 1) {

@@ -27,22 +27,21 @@ const ManageDates = () => {
     useEffect(() => {
         axios.get(`${BASE_URL}/managedates`)
         .then(res => {
-        // // Filtrer les dates en fonction de l'année sélectionnée
-        // const filteredDates = res.data.result.filter(
-        //   (date) => new Date(date.date).getFullYear() === selectedYear
-        // )
-        // setDates(filteredDates);
-        
-        setDates(res.data.result)
+        //Filtrer les dates en fonction de l'année sélectionnée
+        const filteredDates = res.data.result.filter(
+          (date) => new Date(date.date).getFullYear() === selectedYear
+         )
+        setDates(filteredDates);
+        // setDates(res.data.result)
         })
         
         .catch(e => console.log(e))
-    },[])
+    },[selectedYear])
     
-    // // Fonction pour changer l'année sélectionnée
-    // const handleYearChange = (year) => {
-    //     setSelectedYear(year);
-    // }
+    // Fonction pour changer l'année sélectionnée
+    const handleYearChange = (year) => {
+        setSelectedYear(year);
+    }
     
      const deleteDate = (id) => {
         axios.post(`${BASE_URL}/deletedate`,{id})
@@ -113,18 +112,16 @@ const ManageDates = () => {
         })
         .catch(e => console.log(e))
         
-       
-
     }
      
     return (
         <div className=" container admin-margin-top">
         <h2>Supprimer une date</h2>
-        {/*<div className="year-filter">
-        //         <button className="button-white" onClick={() => handleYearChange(2023)}>2023</button>
-        //         <button className="button-white" onClick={() => handleYearChange(2022)}>2022</button>
-        //         <button className="button-white" onClick={() => handleYearChange(2021)}>2021</button>
-        // </div>*/}
+        <div className="year-filter">
+                <button className="button" onClick={() => handleYearChange(2023)}>2023</button>
+                <button className="button" onClick={() => handleYearChange(2022)}>2022</button>
+                <button className="button" onClick={() => handleYearChange(2021)}>2021</button>
+        </div>
             <ul>
             {dates.length > 0 && dates.map((date, i) => {
                 return(
