@@ -17,6 +17,7 @@ import listProController from "../controllers/listProController.js";
 /////////SHOWS///////////
 import manageShowsController from "../controllers/admin-shows/manageShowsController.js";
 import addShowController from "../controllers/admin-shows/addShowController.js";
+import deletePictureController from "../controllers/admin-shows/deletePictureController.js";
 import deleteShowController from "../controllers/admin-shows/deleteShowController.js";
 import editShowByIdController from "../controllers/admin-shows/editShowByIdController.js";
 import editShowPictures from "../controllers/admin-shows/editShowPictures.js";
@@ -56,6 +57,7 @@ router.get("/listpro", listProController);
 ////SHOWS////
 router.get("/manageshows", manageShowsController);
 router.post("/addshow", middlewareUploadFileMultiple, addShowController);
+router.post("/deletePicture", deletePictureController);
 router.post("/editShowById", editShowByIdController);
 router.post("/editShowPictures", middlewareUploadFileMultiple, editShowPictures);
 router.post("/deleteShow", deleteShowController);

@@ -45,7 +45,7 @@ const EditShow = () => {
     return (
         <div className=" container admin-margin-top">
                 <Fragment>
-                <h2>Modifier les données du spectacle</h2>
+                <h2>Modifier les informations du spectacle</h2>
                 <form onSubmit={submit}>
                 <label>Nom du spectacle</label>
                     <input type='text' name='title' onChange={handleChange} value={show.title} />
