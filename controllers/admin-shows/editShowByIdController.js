@@ -2,23 +2,23 @@ import {asyncQuery} from "../../config/database.js";
 
 export default async (req, res) => {
     
-    const {title, year_creation, content, url_video, category_id, id, files} = req.body
+    const {title, year_creation, content, url_video, category_id, id} = req.body
     const sql = "UPDATE shows SET title = ?, year_creation = ?, content = ?, url_video = ?, category_id = ? WHERE id = ?"
     const paramsSql = [title, year_creation, content, url_video,category_id, id]
     const result = await asyncQuery(sql,paramsSql)
       
-      const paramsSqlPictures = []
+      // const paramsSqlPictures = []
       
-      files.forEach((e) => {
-        paramsSqlPictures.push([id,e])
-      })
+      // files.forEach((e) => {
+      //   paramsSqlPictures.push([id,e])
+      // })
     
-      const sqlPictures = "INSERT INTO pictures (show_id, url_pictures) VALUES ?";
-      const resultPictures = await asyncQuery(sqlPictures, [paramsSqlPictures]);
+      // const sqlPictures = "INSERT INTO pictures (show_id, url_pictures) VALUES ?";
+      // const resultPictures = await asyncQuery(sqlPictures, [paramsSqlPictures]);
     
     try{ 
       
-      res.json({result, resultPictures, files}) 
+      res.json({result}) 
     } catch(e) {
     
       console.log(e)

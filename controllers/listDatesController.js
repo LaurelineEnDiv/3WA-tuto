@@ -3,7 +3,7 @@ import {pool} from "../config/database.js"
 export default (req, res) => {
     let sql = `
     SELECT DATE_FORMAT(agenda.date, '%e %M %Y') 
-    AS formattedDate, agenda.date, shows.title, lieux.nom_lieu, lieux.site_web, lieux.ville, lieux.departement
+    AS formattedDate, agenda.date, agenda.show_id, agenda.id, shows.title, lieux.nom_lieu, lieux.site_web, lieux.ville, lieux.departement
     FROM agenda 
     JOIN shows ON shows.id = agenda.show_id
     JOIN lieux ON lieux.id = agenda.lieu_id

@@ -16,6 +16,7 @@ import ManageShow from "../components/admin/ManageShow";
 import ManageDates from "../components/admin/ManageDates";
 import ManagePro from "../components/admin/ManagePro";
 import EditShow from "../components/admin/EditShow";
+import EditShowPictures from "../components/admin/EditShowPictures";
 
 const routes = [
     {path:"/", component:<Home />},
@@ -23,9 +24,11 @@ const routes = [
     {path:"/agenda", component:<ListDates />},
     {path:"/spectacles", component:<ListShows />},
     {path:"/show/:id", component:<Show />},
+    
     {path:"/contact", component:<Contact />},
     {path:"/pro", component:<Pro />},
     {path:"/login", component:<Login />},
+    
 /////////////////////ADMIN///////////////////////    
     {path:"/logout", component:<Logout />, auth:"admin"},
     {path:"/admin", component:<Admin />, auth:"admin"},
@@ -33,6 +36,7 @@ const routes = [
     {path:"/editpassword/:id", component:<EditPassword />, auth:"admin"},
     {path:"/gestion-spectacles", component:<ManageShow />, auth:"admin"},
     {path:"/editshow/:id", component:<EditShow />, auth:"admin"},
+    {path:"/editshowpictures/:id", component:<EditShowPictures />, auth:"admin"},
     {path:"/gestion-agenda", component:<ManageDates />, auth:"admin"},
     {path:"/gestion-pro", component:<ManagePro />, auth:"admin"},
     

@@ -19,13 +19,13 @@ import manageShowsController from "../controllers/admin-shows/manageShowsControl
 import addShowController from "../controllers/admin-shows/addShowController.js";
 import deleteShowController from "../controllers/admin-shows/deleteShowController.js";
 import editShowByIdController from "../controllers/admin-shows/editShowByIdController.js";
+import editShowPictures from "../controllers/admin-shows/editShowPictures.js";
 import getShowByIdController from '../controllers/admin-shows/getShowByIdController.js';
 import getCategoriesController from '../controllers/admin-shows/getCategoriesController.js';
 import getPicturesController from "../controllers/admin-shows/getPicturesController.js";
 import selectedImageController from '../controllers/admin-shows/selectedImageController.js';
 
 /////////AGENDA///////////
-import manageDatesController from "../controllers/admin-agenda/manageDatesController.js";
 import addDateController from "../controllers/admin-agenda/addDateController.js";
 import deleteDateController from "../controllers/admin-agenda/deleteDateController.js";
 import getLieuController from "../controllers/admin-agenda/getLieuController.js";
@@ -56,7 +56,8 @@ router.get("/listpro", listProController);
 ////SHOWS////
 router.get("/manageshows", manageShowsController);
 router.post("/addshow", middlewareUploadFileMultiple, addShowController);
-router.post("/editShowById", middlewareUploadFileMultiple, editShowByIdController);
+router.post("/editShowById", editShowByIdController);
+router.post("/editShowPictures", middlewareUploadFileMultiple, editShowPictures);
 router.post("/deleteShow", deleteShowController);
 router.post("/getShowById", getShowByIdController);
 router.get("/getCategories", getCategoriesController);
@@ -65,7 +66,6 @@ router.post("/selectedImage", selectedImageController);
 
 
 /////AGENDA//////
-router.get("/managedates", manageDatesController);
 router.post("/adddate", addDateController);
 router.post("/deletedate", deleteDateController);
 router.get("/getLieu", middleware, getLieuController) ;

@@ -61,7 +61,7 @@ const Home = () => {
                             <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`}/>
                             <div className="item-caption">
                             <h3>{show.title}</h3>
-                            <p>{show.name} - {show.year_creation}</p>
+                            <p>{show.categorie} - {show.year_creation}</p>
                             </div>
                         </NavLink>
                         </div>

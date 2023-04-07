@@ -5,7 +5,7 @@ const YoutubePlayer = ({url_video}) => {
     str.replace("watch?v=", "embed/")
     return (
         <Fragment>
-        <div class="video-container full-width">
+        <div className="video-container full-width">
             {url_video && <iframe 
                 width="560" 
                 height="315"

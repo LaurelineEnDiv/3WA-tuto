@@ -147,11 +147,11 @@ const ManageShow = () => {
                             <input type='text' name='title' onChange={handleChange} value={showData.title} />
                         <div>
                             <label>Catégorie</label>
-                            <select name="categorie" onChange={handleChange} value={showData.name}>
+                            <select name="categorie" onChange={handleChange} value={showData.categorie}>
                             <option value={undefined}>Choix d'option</option>
                             {categories.map((categorie, i) => {
                                 return(
-                                    <option key={i} value={categorie.id}>{categorie.name}</option>
+                                    <option key={i} value={categorie.id}>{categorie.categorie}</option>
                                 )
                             })}
                             </select>

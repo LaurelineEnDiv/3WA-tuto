@@ -42,9 +42,8 @@ const Compagnie = () => {
             </div>
             
             <section className="background-image team-background-image">
-            
             <div className="container">
-            <h2>L'équipage à bord</h2>
+            <h2 className="background-lightgrey margin">L'équipage à bord</h2>
                 <div className="team row">
                     <div className="column team-member">
                         <img src={imgJean} alt='Jean Couhet-Guichot'/>

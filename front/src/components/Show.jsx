@@ -22,7 +22,7 @@ const Show = () => {
             {show && 
                 <div>
                     <h1>{show.sqlShow[0].title}</h1>
-                    <p className="category">{show.sqlShow[0].name}</p>
+                    <p className="category">{show.sqlShow[0].categorie}</p>
                     <div>
                     <div className="show-media">
                     {show.sqlShow[0].url_video && <YoutubePlayer url_video={show.sqlShow[0].url_video}/>}
