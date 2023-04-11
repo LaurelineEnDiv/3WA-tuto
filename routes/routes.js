@@ -9,7 +9,6 @@ import middlewareUploadPdf from "../controllers/middlewares/middlewareUploadPdf.
 import listShowsController from "../controllers/listShowsController.js";
 import showController from '../controllers/showController.js';
 import listDatesController from "../controllers/listDatesController.js";
-import selectShowController from "../controllers/selectShowController.js";
 import listProController from "../controllers/listProController.js";
 
 //////////////////////ADMIN/////////////////////////////
@@ -49,43 +48,42 @@ const router = express.Router();
 router.get("/listshows", listShowsController);
 router.post("/show", showController);
 router.get("/listdates", listDatesController);
-router.get("/selectshow", selectShowController);
 router.get("/listpro", listProController);
 
 ///////////////ADMIN///////////////////
 
-////SHOWS////
-router.get("/manageshows", manageShowsController);
-router.post("/addshow", middlewareUploadFileMultiple, addShowController);
-router.post("/deletePicture", deletePictureController);
-router.post("/editShowById", editShowByIdController);
-router.post("/editShowPictures", middlewareUploadFileMultiple, editShowPictures);
-router.post("/deleteShow", deleteShowController);
-router.post("/getShowById", getShowByIdController);
-router.get("/getCategories", getCategoriesController);
-router.get("/getpictures", getPicturesController);
-router.post("/selectedImage", selectedImageController);
-
-
-/////AGENDA//////
-router.post("/adddate", addDateController);
-router.post("/deletedate", deleteDateController);
-router.get("/getLieu", middleware, getLieuController) ;
-
-
-/////////PRO////////////
-router.post("/addpdf", middlewareUploadPdf, addPdfController);
-// router.post("/deletePdf", deletePdfController);
-
-//////////USER//////////////////
-router.get("/admin", adminController);
-router.post("/addadmin", addAdminController);
-router.post("/deleteAdmin", deleteAdminController);
-router.post("/getAdminById", getAdminByIdController);
-router.post("/editAdminById", editAdminByIdController);
-
-router.post("/login", middleware, loginController) ;
-router.get("/relogged", checkToken);
+    ////SHOWS////
+    router.get("/manageshows", manageShowsController);
+    router.post("/deleteShow", deleteShowController);
+    router.get("/getCategories", getCategoriesController);
+    router.post("/addshow", middlewareUploadFileMultiple, addShowController);
+    router.post("/getShowById", getShowByIdController);
+    router.post("/editShowById", editShowByIdController);
+    router.get("/getpictures", getPicturesController);
+    router.post("/deletePicture", deletePictureController);
+    router.post("/editShowPictures", middlewareUploadFileMultiple, editShowPictures);
+    router.post("/selectedImage", selectedImageController);
+    
+    
+    /////AGENDA//////
+    router.post("/adddate", addDateController);
+    router.post("/deletedate", deleteDateController);
+    router.get("/getLieu", middleware, getLieuController) ;
+    
+    
+    /////////PRO////////////
+    router.post("/addpdf", middlewareUploadPdf, addPdfController);
+    // router.post("/deletePdf", deletePdfController);
+    
+    //////////USER//////////////////
+    router.get("/admin", adminController);
+    router.post("/addadmin", addAdminController);
+    router.post("/deleteAdmin", deleteAdminController);
+    router.post("/getAdminById", getAdminByIdController);
+    router.post("/editAdminById", editAdminByIdController);
+    
+    router.post("/login", middleware, loginController) ;
+    router.get("/relogged", checkToken);
 
 
 export default router;

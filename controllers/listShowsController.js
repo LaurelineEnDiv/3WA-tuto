@@ -6,7 +6,6 @@ export default (req, res) => {
     FROM shows 
     JOIN shows_categories ON shows_categories.id = shows.category_id
     JOIN pictures ON pictures.show_id = shows.id
-    
     `
     pool.query(sql,(err, result) =>{
         if(err) throw err
