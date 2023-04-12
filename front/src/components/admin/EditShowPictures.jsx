@@ -38,7 +38,7 @@ const EditShowPictures = () => {
                         <img src={`${BASE_IMG}/${picture.url_pictures}`} alt="" /> 
                         <button className="delete" onClick={() => deletePicture(picture.id)}>X</button>
                       </li>
-                    );
+                    )
                   })}
                 </ul>
         </div>

@@ -1,7 +1,6 @@
 import axios from "axios";
 import {BASE_URL} from "../tools/constante.js";
 import {Fragment, useState, useEffect} from "react";
-import mouettes from "../assets/img/mouettes.jpg";
 
 const Pro = () => {
     const [shows, setShows] = useState([])
@@ -13,22 +12,20 @@ const Pro = () => {
     
     return (
         <Fragment>
-        
         {!shows && (<p>loading</p>) }
         <div className="container section-margin-top">
         <h1>Espace Pro</h1>
+            <div className="row">
             {shows.length > 0 && shows.map((show, i) => {
-               
                 return(
-                    <div key={i}>
+                    <div className="pro-item" key={i}>
                         <h2 className="title-yellow">{show.title}</h2>
                         <a href={`${BASE_URL}/pdf/${show.pdf}`} target="_blank" download><button className="button">Dossier de présentation</button></a>
                     </div>
                 )
             })}
+            </div>
         </div>
-        <img src={mouettes} className="img-mouettes full-width"/>
-        
        </Fragment>
     )
 }
