@@ -8,6 +8,7 @@ import middlewareUploadPdf from "../controllers/middlewares/middlewareUploadPdf.
 /////////////////////////AFFICHAGE/////////////////////
 import listShowsController from "../controllers/listShowsController.js";
 import showController from '../controllers/showController.js';
+import selectShowController from "../controllers/selectShowController.js";
 import listDatesController from "../controllers/listDatesController.js";
 import listProController from "../controllers/listProController.js";
 
@@ -54,6 +55,7 @@ router.get("/listpro", listProController);
 
     ////SHOWS////
     router.get("/manageshows", manageShowsController);
+    router.get("/selectshow", selectShowController);
     router.post("/deleteShow", deleteShowController);
     router.get("/getCategories", getCategoriesController);
     router.post("/addshow", middlewareUploadFileMultiple, addShowController);
