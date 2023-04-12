@@ -18,7 +18,7 @@ const Nav = (props) => {
             </li>
             <li>
               <NavLink to="/la-compagnie">
-                Qui sommes-nous ?
+                La compagnie
               </NavLink>
             </li>
             <li>

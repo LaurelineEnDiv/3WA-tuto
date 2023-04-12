@@ -494,3 +494,29 @@
         width: 100%;
         resize: vertical;
       }
+
+/* *****************************************************************
+  FOOTER
+***************************************************************** */
+  
+  footer {
+    @media #{$desktop} {
+            display:flex;
+            flex-direction:row;
+            justify-content:space-around;
+            align-items:center;
+    }
+
+      .social {
+        display: flex;
+        justify-content: center;
+        padding:2rem;
+        
+          a {
+            padding:1.5rem;
+            font-size:$big;
+          }
+        
+      }
+
+}
