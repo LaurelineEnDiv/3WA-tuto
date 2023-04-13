@@ -1,37 +1,36 @@
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
 import axios from "axios"
-import {BASE_URL} from "../../tools/constante.js"
-import {useState, useEffect, Fragment} from "react"
-import {NavLink} from 'react-router-dom'
+import { BASE_URL } from "../../tools/constante.js"
+import { useState, useEffect, Fragment } from "react"
+import { NavLink } from 'react-router-dom'
 
 const EditAdmin = () => {
-    const {id} = useParams()
-    
+    const { id } = useParams()
     const [user, setUser] = useState(null)
-    
+
     useEffect(() => {
-        axios.post(`${BASE_URL}/getAdminById`,{id})
+        axios.post(`${BASE_URL}/getAdminById`, { id })
             .then(res => {
                 const data = res.data.result[0]
                 delete data.password
                 setUser(data)
             })
             .catch(err => console.log(err))
-    },[id])
-    
-    
+    }, [id])
+
+
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setUser({...user, [name]:value})
-    } 
-    
+        const { name, value } = e.target
+        setUser({ ...user, [name]: value })
+    }
+
     const submit = (e) => {
         e.preventDefault()
-        axios.post(`${BASE_URL}/editAdminById`,{...user})
-        .then(res => alert("modifications effectuées"))
-        .catch(err => console.log(err))
+        axios.post(`${BASE_URL}/editAdminById`, { ...user })
+            .then(res => alert("modifications effectuées"))
+            .catch(err => console.log(err))
     }
-    
+
     return (
         <Fragment>
         <div className=" container admin-margin-top">

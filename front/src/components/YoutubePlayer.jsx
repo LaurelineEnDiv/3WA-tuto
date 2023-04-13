@@ -1,6 +1,6 @@
-import {Fragment} from 'react'
+import { Fragment } from 'react'
 
-const YoutubePlayer = ({url_video}) => {
+const YoutubePlayer = ({ url_video }) => {
     let str = url_video
     str.replace("watch?v=", "embed/")
     return (

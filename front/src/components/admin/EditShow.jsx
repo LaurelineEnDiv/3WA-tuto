@@ -1,47 +1,47 @@
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
 import axios from "axios"
-import {BASE_URL, BASE_IMG} from "../../tools/constante.js"
-import {useState, useEffect, Fragment} from "react"
-import {NavLink} from 'react-router-dom'
+import { BASE_URL, BASE_IMG } from "../../tools/constante.js"
+import { useState, useEffect, Fragment } from "react"
+import { NavLink } from 'react-router-dom'
 
 const EditShow = () => {
-    const {id} = useParams()
+    const { id } = useParams()
     const initialState = {
-        title:'',
-        pitch:'',
-        category_id:'',
-        year_creation:'',
-        content:'',
-        url_video:'',
+        title: '',
+        pitch: '',
+        category_id: '',
+        year_creation: '',
+        content: '',
+        url_video: '',
     }
     const [show, setShow] = useState(initialState)
     const [categories, setCategories] = useState([])
-    
+
     useEffect(() => {
-        axios.post(`${BASE_URL}/getShowById`,{id})
+        axios.post(`${BASE_URL}/getShowById`, { id })
             .then(res => setShow(res.data.result[0]))
             .catch(err => console.log(err))
-    },[id])
-    
+    }, [id])
+
     useEffect(() => {
         axios.get(`${BASE_URL}/getCategories`)
-        .then(res => setCategories(res.data.result))
-    },[])
-    
+            .then(res => setCategories(res.data.result))
+    }, [])
+
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setShow({...show, [name]:value})
-    } 
-    
+        const { name, value } = e.target
+        setShow({ ...show, [name]: value })
+    }
+
     const submit = (e) => {
         e.preventDefault()
         axios.post(`${BASE_URL}/editShowById`, show)
             .then((res) => {
-            setShow(res.data.result[0]);
+                setShow(res.data.result[0]);
             })
             .catch((err) => console.log(err));
     }
-    
+
     return (
         <div className=" container admin-margin-top">
         <Fragment>

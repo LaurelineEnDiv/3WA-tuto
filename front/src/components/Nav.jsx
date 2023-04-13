@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import img from "../assets/img/logo-Hommes_Sensibles.png";
-import {useContext} from "react"
+import { useContext } from "react"
 import { StoreContext } from "../tools/context.js"
 
 const Nav = (props) => {
-      const [state] = useContext(StoreContext)
+  const [state] = useContext(StoreContext)
 
   return (
     <header>

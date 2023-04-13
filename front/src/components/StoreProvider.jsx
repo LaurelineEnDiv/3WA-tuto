@@ -1,6 +1,6 @@
 import React from "react"
-import {reducer} from "../tools/reducer.js"
-import {initialState, StoreContext} from "../tools/context.js"
+import { reducer } from "../tools/reducer.js"
+import { initialState, StoreContext } from "../tools/context.js"
 
 const StoreProvider = ({ children }) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);

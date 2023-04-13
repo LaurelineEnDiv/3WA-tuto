@@ -1,4 +1,4 @@
-import {pool} from "../config/database.js"
+import { pool } from "../config/database.js"
 
 export default (req, res) => {
     let sql = `
@@ -6,8 +6,8 @@ export default (req, res) => {
     FROM pro 
     JOIN shows ON shows.id = pro.show_id
     `
-    pool.query(sql,(err, result) =>{
-        if(err) throw err
-        res.json({result})
+    pool.query(sql, (err, result) => {
+        if (err) throw err
+        res.json({ result })
     })
 }

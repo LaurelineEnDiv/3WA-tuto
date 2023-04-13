@@ -1,40 +1,40 @@
 import { useContext } from "react"
 import { StoreContext } from "../tools/context.js"
-import {useState, Fragment} from "react"
+import { useState, Fragment } from "react"
 import axios from "axios"
-import {BASE_URL} from "../tools/constante.js"
+import { BASE_URL } from "../tools/constante.js"
 import inputCheck from "../tools/inputLength.js"
 
 const Login = () => {
     const [state, dispatch] = useContext(StoreContext)
-    const initialState = {email:'',password:''}
+    const initialState = { email: '', password: '' }
     const [info, setInfo] = useState(initialState)
-    
+
     const handleChange = (e) => {
-        const {name,value} = e.target
-         if(inputCheck(value)){
-            setInfo({...info, [name]:value})
-         }
+        const { name, value } = e.target
+        if (inputCheck(value)) {
+            setInfo({ ...info, [name]: value })
+        }
     }
-    
+
     const submit = (e) => {
         e.preventDefault()
-         if(inputCheck(info.email) && inputCheck(info.password)){
-            axios.post(`${BASE_URL}/login`,{password:info.password, email:info.email})
-            .then(res => {
-                if(res.data.response) {
-                    dispatch({type:'LOGIN', payload:res.data.response}) // A TESTER
-                    localStorage.setItem('jwtToken', res.data.response.token)
-                    axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.response.token
-                    setInfo(initialState)
-                }
-            })
-            .catch(e => console.log(e))
-         }
+        if (inputCheck(info.email) && inputCheck(info.password)) {
+            axios.post(`${BASE_URL}/login`, { password: info.password, email: info.email })
+                .then(res => {
+                    if (res.data.response) {
+                        dispatch({ type: 'LOGIN', payload: res.data.response }) // A TESTER
+                        localStorage.setItem('jwtToken', res.data.response.token)
+                        axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.response.token
+                        setInfo(initialState)
+                    }
+                })
+                .catch(e => console.log(e))
+        }
     }
-    
-    
-    return(
+
+
+    return (
         <Fragment>
         <div className="container admin-margin-top">
         <h1>Connexion</h1>

@@ -1,15 +1,15 @@
 import axios from "axios";
-import {BASE_URL} from "../tools/constante.js";
-import {Fragment, useState, useEffect} from "react";
+import { BASE_URL } from "../tools/constante.js";
+import { Fragment, useState, useEffect } from "react";
 
 const Pro = () => {
     const [shows, setShows] = useState([])
-    
+
     useEffect(() => {
         axios.get(`${BASE_URL}/listpro`)
-        .then(res => setShows(res.data.result))
-    },[])
-    
+            .then(res => setShows(res.data.result))
+    }, [])
+
     return (
         <Fragment>
         {!shows && (<p>loading</p>) }

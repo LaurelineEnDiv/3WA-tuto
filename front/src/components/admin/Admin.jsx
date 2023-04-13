@@ -1,87 +1,86 @@
 import axios from "axios"
-import {BASE_URL} from '../../tools/constante.js'
-import {useEffect, useState} from "react"
-import {NavLink} from 'react-router-dom'
+import { BASE_URL } from '../../tools/constante.js'
+import { useEffect, useState } from "react"
+import { NavLink } from 'react-router-dom'
 
 
 const Admin = () => {
-    const [usersList, setUsersList] = useState([])
-    
+  const [usersList, setUsersList] = useState([])
 
-// Récupération de la liste des utilisateurs
-    useEffect(() => {
-        if(usersList.length === 0){
-            axios.get(`${BASE_URL}/admin`)
-                .then(res => {
-                setUsersList(res.data.result)
-                })
-                .catch(err => console.log(err))
-        }
-    },[usersList])
-    
-////////////////DELETE USER//////////////
-    const deleteUser = (id) => {
-        axios.post(`${BASE_URL}/deleteAdmin`,{id})
+  // Récupération de la liste des utilisateurs
+  useEffect(() => {
+    if (usersList.length === 0) {
+      axios.get(`${BASE_URL}/admin`)
         .then(res => {
-      // Mettre à jour la liste des utilisateurs en excluant l'utilisateur supprimé
-      setUsersList(usersList.filter(user => user.id !== id))
-    })
-    .catch(err => console.log(err))
-    }
-    
-////////////////ADD USER///////////////////
-    const initialValue = {
-        nom:'',
-        prenom:'',
-        email:'',
-        password:''
-    }
-    
-    const [userData, setUserData] = useState(initialValue)
-    const [newUser, setnewUser] = useState(false)
-    
-    const handleChange = (e) => {
-        const {name, value} = e.target
-        setUserData({...userData,[name]:value})
-    }
-    
-    const submit = (e) => {
-        if(userData.nom === "" || userData.prenom === "" || userData.email === "" || userData.password === ""){
-            alert("Veuillez remplir tous les champs")
-        }
-        e.preventDefault()
-        const data = {
-          nom : userData.nom.trim(),
-          prenom: userData.prenom.trim(),
-          email: userData.email.trim(),
-          password:userData.password.trim(),
-        }
-      
-        axios.post(`${BASE_URL}/addadmin`,data)
-        .then(res => {
-            alert(res.data.response)
-            setnewUser(true)
+          setUsersList(res.data.result)
         })
         .catch(err => console.log(err))
-        setUserData(initialValue)
+    }
+  }, [usersList])
+
+  // Suppression d'un utilisateur
+  const deleteUser = (id) => {
+    axios.post(`${BASE_URL}/deleteAdmin`, { id })
+      .then(res => {
+        // Mettre à jour la liste des utilisateurs en excluant l'utilisateur supprimé
+        setUsersList(usersList.filter(user => user.id !== id))
+      })
+      .catch(err => console.log(err))
+  }
+
+  // Ajout d'un utilisateur
+  const initialValue = {
+    nom: '',
+    prenom: '',
+    email: '',
+    password: ''
+  }
+
+  const [userData, setUserData] = useState(initialValue)
+  const [newUser, setnewUser] = useState(false)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setUserData({ ...userData, [name]: value })
+  }
+
+  const submit = (e) => {
+    if (userData.nom === "" || userData.prenom === "" || userData.email === "" || userData.password === "") {
+      alert("Veuillez remplir tous les champs")
+    }
+    e.preventDefault()
+    const data = {
+      nom: userData.nom.trim(),
+      prenom: userData.prenom.trim(),
+      email: userData.email.trim(),
+      password: userData.password.trim(),
     }
 
+    axios.post(`${BASE_URL}/addadmin`, data)
+      .then(res => {
+        alert(res.data.response)
+        setnewUser(true)
+      })
+      .catch(err => console.log(err))
+    setUserData(initialValue)
+  }
 
-useEffect(() => {
-    if(newUser){
-        axios.get(`${BASE_URL}/admin`)
+
+  useEffect(() => {
+    if (newUser) {
+      axios.get(`${BASE_URL}/admin`)
         .then(res => {
-            setUsersList(res.data.result)
+          setUsersList(res.data.result)
         })
         .catch(err => console.log(err))
-        setnewUser(false)
+      setnewUser(false)
     }
-},[newUser])
-    
-    
-    
-    return(
-        <div className=" container admin-margin-top">
+  }, [newUser])
+
+
+
+  return (
+    <div className=" container admin-margin-top">
             <h2>Modifier ou supprimer un administrateur</h2>
                 <ul>
                   {usersList.map((user, i) => {
@@ -145,9 +144,9 @@ useEffect(() => {
             </div>
   </div>
 
-    )     
+  )
 
-    
+
 }
 
 export default Admin

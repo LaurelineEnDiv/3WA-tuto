@@ -1,7 +1,7 @@
-import {Fragment,useState, useEffect} from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import axios from "axios";
-import {BASE_URL, BASE_IMG} from "../tools/constante.js"
-import {NavLink} from "react-router-dom"
+import { BASE_URL, BASE_IMG } from "../tools/constante.js"
+import { NavLink } from "react-router-dom"
 import video from "../assets/video/bateau.webm";
 import baleine from "../assets/img/baleine.png";
 
@@ -9,27 +9,27 @@ import baleine from "../assets/img/baleine.png";
 const Home = () => {
     const [shows, setShows] = useState([])
     const [dates, setDates] = useState([])
-    
+
     useEffect(() => {
         axios.get(`${BASE_URL}/listshows`)
-        .then(res => setShows(res.data.result))
-        .catch(e => console.log(e))
-    },[])
-    
+            .then(res => setShows(res.data.result))
+            .catch(e => console.log(e))
+    }, [])
+
     useEffect(() => {
-    axios.get(`${BASE_URL}/listdates`)
-      .then(res => {
-        const today = new Date()
-        const data = res.data.result
-          .filter(date => new Date(date.date) > today) // filtrer les dates futures
-          .sort((a, b) => new Date(a.date) - new Date(b.date)) // trier par date croissante
-          .slice(0, 3) // récupérer les trois premières dates
-        setDates(data)
-      })
-      .catch(e => console.log(e))
-  }, [])
-    
-    return(
+        axios.get(`${BASE_URL}/listdates`)
+            .then(res => {
+                const today = new Date()
+                const data = res.data.result
+                    .filter(date => new Date(date.date) > today) // filtrer les dates futures
+                    .sort((a, b) => new Date(a.date) - new Date(b.date)) // trier par date croissante
+                    .slice(0, 3) // récupérer les trois premières dates
+                setDates(data)
+            })
+            .catch(e => console.log(e))
+    }, [])
+
+    return (
         <Fragment>
         <section className="section-margin-top">
             <video className="full-width" loop autoPlay muted>

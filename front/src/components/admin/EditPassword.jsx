@@ -1,23 +1,23 @@
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
 import axios from "axios"
-import {BASE_URL} from "../../tools/constante.js"
-import {useState, Fragment} from "react"
+import { BASE_URL } from "../../tools/constante.js"
+import { useState, Fragment } from "react"
 
 const EditPassword = () => {
-    const { id } = useParams(); 
-    const [newPassword, setNewPassword] = useState("");
-    
-      const submit = (e) => {
-        e.preventDefault();
+  const { id } = useParams();
+  const [newPassword, setNewPassword] = useState("");
+
+  const submit = (e) => {
+    e.preventDefault();
 
     axios
       .post(`${BASE_URL}/editAdminById`, { id, password: newPassword })
       .then((res) => alert("modification effectuée"))
       .catch((err) => console.log(err));
   };
-    
-    return (
-                <Fragment>
+
+  return (
+    <Fragment>
                 <div className=" container admin-margin-top">
                 <p>Définissez votre nouveau mot de passe (8 caractères minimum)</p>
                 <form onSubmit={submit}>
@@ -32,7 +32,7 @@ const EditPassword = () => {
                 </form>
                 </div>
                 </Fragment>
-    )
+  )
 }
 
 export default EditPassword

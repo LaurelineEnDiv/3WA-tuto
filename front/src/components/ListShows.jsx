@@ -1,17 +1,17 @@
 import axios from "axios";
-import {NavLink} from "react-router-dom"
-import {BASE_URL, BASE_IMG} from "../tools/constante.js"
-import {Fragment, useState, useEffect} from "react";
+import { NavLink } from "react-router-dom"
+import { BASE_URL, BASE_IMG } from "../tools/constante.js"
+import { Fragment, useState, useEffect } from "react";
 
 const ListShows = () => {
     const [shows, setShows] = useState([])
-    
+
     useEffect(() => {
         axios.get(`${BASE_URL}/listshows`)
-        .then(res => setShows(res.data.result))
-        .catch(e => console.log(e))
-    },[])
-    
+            .then(res => setShows(res.data.result))
+            .catch(e => console.log(e))
+    }, [])
+
     return (
         <Fragment>
         <section className="background-image shows-background-image">
@@ -41,5 +41,3 @@ const ListShows = () => {
 }
 
 export default ListShows
-
-

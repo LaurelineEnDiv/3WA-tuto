@@ -1,8 +1,8 @@
-import {pool} from "../../config/database.js"
+import { pool } from "../../config/database.js"
 
 export default (req, res) => {
-    const {id} = req.body
-    
+    const { id } = req.body
+
     const paramsSQL = [id]
     const sqlPictures = `
     SELECT url_pictures, show_id, id
@@ -10,10 +10,9 @@ export default (req, res) => {
     WHERE show_id = ?
     `
 
-    pool.query(sqlPictures,paramsSQL,(err, result) => {
-        
-        if(err) throw err
-        res.json({result})
+    pool.query(sqlPictures, paramsSQL, (err, result) => {
+
+        if (err) throw err
+        res.json({ result })
     })
 }
-

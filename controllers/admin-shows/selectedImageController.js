@@ -1,8 +1,8 @@
-import {asyncQuery} from "../../config/database.js"
+import { asyncQuery } from "../../config/database.js"
 
 
-export default async (req, res) => {
-    const {url_pictures} = req.body
+export default async(req, res) => {
+    const { url_pictures } = req.body
     console.log(req.body)
     // recupere les img qui sont image_selected = 1 par rapport au show_id 
     const sql1 = `
@@ -16,14 +16,14 @@ export default async (req, res) => {
         SET image_selected = 0 
         WHERE image_selected = 1;
         `
-        
+
     const paramsSQL1 = [url_pictures]
-    
-    
+
+
     const sql = "UPDATE pictures SET image_selected = 1 WHERE url_pictures = ?"
     const paramsSQL = [url_pictures]
-    const result2 = await asyncQuery(sql1,paramsSQL1)
-    const result = await asyncQuery(sql,paramsSQL)
-    res.json({result, result2})
+    const result2 = await asyncQuery(sql1, paramsSQL1)
+    const result = await asyncQuery(sql, paramsSQL)
+    res.json({ result, result2 })
 
 }

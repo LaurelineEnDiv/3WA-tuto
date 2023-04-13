@@ -2,11 +2,11 @@ import React from "react"
 
 const StoreContext = React.createContext([]);
 const initialState = {
-    user:{
-        isAdmin : false,
+    user: {
+        isAdmin: false,
         isLogged: false,
-        id:null
+        id: null
     }
 }
 
-export {StoreContext, initialState}
+export { StoreContext, initialState }

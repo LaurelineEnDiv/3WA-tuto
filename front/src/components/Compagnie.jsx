@@ -1,4 +1,4 @@
-import {Fragment} from 'react';
+import { Fragment } from 'react';
 import mouette from "../assets/img/mouette.png";
 import petitBateau from "../assets/img/petit-bateau.png";
 import jean from "../assets/img/equipe/Jean-Couhet-Guichot.jpg";
@@ -7,10 +7,10 @@ import arthur from "../assets/img/equipe/Arthur-Amouroux.jpg";
 import justine from "../assets/img/equipe/Justine-Swygedauw.jpg";
 import elise from "../assets/img/equipe/Elise-Girard.jpg";
 import robin from "../assets/img/equipe/Robin-Socasau.jpg";
-        
-    const Compagnie = () => {
-        return(
-            <Fragment>
+
+const Compagnie = () => {
+    return (
+        <Fragment>
                 <section className="container section-margin-top">
                     <h1>Les Hommes Sensibles</h1>
                         <div className="text-description">
@@ -92,7 +92,7 @@ import robin from "../assets/img/equipe/Robin-Socasau.jpg";
                         </div>
                     </section>
                 </Fragment>
-        )
-    }
-        
+    )
+}
+
 export default Compagnie

@@ -1,15 +1,15 @@
-const reducer = (state, action) =>{
-    switch(action.type){
+const reducer = (state, action) => {
+    switch (action.type) {
         case 'INCREMENTER':
             return {
                 ...state,
-                count:state.count + 1,
+                count: state.count + 1,
             }
-                
+
         case 'ADD_DATA':
             return {
                 ...state,
-                data : [...state.data, action.payload]
+                data: [...state.data, action.payload]
             }
 
         default:
@@ -17,4 +17,4 @@ const reducer = (state, action) =>{
     }
 }
 
-export {reducer}
+export { reducer }

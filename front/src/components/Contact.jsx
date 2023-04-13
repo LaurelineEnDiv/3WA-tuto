@@ -1,7 +1,7 @@
-import {Fragment} from 'react'
+import { Fragment } from 'react'
 
 const Contact = () => {
-    return(
+    return (
         <Fragment>
         <div className="contact-background-image">
             <section className="contact-container section-margin-top background-white">

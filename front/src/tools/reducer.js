@@ -1,34 +1,34 @@
-// Le reducer est utilisé ici pour gérer l'authentification de l'utilisateur et le rôle de l'administrateur.
+// gérer l'authentification de l'utilisateur et le rôle de l'administrateur.
 
-const reducer = (state, action) =>{
-    switch(action.type){
+const reducer = (state, action) => {
+    switch (action.type) {
         case 'LOGIN':
             return {
-                
+
                 ...state,
-                user:{
-                    isLogged:true,
-                    isAdmin:action.payload.admin,
+                user: {
+                    isLogged: true,
+                    isAdmin: action.payload.admin,
                     ...action.payload
                 }
             }
-            
-         case 'LOGOUT':
+
+        case 'LOGOUT':
             return {
                 ...state,
-                user:{
-                    isLogged:false,
-                    isAdmin:false,
-                    id:null
+                user: {
+                    isLogged: false,
+                    isAdmin: false,
+                    id: null
                 }
             }
-            
+
         default:
             return state;
     }
 }
 
-export {reducer}
+export { reducer }
 
 // Deux arguments: l'état actuel de l'application et une action à effectuer. 
 // Renvoie un nouvel état qui est une copie de l'état actuel avec des modifications selon l'action effectuée.
@@ -40,4 +40,3 @@ export {reducer}
 // Cela signifie que si l'utilisateur est connecté et qu'il est un administrateur, la propriété "isAdmin" sera true.
 
 // - Si l'action n'est pas "LOGIN", la fonction retourne simplement l'état actuel sans modification.
-

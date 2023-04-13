@@ -1,66 +1,68 @@
 import axios from "axios"
-import {useState, useEffect, Fragment} from "react"
-import {NavLink} from 'react-router-dom'
-import {BASE_URL, BASE_IMG} from '../../tools/constante.js'
+import { useState, useEffect, Fragment } from "react"
+import { NavLink } from 'react-router-dom'
+import { BASE_URL, BASE_IMG } from '../../tools/constante.js'
 import inputCheck from '../../tools/inputLength.js'
 
 
 const ManageShow = () => {
-    
+
     const initialState = {
-        title:'',
-        pitch:'',
-        categorie:'',
-        year_creation:'',
-        content:'',
-        url_video:'',
-        pdf:'',
-        url_pictures:'',
+        title: '',
+        pitch: '',
+        categorie: '',
+        year_creation: '',
+        content: '',
+        url_video: '',
+        pdf: '',
+        url_pictures: '',
     }
     const [showsList, setShowsList] = useState([])
     const [showData, setShowData] = useState(initialState)
     const [categories, setCategories] = useState([])
-    const [pictures, setPictures] = useState(null) 
-    const [pictureSelected, setPictureSelected] = useState(null) 
-    
+    const [pictures, setPictures] = useState(null)
+    const [pictureSelected, setPictureSelected] = useState(null)
+
     useEffect(() => {
-        if(showsList.length === 0){
+        if (showsList.length === 0) {
             axios.get(`${BASE_URL}/manageshows`)
-            .then(res => setShowsList(res.data.result))
-            .catch(err => console.log(err))
+                .then(res => setShowsList(res.data.result))
+                .catch(err => console.log(err))
         }
-    },[showsList])
-    
+    }, [showsList])
+
     const deleteShow = (id) => {
-        axios.post(`${BASE_URL}/deleteShow`,{id})
-        .then(res => {
-         // Mettre à jour la liste des spectacles en excluant le spectacle supprimé
-         setShowsList(showsList.filter(show => show.id !== id))
-        })
-        .catch(err => console.log(err))
+        axios.post(`${BASE_URL}/deleteShow`, { id })
+            .then(res => {
+                // Mettre à jour la liste des spectacles en excluant le spectacle supprimé
+                setShowsList(showsList.filter(show => show.id !== id))
+            })
+            .catch(err => console.log(err))
     }
 
-///////ADD SHOW////////
+    ///////ADD SHOW////////
     useEffect(() => {
         axios.get(`${BASE_URL}/getCategories`)
-        .then(res => setCategories(res.data.result))
-    },[])
-    
-    
+            .then(res => setCategories(res.data.result))
+    }, [])
+
+
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setShowData({...showData,[name]:value})
+        const { name, value } = e.target
+        setShowData({ ...showData, [name]: value })
     }
-    
+
     const submit = (e) => {
         e.preventDefault()
-        
-        if(!inputCheck(showData.title, 255, 1) || /*!inputCheck(showData.content, 255, 1) 
-            ||*/ !inputCheck(showData.year_creation, 4, 4) /*|| !inputCheck(showData.url_video, 255, 1)*/) {
+
+        if (!inputCheck(showData.title, 255, 1) ||
+            /*!inputCheck(showData.content, 255, 1) 
+                       ||*/
+            !inputCheck(showData.year_creation, 4, 4) /*|| !inputCheck(showData.url_video, 255, 1)*/ ) {
             alert("Les données saisies ne sont pas valides.")
             return
         }
-        
+
         const dataFile = new FormData();
         const files = [...e.target.url_pictures.files];
 
@@ -70,47 +72,47 @@ const ManageShow = () => {
         dataFile.append('content', showData.content)
         dataFile.append('year_creation', showData.year_creation)
         dataFile.append('url_video', showData.url_video)
-        
+
         // ajouter tous les fichiers à FormData
         for (let i = 0; i < files.length; i++) {
             dataFile.append('files', files[i], files[i].name)
         }
-        
+
         //mettre à jour l'état de l'application 
         axios.post(`${BASE_URL}/addshow`, dataFile)
-            .then((res)=> {
+            .then((res) => {
                 const data = {
-                    id:res.data.result.insertId,
-                    title:showData.title
-            }
+                    id: res.data.result.insertId,
+                    title: showData.title
+                }
                 setShowsList([...showsList, data])
                 setShowData(initialState)
                 setPictures(res.data.files)
-                
+
             })
             .catch((err) => {
                 console.log(err)
             })
-       
+
     }
-    
+
     // Récupère l'image sélectionnée à partir de l'état pictures 
     // en utilisant la variable d'état pictureSelected 
-    
+
     const submitMainPicture = () => {
         const urlPicture = pictures[pictureSelected]
-        axios.post(`${BASE_URL}/selectedImage`, {url_pictures:urlPicture})
-        .then((res)=> {
-            res.data.response && console.log('succesfully selected');
-            setPictures(null)
-            setPictureSelected(null)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+        axios.post(`${BASE_URL}/selectedImage`, { url_pictures: urlPicture })
+            .then((res) => {
+                res.data.response && console.log('succesfully selected');
+                setPictures(null)
+                setPictureSelected(null)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
-    
-    return(
+
+    return (
         <div className=" container admin-margin-top">
             <h1>Gestion des spectacles</h1>
              <h2>Modifier ou supprimer un spectacle</h2>
