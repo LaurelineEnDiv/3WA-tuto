@@ -76,40 +76,34 @@ const ManageShow = () => {
             dataFile.append('files', files[i], files[i].name)
         }
         
-        //met à jour l'état de l'application à l'aide de la méthode setPictures 
-        //avec les nouveaux noms de fichiers renvoyés par le serveur (stockés dans res.data.newFilenames):
-        
+        //mettre à jour l'état de l'application 
         axios.post(`${BASE_URL}/addshow`, dataFile)
-        .then((res)=> {
-            const data = {
-                id:res.data.result.insertId,
-                title:showData.title
+            .then((res)=> {
+                const data = {
+                    id:res.data.result.insertId,
+                    title:showData.title
             }
-            setShowsList([...showsList, data])
-            setShowData(initialState)
-            setPictures(res.data.files)
-            
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+                setShowsList([...showsList, data])
+                setShowData(initialState)
+                setPictures(res.data.files)
+                
+            })
+            .catch((err) => {
+                console.log(err)
+            })
        
     }
     
-    // récupère l'image sélectionnée (urlPicture) à partir de l'état pictures 
+    // Récupère l'image sélectionnée à partir de l'état pictures 
     // en utilisant la variable d'état pictureSelected 
     
     const submitMainPicture = () => {
         const urlPicture = pictures[pictureSelected]
-        
         axios.post(`${BASE_URL}/selectedImage`, {url_pictures:urlPicture})
         .then((res)=> {
             res.data.response && console.log('succesfully selected');
             setPictures(null)
             setPictureSelected(null)
-            
-            // Mettre à jour la liste des spectacles avec le nouveau spectacle ajouté
-            
         })
         .catch((err) => {
             console.log(err)
@@ -167,11 +161,11 @@ const ManageShow = () => {
                             <textarea rows='4' cols='50' type='text' name='content' onChange={handleChange} value={showData.content} />
                         </div> 
                         <div>
-                            <label>URL de la vidéo de présentation du spectacle (embed sur YouTube, ex : https://www.youtube.com/embed/JZlo) </label>
+                            <label>URL du teaser (version "embed" sur YouTube, ex : https://www.youtube.com/embed/JZlo) </label>
                             <input type='url' name='url_video' onChange={handleChange} value={showData.url_video} />
                         </div>
                         <div>
-                            <label>Télécharger les photos du spectacle</label>
+                            <label>Télécharger les photos du spectacle (500 Ko max)</label>
                             <input type='file' name='url_pictures' multiple />
                         </div>
                         <div>
@@ -181,22 +175,21 @@ const ManageShow = () => {
                 </Fragment>
             )}
             
-            {/* si la variable pictures est définie et n'est pas null :
-            - Map pour afficher la liste des images à partir de la variable pictures.
-            - L'indice de l'image dans la liste est stocké dans la variable i.
-            - Style sur l'image sélectionnée si l'indice i correspond à la valeur de l'état pictureSelected.
-            - Quand on clique sur une image, la fonction setPictureSelected est appelée 
-            pour mettre à jour la valeur de l'état pictureSelected avec l'indice de l'image sélectionnée.
-            */}
+            {/* si la variable pictures est définie et n'est pas null*/}
             
             {pictures &&
                 <Fragment>
                     <p>Sélectionne la photo d'illustration</p>
                     {pictures.map((e,i) => {
-                        return (<img key={i} alt= {`${showData.title}`} style={i === pictureSelected ? {border:"1px solid red"} : 
-                        {}} onClick={() => setPictureSelected(i)} src={`${BASE_IMG}/${e}`}/>)
+                        return (
+                        <img className="show-picture full-width" 
+                        key={i} 
+                        alt= {`${showData.title}`} 
+                        style={i === pictureSelected ? {border:"1px solid red"} : {}} 
+                        onClick={() => setPictureSelected(i)} 
+                        src={`${BASE_IMG}/${e}`}/>)
                     })}
-                    <button onClick={submitMainPicture}>Valider</button>
+                    <button className="button" onClick={submitMainPicture}>Valider</button>
                 </Fragment>
             }
             

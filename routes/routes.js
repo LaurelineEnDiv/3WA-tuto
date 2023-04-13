@@ -20,7 +20,7 @@ import addShowController from "../controllers/admin-shows/addShowController.js";
 import deletePictureController from "../controllers/admin-shows/deletePictureController.js";
 import deleteShowController from "../controllers/admin-shows/deleteShowController.js";
 import editShowByIdController from "../controllers/admin-shows/editShowByIdController.js";
-import editShowPictures from "../controllers/admin-shows/editShowPictures.js";
+import addShowPicturesController from "../controllers/admin-shows/addShowPicturesController.js";
 import getShowByIdController from '../controllers/admin-shows/getShowByIdController.js';
 import getCategoriesController from '../controllers/admin-shows/getCategoriesController.js';
 import getPicturesController from "../controllers/admin-shows/getPicturesController.js";
@@ -59,11 +59,11 @@ router.get("/listpro", listProController);
     router.post("/deleteShow", deleteShowController);
     router.get("/getCategories", getCategoriesController);
     router.post("/addshow", middlewareUploadFileMultiple, addShowController);
+    router.post("/addShowPictures", middlewareUploadFileMultiple, addShowPicturesController);
     router.post("/getShowById", getShowByIdController);
     router.post("/editShowById", editShowByIdController);
     router.post("/getpictures", getPicturesController);
     router.post("/deletePicture", deletePictureController);
-    router.post("/editShowPictures", middlewareUploadFileMultiple, editShowPictures);
     router.post("/selectedImage", selectedImageController);
     
     

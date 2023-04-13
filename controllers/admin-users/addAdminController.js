@@ -10,7 +10,6 @@ const emailExist  = async (email) => {
 
 export default async (req, res) => {
         const {nom, prenom, email, password} = req.body
-        console.log({nom, prenom, email, password})
         const saltRounds = 10
         const sql = "INSERT INTO users (nom, prenom, email, password) VALUES (?,?,?,?)"
         

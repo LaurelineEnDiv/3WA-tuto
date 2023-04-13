@@ -4,9 +4,10 @@ import { BASE_URL, BASE_IMG } from "../../tools/constante.js"
 import { useState, useEffect, Fragment } from "react"
 
 const EditShowPictures = () => {
+    
     const {id} = useParams()
     const [picturesList, setPicturesList] = useState([])
-
+    
     const [pictures, setPictures] = useState(null) 
     const [pictureSelected, setPictureSelected] = useState(null) 
     
@@ -29,25 +30,30 @@ const EditShowPictures = () => {
             .catch(err => console.log(err))
         }
 
-// Valider l'ajout de nouvelles photos
+// Ajouter de nouvelles photos
     const submit = (e) => {
         e.preventDefault()
         const dataFile = new FormData();
         const files = [...e.target.url_pictures.files];
-        
         
         // ajouter tous les fichiers à FormData
         for (let i = 0; i < files.length; i++) {
             dataFile.append('files', files[i], files[i].name)
         }
         
-        axios.post(`${BASE_URL}/editShowPictures`, dataFile)
+         axios.post(`${BASE_URL}/addShowPictures`, dataFile)
         .then((res)=> {
+            const data = {
+                id:res.data.result.insertId,
+            }
+            setPicturesList([...picturesList, data])
             setPictures(res.data.files)
+            
         })
         .catch((err) => {
             console.log(err)
         })
+        
     }  
     
 //////SELECTION DE L'IMAGE DE MISE EN AVANT///////////
@@ -74,7 +80,7 @@ const EditShowPictures = () => {
                   {picturesList.map((picture, i) => {
                     return (
                       <li key={i}>
-                        <img src={`${BASE_IMG}/${picture.url_pictures}`} alt="" /> 
+                        <img className="show-picture full-width" src={`${BASE_IMG}/${picture.url_pictures}`} alt="" /> 
                         <button className="delete" onClick={() => deletePicture(picture.id)}>X</button>
                       </li>
                     )
