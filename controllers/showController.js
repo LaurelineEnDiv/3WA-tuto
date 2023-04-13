@@ -2,7 +2,7 @@ import {asyncQuery} from "../config/database.js"
 export default async (req, res) => {
     const {id} = req.body
     const sqlShow = `
-    SELECT shows.title, shows.content, shows.url_video, shows_categories.categorie
+    SELECT shows.title, shows.pitch, shows.content, shows.url_video, shows_categories.categorie
     FROM shows 
     JOIN shows_categories ON shows_categories.id = shows.category_id 
     WHERE shows.id = ?

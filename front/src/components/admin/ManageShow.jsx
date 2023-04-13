@@ -8,6 +8,7 @@ import inputCheck from '../../tools/inputLength.js'
 const ManageShow = () => {
     const initialState = {
         title:'',
+        pitch:'',
         categorie:'',
         year_creation:'',
         content:'',
@@ -69,6 +70,7 @@ const ManageShow = () => {
 
         // ajouter d'autre inputs au formulaire
         dataFile.append('title', showData.title)
+        dataFile.append('pitch', showData.pitch)
         dataFile.append('content', showData.content)
         dataFile.append('year_creation', showData.year_creation)
         dataFile.append('url_video', showData.url_video)
@@ -144,10 +146,14 @@ const ManageShow = () => {
                     <h2>Ajouter un spectacle</h2>
                     <form onSubmit={submit} encType="multipart/form-data">
                         <label>Nom du spectacle</label>
-                            <input type='text' name='title' onChange={handleChange} value={showData.title} />
+                        <input type='text' name='title' onChange={handleChange} value={showData.title} />
+                        <div>
+                            <label>Pitch</label>
+                            <textarea type='text' name='pitch' onChange={handleChange} value={showData.pitch} />
+                        </div>
                         <div>
                             <label>Catégorie</label>
-                            <select name="categorie" onChange={handleChange} value={showData.categorie}>
+                            <select name="categorie" onChange={handleChange} value={showData.category_id}>
                             <option value={undefined}>Choix d'option</option>
                             {categories.map((categorie, i) => {
                                 return(

@@ -8,7 +8,8 @@ const EditShow = () => {
     const {id} = useParams()
     const initialState = {
         title:'',
-        categorie:'',
+        pitch:'',
+        category_id:'',
         year_creation:'',
         content:'',
         url_video:'',
@@ -27,7 +28,6 @@ const EditShow = () => {
         .then(res => setCategories(res.data.result))
     },[])
     
-    
     const handleChange = (e) => {
         const {name, value} = e.target
         setShow({...show, [name]:value})
@@ -44,43 +44,46 @@ const EditShow = () => {
     
     return (
         <div className=" container admin-margin-top">
-                <Fragment>
-                <h2>Modifier les informations du spectacle</h2>
+        <Fragment>
+            <h2>Modifier les informations du spectacle</h2>
                 <form onSubmit={submit}>
-                <label>Nom du spectacle</label>
+                    <label>Nom du spectacle</label>
                     <input type='text' name='title' onChange={handleChange} value={show.title} />
-                <div>
-                    <label>Catégorie</label>
-                    <select name="categorie" onChange={handleChange} value={show.category_id}>
-                        <option value={undefined}>Choix d'option</option>
-                        {categories.map((categorie, i) => {
-                        return(
-                            <option key={i} value={categorie.id}>{categorie.categorie}</option>
-                    )})}
-                    </select>
-                </div>
-                <div>
-                <label>Année de création</label>
-                    <input type='text' name='year_creation' onChange={handleChange} value={show.year_creation} />
-                </div>
-                <div>
-                <label>Description</label>
-                    <textarea rows='4' cols='50' type='text' name='content' onChange={handleChange} value={show.content} />
-                </div>
-                <div>
-                <label>Vidéo (URL YouTube embed)</label>
-                    <input type='text' name='url_video' placeholder='url YouTube embed' onChange={handleChange} value={show.url_video} />
-                </div>
-                
-                <div>
-                    <input className="button" type='submit' value='Valider les modifications' />
-                </div>
-                
+                    <div>
+                        <label>Pitch</label>
+                        <textarea type='text' name='pitch' onChange={handleChange} value={show.pitch} />
+                    </div>
+                    <div>
+                        <label>Catégorie</label>
+                        <select name="category_id" onChange={handleChange} value={show.categorie}>
+                            <option value={undefined}>Choix d'option</option>
+                            {categories.map((categorie, i) => {
+                            return(
+                                <option key={i} value={categorie.id}>{categorie.categorie}</option>
+                        )})}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Année de création</label>
+                        <input type='text' name='year_creation' onChange={handleChange} value={show.year_creation} />
+                    </div>
+                    <div>
+                        <label>Description</label>
+                        <textarea rows='4' cols='50' type='text' name='content' onChange={handleChange} value={show.content} />
+                    </div>
+                    <div>
+                        <label>Vidéo (URL YouTube embed)</label>
+                        <input type='text' name='url_video' placeholder='url YouTube embed' onChange={handleChange} value={show.url_video} />
+                    </div>
+                    <div>
+                        <input className="button" type='submit' value='Valider les modifications' />
+                    </div>
                 </form>
-                <h2>Modifier les photos du spectacle</h2>
+                
+            <h2>Modifier les photos du spectacle</h2>
                 <p><NavLink to={`/editshowpictures/${show.id}`}>c'est par ici !</NavLink></p>
                 
-                </Fragment>
+        </Fragment>
         </div>
     )
 }
