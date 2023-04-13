@@ -61,7 +61,7 @@ router.get("/listpro", listProController);
     router.post("/addshow", middlewareUploadFileMultiple, addShowController);
     router.post("/getShowById", getShowByIdController);
     router.post("/editShowById", editShowByIdController);
-    router.get("/getpictures", getPicturesController);
+    router.post("/getpictures", getPicturesController);
     router.post("/deletePicture", deletePictureController);
     router.post("/editShowPictures", middlewareUploadFileMultiple, editShowPictures);
     router.post("/selectedImage", selectedImageController);

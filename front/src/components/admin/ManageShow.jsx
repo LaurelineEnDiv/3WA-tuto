@@ -6,6 +6,7 @@ import inputCheck from '../../tools/inputLength.js'
 
 
 const ManageShow = () => {
+    
     const initialState = {
         title:'',
         pitch:'',
@@ -16,10 +17,8 @@ const ManageShow = () => {
         pdf:'',
         url_pictures:'',
     }
-    
     const [showsList, setShowsList] = useState([])
     const [showData, setShowData] = useState(initialState)
-    
     const [categories, setCategories] = useState([])
     const [pictures, setPictures] = useState(null) 
     const [pictureSelected, setPictureSelected] = useState(null) 
@@ -35,16 +34,13 @@ const ManageShow = () => {
     const deleteShow = (id) => {
         axios.post(`${BASE_URL}/deleteShow`,{id})
         .then(res => {
-          // Mettre à jour la liste des spectacles en excluant le spectacle supprimé
-          setShowsList(showsList.filter(show => show.id !== id))
+         // Mettre à jour la liste des spectacles en excluant le spectacle supprimé
+         setShowsList(showsList.filter(show => show.id !== id))
         })
         .catch(err => console.log(err))
     }
 
-
 ///////ADD SHOW////////
-
-    
     useEffect(() => {
         axios.get(`${BASE_URL}/getCategories`)
         .then(res => setCategories(res.data.result))
