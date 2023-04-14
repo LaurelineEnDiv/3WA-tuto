@@ -1,6 +1,5 @@
-import { useContext } from "react"
+import { useContext, useState, Fragment } from "react"
 import { StoreContext } from "../tools/context.js"
-import { useState, Fragment } from "react"
 import axios from "axios"
 import { BASE_URL } from "../tools/constante.js"
 import inputCheck from "../tools/inputLength.js"

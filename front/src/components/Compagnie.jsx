@@ -12,7 +12,7 @@ const Compagnie = () => {
     return (
         <Fragment>
                 <section className="container section-margin-top">
-                    <h1>Les Hommes Sensibles</h1>
+                    <h1 className="text-shadow-yellow">Les Hommes Sensibles</h1>
                         <div className="text-description">
                             <img src={petitBateau} className="img-bateau"/>
                             <p>Les Hommes Sensibles est une compagnie de cirque 
@@ -44,7 +44,7 @@ const Compagnie = () => {
                     
                 <section className="background-image team-background-image">
                     <div className="container">
-                        <h2 className="background-lightgrey margin">L'équipage à bord</h2>
+                        <h2 className="title-white">L'équipage à bord</h2>
                             <div className="team row">
                                 <div className="column team-member">
                                     <img src={jean} alt='Jean Couhet-Guichot'/>

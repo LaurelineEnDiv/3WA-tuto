@@ -15,8 +15,9 @@ const StoreProvider = ({ children }) => {
 export default StoreProvider
 
 
-//crée un contexte de stockage (store) pour les composants enfants
+//contexte de stockage pour les composants enfants pour accéder à l'état global
+//de l'application et modifier cet état en envoyant des actions au dispatcher.
 //utilise le hook useReducer pour initialiser un état et un dispatcher en utilisant un reducer
 //crée un StoreContext avec l'état et le dispatcher en tant que valeur 
-//Cela permet aux composants enfants d'accéder à l'état global de l'application
-//et de modifier cet état en envoyant des actions au dispatcher.
+
+

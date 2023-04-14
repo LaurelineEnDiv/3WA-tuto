@@ -14,8 +14,8 @@ const ListShows = () => {
 
     return (
         <Fragment>
-        <section className="background-image shows-background-image">
         {!shows && (<p>loading</p>) }
+        <section className="background-image shows-background-image">
         <div className="container section-margin-top">
         <h1 className="title-white">Les Projets</h1>
         <div className="row">
@@ -26,7 +26,7 @@ const ListShows = () => {
                         <NavLink to={`/show/${show.id}`}>
                         <img src={`${BASE_IMG}/${show.url_pictures}`} alt={`${show.title}`} />
                         <div className="item-caption">
-                            <h3>{show.title}</h3>
+                            <h3 className="text-shadow">{show.title}</h3>
                             <p>{show.categorie} - {show.year_creation}</p>
                         </div>
                         </NavLink>

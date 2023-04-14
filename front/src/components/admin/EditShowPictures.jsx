@@ -6,8 +6,11 @@ import { useState, useEffect, Fragment } from "react"
 const EditShowPictures = () => {
 
     const { id } = useParams()
+    const initialState = {
+        url_pictures: '',
+    }
+    const [showData, setShowData] = useState(initialState)
     const [picturesList, setPicturesList] = useState([])
-
     const [pictures, setPictures] = useState(null)
     const [pictureSelected, setPictureSelected] = useState(null)
 
@@ -40,13 +43,13 @@ const EditShowPictures = () => {
         for (let i = 0; i < files.length; i++) {
             dataFile.append('files', files[i], files[i].name)
         }
+        
+        dataFile.append('show_id', id)
 
         axios.post(`${BASE_URL}/addShowPictures`, dataFile)
             .then((res) => {
-                const data = {
-                    id: res.data.result.insertId,
-                }
-                setPicturesList([...picturesList, data])
+                alert("Images ajoutées avec succès")
+                setShowData(initialState)
                 setPictures(res.data.files)
 
             })

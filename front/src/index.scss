@@ -1,12 +1,15 @@
   //COLORS
   $black: #212529;
   $white: #fff;
-  $yellow: #fed136; //SIZE
+  $yellow: #fed136; 
+  //SIZE
   $small: 2rem;
   $medium: 2.8rem;
-  $big: 3.4rem; //RESPONSIVE
+  $big: 3.4rem; 
+  //RESPONSIVE
   $tab: '(min-width: 760px)';
-  $desktop: '(min-width: 980px)'; //FONTS
+  $desktop: '(min-width: 980px)'; 
+  //FONTS
   $satoshi: 'Satoshi-Regular',
   Arial,
   helvetica,
@@ -113,9 +116,10 @@
   }
 
   .background-image {
-    background-size: cover;
+    background-attachment:fixed;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .background-black {
@@ -130,13 +134,24 @@
   .background-white {
     background-color: rgba(340, 340, 340, 0.8);
   }
+  
+  .dancing {
+    font-family: $dancing;
+    font-size: $medium;
+  }
 
   .title-white {
     color: $white;
+    text-shadow: 0.2rem 0.2rem 0 black;
   }
 
   .title-yellow {
     color: $yellow;
+    text-shadow: 0.2rem 0.2rem 0 black;
+  }
+  
+  .text-shadow-yellow {
+    text-shadow: 0.2rem 0.2rem 0 #fed136;
   }
 
   .button {
@@ -152,6 +167,7 @@
 
     &:hover {
       background-color: $yellow;
+      box-shadow: 0.1rem 0.2rem 0 black;
     }
   }
 
@@ -163,6 +179,7 @@
     margin: auto;
     font-family: $satoshi;
     color: $black;
+    min-height: 100vh;
 
 
     h1,
@@ -334,11 +351,6 @@
     letter-spacing: 0.5rem;
   }
   
-  .pitch {
-    font-family: $dancing;
-    font-size: $medium;
-  }
-  
   .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -376,6 +388,9 @@
 
   .dates-background-image {
     background-image: url("assets/img/background/attaque-pirate.jpg");
+    @media #{$tab} {
+      background-position: center 8rem;
+    }
   }
 
   .year-filter {

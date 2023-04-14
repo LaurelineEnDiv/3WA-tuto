@@ -1,7 +1,7 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { StoreContext } from "../../tools/context.js"
-import { useEffect } from 'react'
 import axios from "axios"
+
 const Logout = () => {
 
     const [state, dispatch] = useContext(StoreContext)
@@ -14,11 +14,9 @@ const Logout = () => {
     }, [])
 
     return (
-
         <div className=" container admin-margin-top">
         Vous êtes déconnecté
         </div>
-
     )
 }
 

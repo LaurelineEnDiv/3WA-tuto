@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../tools/constante.js"
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 
 const ListDates = () => {
     const [dates, setDates] = useState([])
@@ -17,7 +17,7 @@ const ListDates = () => {
                 setDates(filteredDates);
             })
             .catch(e => console.log(e))
-    }, [selectedYear]) // cette fonction sera appelée à chaque fois que l'année sélectionnée change
+    }, [selectedYear])
 
     // Fonction pour changer l'année sélectionnée
     const handleYearChange = (year) => {
@@ -25,7 +25,9 @@ const ListDates = () => {
     };
 
     return (
-        <div className="background-image dates-background-image container section-margin-top">
+        <Fragment>
+        {!dates && (<p>loading</p>) }
+        <div className=" background-image dates-background-image container section-margin-top">
         <h1 className="title-white">Agenda</h1>
             <div className="year-filter">
                 <button className="button" onClick={() => handleYearChange(2021)}>2021</button>
@@ -47,6 +49,7 @@ const ListDates = () => {
             })}
             </section>     
         </div>
+        </Fragment>
     )
 }
 

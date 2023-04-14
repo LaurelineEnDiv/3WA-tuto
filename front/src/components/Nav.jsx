@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import img from "../assets/img/logo-Hommes_Sensibles.png";
 import { useContext } from "react"
 import { StoreContext } from "../tools/context.js"
+import img from "../assets/img/logo-Hommes_Sensibles.png";
 
 const Nav = (props) => {
   const [state] = useContext(StoreContext)

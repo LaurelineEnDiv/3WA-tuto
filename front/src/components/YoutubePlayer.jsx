@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 const YoutubePlayer = ({ url_video }) => {
     let str = url_video
     str.replace("watch?v=", "embed/")
+    
     return (
         <Fragment>
         <div className="video-container full-width">

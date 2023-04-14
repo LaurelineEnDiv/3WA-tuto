@@ -14,12 +14,12 @@ const Pro = () => {
         <Fragment>
         {!shows && (<p>loading</p>) }
         <div className="container section-margin-top">
-        <h1>Espace Pro</h1>
+        <h1 className="text-shadow-yellow">Espace Pro</h1>
             <div className="row">
             {shows.length > 0 && shows.map((show, i) => {
                 return(
                     <div className="pro-item" key={i}>
-                        <h2 className="title-yellow">{show.title}</h2>
+                        <h2>{show.title}</h2>
                         <a href={`${BASE_URL}/pdf/${show.pdf}`} target="_blank" download><button className="button">Dossier de présentation</button></a>
                     </div>
                 )

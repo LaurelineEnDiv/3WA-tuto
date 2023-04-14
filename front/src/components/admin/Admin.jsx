@@ -80,7 +80,7 @@ const Admin = () => {
 
 
   return (
-    <div className=" container admin-margin-top">
+    <section className=" container admin-margin-top">
             <h2>Modifier ou supprimer un administrateur</h2>
                 <ul>
                   {usersList.map((user, i) => {
@@ -96,7 +96,6 @@ const Admin = () => {
                 </ul>
             
             <div>
-            
               <h2>Ajouter un nouvel administrateur</h2>
               <form onSubmit={submit} method="post">
                 <div>
@@ -142,7 +141,7 @@ const Admin = () => {
                 <button className="button" type="submit">VALIDER</button>
               </form>
             </div>
-  </div>
+  </section>
 
   )
 

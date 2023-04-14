@@ -2,9 +2,9 @@ import { asyncQuery } from "../../config/database.js";
 
 export default async(req, res) => {
 
-  const sqlPictures = "INSERT INTO pictures (show_id, url_pictures) VALUES ?";
-  const { show_id, files } = req.body
-  const paramsSqlPictures = [show_id]
+  const sqlPictures = "INSERT INTO pictures (show_id, url_pictures) VALUES (?)";
+  const { show_id, url_pictures, files } = req.body
+  const paramsSqlPictures = [show_id, url_pictures, files]
   const resultPictures = await asyncQuery(sqlPictures, paramsSqlPictures);
 
   files.forEach((e) => {
@@ -12,7 +12,6 @@ export default async(req, res) => {
   })
 
   try {
-
     res.json({ resultPictures, files })
   }
   catch (e) {
