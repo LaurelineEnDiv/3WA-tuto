@@ -1,3 +1,10 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /admin 
+Disallow: /editadmin/
+Disallow: /editpassword/
+Disallow: /gestion-spectacles
+Disallow: /editshow/
+Disallow: /editshowpictures/
+Disallow: /gestion-agenda
+Disallow: /gestion-pro

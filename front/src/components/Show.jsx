@@ -21,15 +21,12 @@ const Show = () => {
         <div className="container section-margin-top">
             {show && 
                 <div>
-                    <h1>{show.sqlShow[0].title}</h1>
-                    <p>{show.sqlShow[0].pitch}</p>
-                    {/*<p className="category">{show.sqlShow[0].categorie}</p>*/}
-                    <div>
+                    <h1 className="show-title">{show.sqlShow[0].title}</h1>
+                    <p className="pitch">{show.sqlShow[0].pitch}</p>
+                    <p className="text-description">{show.sqlShow[0].content}</p>
                     <div className="show-media">
                     {show.sqlShow[0].url_video && <YoutubePlayer url_video={show.sqlShow[0].url_video}/>}
                     </div>
-                    </div>
-                    <p className="text-description">{show.sqlShow[0].content}</p>
                     <div className="column row">
                         {show.sqlPictures.map((e,i) =>{
                             return(
