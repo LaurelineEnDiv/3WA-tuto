@@ -36,10 +36,8 @@ const EditShow = () => {
     const submit = (e) => {
         e.preventDefault()
         axios.post(`${BASE_URL}/editShowById`, show)
-            .then((res) => {
-                setShow(res.data.result[0]);
-            })
-            .catch((err) => console.log(err));
+            .then(res => alert("modification effectuée"))
+            .catch((err) => console.log(err))
     }
 
     return (
