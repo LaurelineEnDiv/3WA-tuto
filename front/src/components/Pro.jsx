@@ -13,7 +13,7 @@ const Pro = () => {
     return (
         <Fragment>
         {!shows && (<p>loading</p>) }
-        <div className="container section-margin-top">
+        <div className="container section-margin-top min-height">
         <h1 className="text-shadow-yellow">Espace Pro</h1>
             <div className="row">
             {shows.length > 0 && shows.map((show, i) => {

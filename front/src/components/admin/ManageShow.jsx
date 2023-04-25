@@ -56,9 +56,7 @@ const ManageShow = () => {
         e.preventDefault()
 
         if (!inputCheck(showData.title, 255, 1) ||
-            /*!inputCheck(showData.content, 255, 1) 
-                       ||*/
-            !inputCheck(showData.year_creation, 4, 4) /*|| !inputCheck(showData.url_video, 255, 1)*/ ) {
+            !inputCheck(showData.year_creation, 4, 4)  ) {
             alert("Les données saisies ne sont pas valides.")
             return
         }

@@ -64,7 +64,6 @@
 
   body {
     font-size: 1.6rem;
-    line-height: 1.5;
     width: auto;
   }
 
@@ -94,6 +93,10 @@
     @media #{$tab} {
       margin-top: 150px;
     }
+  }
+  
+  .min-height {
+    min-height: 500px;
   }
 
   .full-width {
@@ -327,6 +330,10 @@
 
   .item-caption {
     padding-bottom: 1rem;
+    
+    h3, p {
+      margin: 0.5em 1em;
+    }
   }
 
   .show-item img {
@@ -468,7 +475,6 @@
     }
 
     h3 {
-      padding: 1rem;
       margin: 0;
     }
 
@@ -570,7 +576,10 @@
         padding: 1.5rem;
         font-size: $big;
       }
-
+    }
+    
+    .contact-footer p {
+      margin: 0.5rem;
     }
 
   }

@@ -25,11 +25,11 @@ const Footer = () => {
               <a href={youtubeLink}><FontAwesomeIcon icon="fa-brands fa-youtube" size="lg" /></a>
             </li>
           </ul>
-          <div>
+          <section className="contact-footer">
             <p>Justine Swygedauw Martinez</p>
             <p>Chargée de production et diffusion</p>
             <p>06 37 99 08 71</p>
-          </div>
+          </section>
     </footer>
   )
 }

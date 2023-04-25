@@ -37,7 +37,7 @@ const Home = () => {
             </video>
          </section>
          <div className="container">
-                <h1 className="title-yellow">Les Hommes Sensibles, en bref... </h1>
+                <h1 className="text-shadow-yellow">Les Hommes Sensibles, en bref... </h1>
                     <div className="text-description">
                         <img src={baleine} className="img-baleine"/>
                         <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie

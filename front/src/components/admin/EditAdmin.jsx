@@ -33,7 +33,7 @@ const EditAdmin = () => {
 
     return (
         <Fragment>
-        <div className=" container admin-margin-top">
+        <div className=" container admin-margin-top min-height">
             { user && (
                 <Fragment>
                 <h2>Modifier les coordonnées de l'utilisateur</h2>
