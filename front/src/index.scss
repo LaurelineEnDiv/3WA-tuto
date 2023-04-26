@@ -128,11 +128,6 @@
   .background-white {
     background-color: rgba(340, 340, 340, 0.8);
   }
-  
-  .roboto {
-    font-family: $roboto;
-    font-size: $small;
-  }
 
   .title-white {
     color: $white;
@@ -164,6 +159,10 @@
       box-shadow: 0.1rem 0.2rem 0 black;
     }
   }
+  
+  .button.active {
+    background-color: $yellow;
+  }
 
   /* *****************************************************************
   GENERALITIES
@@ -171,7 +170,7 @@
 
   body {
     margin: auto;
-    font-family: $montserrat;
+    font-family: $roboto;
     color: $black;
     min-height: 100vh;
 
@@ -179,7 +178,7 @@
     h1,
     h2,
     h3 {
-      font-family: $clashGrotesk;
+      font-family: $montserrat;
       text-transform: uppercase;
     }
 
@@ -363,7 +362,7 @@
   SHOW
   ***************************************************************** */
   .show-title {
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.2rem;
   }
   
   .video-container {
@@ -411,9 +410,8 @@
   .year {
     font-size:$big;
     font-weight:bold;
-    font-family:$satoshi;
-    color: $yellow;
-    letter-spacing: 0.5rem;
+    text-transform:uppercase;
+    letter-spacing: 0.3rem;
     margin: 2rem;
     
   }
@@ -423,6 +421,10 @@
     
     h2, h3 {
       margin: 1rem 0;
+    }
+    
+    p {
+      margin: 0.5rem 0;
     }
   }
 
