@@ -25,6 +25,15 @@ const ListDates = () => {
                     return acc;
                 }, {});
                 
+                // Trier les dates par titre de spectacle pour chaque mois
+            const sortedDatesByMonth = Object.entries(datesByMonth).map(([month, dates]) => {
+                dates.sort((a, b) => a.title.localeCompare(b.title));
+                return [month, dates];
+            });
+            
+            // Mettre à jour le state avec les dates triées
+            const updatedDatesByMonth = Object.fromEntries(sortedDatesByMonth);
+                
                 setDatesByMonth(datesByMonth);
                 setDates(filteredDates);
             })
@@ -49,19 +58,30 @@ const ListDates = () => {
             <section className="column">
             {/*{dates.length > 0 && dates.map((date, i) => {
                 return(*/}
-                {Object.entries(datesByMonth).map(([month, dates]) => (
-                <Fragment key={month}>
-                <h2>{new Date(dates[0].date).toLocaleString('default', { month: 'long' })}</h2>
-                {dates.map((date, i) => (
-                
-                    <div className=" full-width" key={i}>
-                        <p>{date.title}</p>
-                        <p>{date.formattedDate} <a href={date.site_web} target="_blank">{date.nom_lieu} </a>
-                         - {date.ville} ({date.departement})</p>
-                    </div>
+                    {Object.entries(datesByMonth).map(([month, dates]) => (
+          <Fragment key={month}>
+            <h2>{new Date(dates[0].date).toLocaleString('default', { month: 'long' })}</h2>
+            {dates.reduce((acc, date) => {
+              const existingShow = acc.find(show => show.title === date.title);
+              if (existingShow) {
+                existingShow.dates.push(date);
+              } else {
+                acc.push({ title: date.title, dates: [date] });
+              }
+              return acc;
+            }, []).map(show => (
+              <Fragment key={show.title}>
+                <h3>{show.title}</h3>
+                {show.dates.map((date, i) => (
+                  <div className="full-width" key={i}>
+                    <p>{date.formattedDate} <a href={date.site_web} target="_blank">{date.nom_lieu} </a>
+                      - {date.ville} ({date.departement})</p>
+                  </div>
                 ))}
-                </Fragment>
-                ))}
+              </Fragment>
+            ))}
+          </Fragment>
+        ))}
             </section>     
         </div>
         </Fragment>
