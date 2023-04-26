@@ -332,6 +332,23 @@
     margin-top: 2rem;
     border-radius: 4%;
   }
+  
+  .date-item {
+    line-height: 0.5;
+    border: 0.1rem solid;
+    margin-bottom: 1.5rem;
+
+    h3 {
+      font-family: $satoshi;
+      text-transform: inherit;
+      padding-top: 1rem;
+
+      span {
+        font-family: $clashGrotesk;
+        font-size: $medium;
+      }
+    }
+  }
 
 
   /* *****************************************************************
@@ -392,23 +409,24 @@
   //}
 
   .year-filter {
-    padding: 2rem;
+    
+  }
+  
+  .year {
+    font-size:$big;
+    font-weight:bold;
+    font-family:$satoshi;
+    color: $yellow;
+    letter-spacing: 0.5rem;
+    margin: 2rem;
+    
   }
 
-  .date-item {
-    line-height: 0.5;
-    border: 0.1rem solid;
-    margin-bottom: 1.5rem;
-
-    h3 {
-      font-family: $satoshi;
-      text-transform: inherit;
-      padding-top: 1rem;
-
-      span {
-        font-family: $clashGrotesk;
-        font-size: $medium;
-      }
+  .date-agenda {
+    text-align: left;
+    
+    h2, h3 {
+      margin: 1rem 0;
     }
   }
 

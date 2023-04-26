@@ -48,18 +48,20 @@ const ListDates = () => {
     return (
         <Fragment>
         {!dates && (<p>loading</p>) }
-        <div className=" background-image dates-background-image container section-margin-top">
+        <div className="container section-margin-top">
         <h1>Agenda</h1>
             <div className="year-filter">
                 <button className="button" onClick={() => handleYearChange(2021)}>2021</button>
                 <button className="button" onClick={() => handleYearChange(2022)}>2022</button>
                 <button className="button" onClick={() => handleYearChange(2023)}>2023</button>
             </div>
-            <section className="column">
-            {/*{dates.length > 0 && dates.map((date, i) => {
-                return(*/}
-                    {Object.entries(datesByMonth).map(([month, dates]) => (
+            <p className="year">{selectedYear}</p>   
+            
+        <section className="column">
+            
+            {Object.entries(datesByMonth).map(([month, dates]) => (
           <Fragment key={month}>
+            <div className="date-agenda full-width">
             <h2>{new Date(dates[0].date).toLocaleString('default', { month: 'long' })}</h2>
             {dates.reduce((acc, date) => {
               const existingShow = acc.find(show => show.title === date.title);
@@ -71,15 +73,18 @@ const ListDates = () => {
               return acc;
             }, []).map(show => (
               <Fragment key={show.title}>
+                
                 <h3>{show.title}</h3>
                 {show.dates.map((date, i) => (
-                  <div className="full-width" key={i}>
-                    <p>{date.formattedDate} <a href={date.site_web} target="_blank">{date.nom_lieu} </a>
+                  <div key={i}>
+                    <p> > {date.formattedDate} : <a href={date.site_web} target="_blank">{date.nom_lieu} </a>
                       - {date.ville} ({date.departement})</p>
                   </div>
                 ))}
+                
               </Fragment>
             ))}
+            </div>
           </Fragment>
         ))}
             </section>     
