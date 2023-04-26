@@ -77,7 +77,7 @@ const ListDates = () => {
                 <h3>{show.title}</h3>
                 {show.dates.map((date, i) => (
                   <div key={i}>
-                    <p> > {date.formattedDate} : <a href={date.site_web} target="_blank">{date.nom_lieu} </a>
+                    <p> > {new Date(date.date).toLocaleString('default', { day: 'numeric', month: 'long' })} : <a href={date.site_web} target="_blank">{date.nom_lieu} </a>
                       - {date.ville} ({date.departement})</p>
                   </div>
                 ))}
