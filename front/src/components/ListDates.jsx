@@ -5,7 +5,8 @@ import { useState, useEffect, Fragment } from "react";
 const ListDates = () => {
     const [dates, setDates] = useState([])
     const [selectedYear, setSelectedYear] = useState(2023); // année par défaut
-
+    const [datesByMonth, setDatesByMonth] = useState({});
+    
     useEffect(() => {
         axios.get(`${BASE_URL}/listdates`)
             .then(res => {
@@ -13,7 +14,18 @@ const ListDates = () => {
                 const filteredDates = res.data.result.filter(
                     (date) => new Date(date.date).getFullYear() === selectedYear
                 );
-
+                
+                // Grouper les dates par mois
+                const datesByMonth = filteredDates.reduce((acc, date) => {
+                    const month = new Date(date.date).getMonth();
+                        if (!acc[month]) {
+                            acc[month] = [];
+                        }
+                    acc[month].push(date);
+                    return acc;
+                }, {});
+                
+                setDatesByMonth(datesByMonth);
                 setDates(filteredDates);
             })
             .catch(e => console.log(e))
@@ -28,25 +40,28 @@ const ListDates = () => {
         <Fragment>
         {!dates && (<p>loading</p>) }
         <div className=" background-image dates-background-image container section-margin-top">
-        <h1 className="title-white">Agenda</h1>
+        <h1>Agenda</h1>
             <div className="year-filter">
                 <button className="button" onClick={() => handleYearChange(2021)}>2021</button>
                 <button className="button" onClick={() => handleYearChange(2022)}>2022</button>
                 <button className="button" onClick={() => handleYearChange(2023)}>2023</button>
             </div>
             <section className="column">
-            {dates.length > 0 && dates.map((date, i) => {
-                return(
-                    <div className="date-item full-width background-lightgrey" key={i}>
-                        <h2 className="date">{date.formattedDate}</h2>
-                        <h3>
-                        <span>{date.title}</span>
-                        <p className="date-lieu"><a href={date.site_web} target="_blank">{date.nom_lieu} </a>
+            {/*{dates.length > 0 && dates.map((date, i) => {
+                return(*/}
+                {Object.entries(datesByMonth).map(([month, dates]) => (
+                <Fragment key={month}>
+                <h2>{new Date(dates[0].date).toLocaleString('default', { month: 'long' })}</h2>
+                {dates.map((date, i) => (
+                
+                    <div className=" full-width" key={i}>
+                        <p>{date.title}</p>
+                        <p>{date.formattedDate} <a href={date.site_web} target="_blank">{date.nom_lieu} </a>
                          - {date.ville} ({date.departement})</p>
-                        </h3>
                     </div>
-                )
-            })}
+                ))}
+                </Fragment>
+                ))}
             </section>     
         </div>
         </Fragment>

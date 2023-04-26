@@ -10,6 +10,8 @@
   $tab: '(min-width: 760px)';
   $desktop: '(min-width: 980px)'; 
   //FONTS
+  $roboto: 'Roboto Slab', serif;
+  $montserrat: 'Montserrat', sans-serif;
   $satoshi: 'Satoshi-Regular',
   Arial,
   helvetica,
@@ -128,8 +130,8 @@
   }
   
   .roboto {
-    font-family: Roboto Slab, serif;
-    font-size: $medium;
+    font-family: $roboto;
+    font-size: $small;
   }
 
   .title-white {
@@ -169,7 +171,7 @@
 
   body {
     margin: auto;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $montserrat;
     color: $black;
     min-height: 100vh;
 
@@ -382,12 +384,12 @@
   AGENDA
   ***************************************************************** */
 
-  .dates-background-image {
-    background-image: url("assets/img/background/attaque-pirate.jpg");
-    @media #{$tab} {
-      background-position: center 8rem;
-    }
-  }
+  // .dates-background-image {
+   // background-image: url("assets/img/background/attaque-pirate.jpg");
+    //@media #{$tab} {
+     // background-position: center 8rem;
+    //}
+  //}
 
   .year-filter {
     padding: 2rem;
@@ -495,6 +497,10 @@
       @media #{$tab} {
         display: flex;
         justify-content: center;
+      }
+      
+      .contact {
+        margin: 0.5rem;
       }
     }
 
