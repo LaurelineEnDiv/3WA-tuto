@@ -9,24 +9,17 @@ const EditShow = () => {
     const initialState = {
         title: '',
         pitch: '',
-        category_id: '',
         year_creation: '',
         content: '',
         url_video: '',
     }
     const [show, setShow] = useState(initialState)
-    const [categories, setCategories] = useState([])
 
     useEffect(() => {
         axios.post(`${BASE_URL}/getShowById`, { id })
             .then(res => setShow(res.data.result[0]))
             .catch(err => console.log(err))
     }, [id])
-
-    useEffect(() => {
-        axios.get(`${BASE_URL}/getCategories`)
-            .then(res => setCategories(res.data.result))
-    }, [])
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -50,16 +43,6 @@ const EditShow = () => {
                     <div>
                         <label>Pitch</label>
                         <textarea type='text' name='pitch' onChange={handleChange} value={show.pitch} />
-                    </div>
-                    <div>
-                        <label>Catégorie</label>
-                        <select name="category_id" onChange={handleChange} value={show.categorie}>
-                            <option value={undefined}>Choix d'option</option>
-                            {categories.map((categorie, i) => {
-                            return(
-                                <option key={i} value={categorie.id}>{categorie.categorie}</option>
-                        )})}
-                        </select>
                     </div>
                     <div>
                         <label>Année de création</label>

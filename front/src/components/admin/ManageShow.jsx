@@ -10,7 +10,6 @@ const ManageShow = () => {
     const initialState = {
         title: '',
         pitch: '',
-        categorie: '',
         year_creation: '',
         content: '',
         url_video: '',
@@ -19,7 +18,6 @@ const ManageShow = () => {
     }
     const [showsList, setShowsList] = useState([])
     const [showData, setShowData] = useState(initialState)
-    const [categories, setCategories] = useState([])
     const [pictures, setPictures] = useState(null)
     const [pictureSelected, setPictureSelected] = useState(null)
 
@@ -41,10 +39,6 @@ const ManageShow = () => {
     }
 
     ///////ADD SHOW////////
-    useEffect(() => {
-        axios.get(`${BASE_URL}/getCategories`)
-            .then(res => setCategories(res.data.result))
-    }, [])
 
 
     const handleChange = (e) => {
@@ -140,17 +134,6 @@ const ManageShow = () => {
                         <div>
                             <label>Pitch</label>
                             <textarea type='text' name='pitch' onChange={handleChange} value={showData.pitch} />
-                        </div>
-                        <div>
-                            <label>Catégorie</label>
-                            <select name="categorie" onChange={handleChange} value={showData.category_id}>
-                            <option value={undefined}>Choix d'option</option>
-                            {categories.map((categorie, i) => {
-                                return(
-                                    <option key={i} value={categorie.id}>{categorie.categorie}</option>
-                                )
-                            })}
-                            </select>
                         </div>
                         <div>
                             <label>Année de création</label>
