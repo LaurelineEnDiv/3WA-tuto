@@ -6,6 +6,7 @@ import middlewareUploadFileMultiple from "../controllers/middlewares/middlewareU
 import middlewareUploadPdf from "../controllers/middlewares/middlewareUploadPdf.js";
 
 /////////////////////////AFFICHAGE/////////////////////
+import listTeamController from "../controllers/listTeamController.js";
 import listShowsController from "../controllers/listShowsController.js";
 import showController from '../controllers/showController.js';
 import selectShowController from "../controllers/selectShowController.js";
@@ -13,7 +14,9 @@ import listDatesController from "../controllers/listDatesController.js";
 import listProController from "../controllers/listProController.js";
 
 //////////////////////ADMIN/////////////////////////////
-
+import addTeamMemberController from "../controllers/admin-team/addTeamMemberController.js";
+import deleteTeamMemberController from "../controllers/admin-team/deleteTeamMemberController.js";
+import editTeamMemberByIdController from "../controllers/admin-team/editTeamMemberByIdController.js";
 /////////SHOWS///////////
 import manageShowsController from "../controllers/admin-shows/manageShowsController.js";
 import addShowController from "../controllers/admin-shows/addShowController.js";
@@ -45,12 +48,18 @@ import checkToken from '../controllers/admin-users/checkToken.js';
 const router = express.Router();
 
 /////////////////AFFICHAGE/////////////////////
+router.get("/listteam", listTeamController);
 router.get("/listshows", listShowsController);
 router.post("/show", showController);
 router.get("/listdates", listDatesController);
 router.get("/listpro", listProController);
 
 ///////////////ADMIN///////////////////
+
+    ////TEAM////
+    router.post("/addteammember", middlewareUploadFileMultiple, addTeamMemberController);
+    router.post("/deleteTeamMember", deleteTeamMemberController);
+    router.post("/editTeamMemberById", editTeamMemberByIdController);
 
     ////SHOWS////
     router.get("/manageshows", manageShowsController);

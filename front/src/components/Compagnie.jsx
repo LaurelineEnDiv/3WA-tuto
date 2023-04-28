@@ -1,18 +1,24 @@
-import { Fragment } from 'react';
+import axios from "axios";
+import { Fragment, useState, useEffect } from 'react';
+import { BASE_URL, BASE_IMG } from "../tools/constante.js"
 import mouette from "../assets/img/mouette.png";
 import petitBateau from "../assets/img/petit-bateau.png";
-import jean from "../assets/img/equipe/Jean-Couhet-Guichot.jpg";
-import rick from "../assets/img/equipe/Rick-Pulford.jpg";
-import arthur from "../assets/img/equipe/Arthur-Amouroux.jpg";
-import justine from "../assets/img/equipe/Justine-Swygedauw.jpg";
-import elise from "../assets/img/equipe/Elise-Girard.jpg";
-import robin from "../assets/img/equipe/Robin-Socasau.jpg";
+
 
 const Compagnie = () => {
+    
+    const [members, setMembers] = useState([])
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/listteam`)
+            .then(res => setMembers(res.data.result))
+            .catch(e => console.log(e))
+    }, [])
+    
     return (
         <Fragment>
                 <section className="container section-margin-top">
-                    <h1 className="text-shadow-yellow">Les Hommes Sensibles</h1>
+                    <h1>Les Hommes Sensibles</h1>
                         <div className="text-description">
                             <img src={petitBateau} className="img-bateau"/>
                             <p>Les Hommes Sensibles est une compagnie de cirque 
@@ -45,53 +51,29 @@ const Compagnie = () => {
                 <section className="background-image team-background-image">
                     <div className="container">
                         <h2 className="title-white">L'équipage à bord</h2>
+                         <Fragment>
+                            {!members && (<p>loading</p>) }
                             <div className="team row">
-                                <div className="column team-member">
-                                    <img src={jean} alt='Jean Couhet-Guichot'/>
-                                    <div className="nom-role background-lightgrey">
-                                        <h3>Jean Couhet-Guichot</h3>
-                                        <span className="role">Artiste</span>
+                            <div className="column team-member">
+                                
+                                {members.length > 0 && members.map((member, i) => {
+                                
+                                return(
+                                    <div className="column team-member" key={i}>
+                                    <img src={`${BASE_IMG}/${member.photo}`} alt={`${member.prenom}${member.nom}`} />
+                                        <div className="nom-role background-lightgrey">
+                                            <h3>{member.prenom} {member.nom}</h3>
+                                            <span className="role">{member.role}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="column team-member">
-                                    <img src={rick} alt='Rick Pulford'/>
-                                    <div className="nom-role background-lightgrey">
-                                        <h3>Rick Pulford</h3>
-                                        <span className="role">Artiste</span>
-                                    </div>
-                                </div>
-                                <div className="column team-member">
-                                    <img src={arthur} alt='Arthur Amouroux'/>
-                                    <div className="nom-role background-lightgrey">
-                                    <h3>Arthur Amouroux</h3>
-                                    <span className="role">Artiste</span>
-                                    </div>
-                                </div>
-                                <div className="column team-member">
-                                    <img src={justine} alt='Justine Swygedauw'/>
-                                    <div className="nom-role background-lightgrey">
-                                        <h3>Justine Swygedauw</h3>
-                                        <span className="role">Diffusion</span>
-                                    </div>
-                                </div>
-                                <div className="column team-member">
-                                    <img src={elise} alt='Elise Girard'/>
-                                    <div className="nom-role background-lightgrey">
-                                        <h3>Elise Girard</h3>
-                                        <span className="role">Administration</span>
-                                    </div>
-                                </div>
-                                <div className="column team-member">
-                                    <img src={robin} alt='Robin Socasau'/>
-                                    <div className="nom-role background-lightgrey">
-                                        <h3>Robin Socasau</h3>
-                                        <span className="role">Regard extérieur</span>
-                                    </div>
-                                </div>
+                                )
+                                })}
                             </div>
-                        </div>
-                    </section>
-                </Fragment>
+                            </div>
+                            </Fragment>
+                    </div>
+                </section>
+            </Fragment>
     )
 }
 

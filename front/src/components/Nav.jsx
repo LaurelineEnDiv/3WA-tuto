@@ -53,6 +53,11 @@ const Nav = (props) => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/gestion-equipe">
+             Gérer l'équipe
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/gestion-spectacles">
              Gérer les spectacles
             </NavLink>
