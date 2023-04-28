@@ -30,6 +30,7 @@ const ManageShow = () => {
     }, [showsList])
 
     const deleteShow = (id) => {
+        console.log('id:', id); // add this line
         axios.post(`${BASE_URL}/deleteShow`, { id })
             .then(res => {
                 // Mettre à jour la liste des spectacles en excluant le spectacle supprimé

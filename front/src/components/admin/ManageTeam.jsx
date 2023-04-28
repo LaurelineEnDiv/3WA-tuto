@@ -27,9 +27,10 @@ const ManageTeam = () => {
     }, [teamList])
 
     const deleteTeamMember = (id) => {
+        console.log('id:', id); 
         axios.post(`${BASE_URL}/deleteTeamMember`, { id })
             .then(res => {
-                // Mettre à jour la liste des éqipes en excluant le membre supprimé
+                // Mettre à jour la liste des équipes en excluant le membre supprimé
                 setTeamList(teamList.filter(team => team.id !== id))
             })
             .catch(err => console.log(err))
