@@ -5,7 +5,10 @@ import router from "./routes/routes.js";
 
 
 const app = express()
-app.use(cors())
+app.use(cors({
+    origin: 'http://laurelineauger.ide.3wa.io:3000'
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));

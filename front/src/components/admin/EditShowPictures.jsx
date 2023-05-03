@@ -6,13 +6,8 @@ import { useState, useEffect, Fragment } from "react"
 const EditShowPictures = () => {
 
     const { id } = useParams()
-    const initialState = {
-        url_pictures: '',
-    }
-    const [showData, setShowData] = useState(initialState)
     const [picturesList, setPicturesList] = useState([])
     const [pictures, setPictures] = useState(null)
-    const [pictureSelected, setPictureSelected] = useState(null)
 
     // Afficher la liste des photos du spectacle
     useEffect(() => {
@@ -48,8 +43,7 @@ const EditShowPictures = () => {
 
         axios.post(`${BASE_URL}/addShowPictures`, dataFile)
             .then((res) => {
-                alert("Images ajoutées avec succès")
-                setShowData(initialState)
+                
                 setPictures(res.data.files)
 
             })
@@ -57,22 +51,6 @@ const EditShowPictures = () => {
                 console.log(err)
             })
 
-    }
-
-    //////SELECTION DE L'IMAGE DE MISE EN AVANT///////////
-
-    const submitMainPicture = () => {
-        const urlPicture = pictures[pictureSelected]
-
-        axios.post(`${BASE_URL}/selectedImage`, { url_pictures: urlPicture })
-            .then((res) => {
-                res.data.response && console.log('succesfully selected');
-                setPictures(null)
-                setPictureSelected(null)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
     }
 
     return (
@@ -89,8 +67,7 @@ const EditShowPictures = () => {
                     )
                   })}
                 </ul>
-             
-             { !pictures &&(
+            
             <Fragment>
             <h2>Ajouter des photos</h2>
                 <form onSubmit={submit} encType="multipart/form-data">
@@ -98,17 +75,6 @@ const EditShowPictures = () => {
                     <input className="button" type='submit' value='Valider'/>
                 </form>
             </Fragment>
-            )}
-            
-            {pictures &&
-                <Fragment>
-                    <p>Modifie la photo d'illustration</p>
-                    {pictures.map((e,i) => {
-                        return (<img key={i} style={i === pictureSelected ? {border:"1px solid red"} : {}} onClick={() => setPictureSelected(i)} src={`${BASE_IMG}/${e}`}/>)
-                    })}
-                    <button onClick={submitMainPicture}>Valider</button>
-                </Fragment>
-            }   
             
         </div>
 
