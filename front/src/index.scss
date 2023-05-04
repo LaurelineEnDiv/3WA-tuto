@@ -126,17 +126,17 @@
   }
 
   .background-white {
-    background-color: rgba(340, 340, 340, 0.8);
+    background-color: rgba(340, 340, 340, 0.7);
   }
 
   .title-white {
     color: $white;
-    text-shadow: 0.2rem 0.2rem 0 black;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.75);
   }
 
   .title-yellow {
     color: $yellow;
-    text-shadow: 0.2rem 0.2rem 0 black;
+    text-shadow: 0.1rem 0.1rem 0 $black;
   }
   
   .text-shadow-yellow {
@@ -407,6 +407,10 @@
     //}
   //}
   
+  .year-filter .button, .show-filter .button {
+    margin: 0.5rem 1rem;
+  }
+  
   .filter-selected {
     font-size:$big;
     font-weight:bold;
@@ -417,7 +421,6 @@
   }
 
   .date-agenda {
-    text-align: left;
     
     h2, h3 {
       margin: 1rem 0;
@@ -507,22 +510,17 @@
     margin-right: auto;
     margin-left: auto;
     text-align: center;
-    padding: 2rem;
-
-    .contact-col {
-      @media #{$tab} {
-        display: flex;
-        justify-content: center;
+    padding: 2rem 0;
+    
+      h2 {
+        margin: 1.5rem;
       }
       
-      .contact {
+      .contact, h3, p {
         margin: 0.5rem;
       }
-    }
-
-    .contact {
-      margin: 2rem;
-    }
+      
+       
 
   }
 

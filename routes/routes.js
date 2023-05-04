@@ -7,6 +7,7 @@ import middlewareUploadPdf from "../controllers/middlewares/middlewareUploadPdf.
 
 /////////////////////////AFFICHAGE/////////////////////
 import listTeamController from "../controllers/listTeamController.js";
+import listContactController from "../controllers/listContactController.js";
 import listShowsController from "../controllers/listShowsController.js";
 import showController from '../controllers/showController.js';
 import selectShowController from "../controllers/selectShowController.js";
@@ -50,6 +51,7 @@ const router = express.Router();
 
 /////////////////AFFICHAGE/////////////////////
 router.get("/listteam", listTeamController);
+router.get("/listcontact", listContactController);
 router.get("/listshows", listShowsController);
 router.post("/show", showController);
 router.get("/listdates", listDatesController);

@@ -37,7 +37,7 @@ const Home = () => {
             </video>
          </section>
          <div className="container">
-                <h1 className="text-shadow-yellow">Les Hommes Sensibles, en bref... </h1>
+                <h1>En bref</h1>
                     <div className="text-description">
                         <img src={baleine} className="img-baleine"/>
                         <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
@@ -52,7 +52,7 @@ const Home = () => {
             {!shows && (<p>loading</p>) }
             <div className="container">
                 <h2 className="title-white">Les Spectacles</h2>
-                <div className="row">
+                <div className="tab-row">
                 {shows.length > 0 && shows.map((show, i) => {
                     if (show.image_selected === 1) {
                     return(

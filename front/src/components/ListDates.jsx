@@ -65,7 +65,7 @@ const ListDates = () => {
                 <button className="button" onClick={() => handleYearChange(2023)}>2023</button>
                 <button className="button" onClick={() => handleYearChange(2024)}>2024</button>
             </div>
-            <p className="filter-selected">{selectedYear}</p>   
+            <p className="filter-selected title-yellow">{selectedYear}</p>   
             
     <div className="show-filter">
     <button className={selectedShow === "" ? "button active" : "button"} onClick={() => setSelectedShow("")}>
@@ -77,7 +77,7 @@ const ListDates = () => {
             </button>
         ))}
     </div>
-    <p className="filter-selected">{selectedShow}</p> 
+    <p className="filter-selected title-yellow">{selectedShow}</p> 
             
     <section className="column">
       {Object.entries(datesByMonth).map(([month, dates]) => (
