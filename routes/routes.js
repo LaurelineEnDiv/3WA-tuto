@@ -17,6 +17,7 @@ import listProController from "../controllers/listProController.js";
 import addTeamMemberController from "../controllers/admin-team/addTeamMemberController.js";
 import deleteTeamMemberController from "../controllers/admin-team/deleteTeamMemberController.js";
 import editTeamMemberByIdController from "../controllers/admin-team/editTeamMemberByIdController.js";
+import getTeamMemberByIdController from '../controllers/admin-team/getTeamMemberByIdController.js';
 /////////SHOWS///////////
 import manageShowsController from "../controllers/admin-shows/manageShowsController.js";
 import addShowController from "../controllers/admin-shows/addShowController.js";
@@ -60,6 +61,7 @@ router.get("/listpro", listProController);
     router.post("/addteammember", middlewareUploadFileMultiple, addTeamMemberController);
     router.post("/deleteTeamMember", deleteTeamMemberController);
     router.post("/editTeamMemberById", editTeamMemberByIdController);
+    router.post("/getTeamMemberById", getTeamMemberByIdController);
 
     ////SHOWS////
     router.get("/manageshows", manageShowsController);

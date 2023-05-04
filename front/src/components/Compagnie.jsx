@@ -53,11 +53,8 @@ const Compagnie = () => {
                         <h2 className="title-white">L'équipage à bord</h2>
                          <Fragment>
                             {!members && (<p>loading</p>) }
-                            <div className="team row">
-                            <div className="column team-member">
-                                
+                            <div className="tab-row">
                                 {members.length > 0 && members.map((member, i) => {
-                                
                                 return(
                                     <div className="column team-member" key={i}>
                                     <img src={`${BASE_IMG}/${member.photo}`} alt={`${member.prenom}${member.nom}`} />
@@ -69,8 +66,7 @@ const Compagnie = () => {
                                 )
                                 })}
                             </div>
-                            </div>
-                            </Fragment>
+                        </Fragment>
                     </div>
                 </section>
             </Fragment>

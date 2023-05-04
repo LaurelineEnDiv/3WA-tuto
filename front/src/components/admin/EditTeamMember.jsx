@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import { BASE_URL, BASE_IMG } from "../../tools/constante.js"
 import { useState, useEffect, Fragment } from "react"
-import { NavLink } from 'react-router-dom'
 
 const EditTeamMember = () => {
     const { id } = useParams()
@@ -58,9 +57,6 @@ const EditTeamMember = () => {
                     </div>
                 </form>
                 
-            {/*<h2>Modifier les photos du spectacle</h2>
-                <p><NavLink to={`/editshowpictures/${show.id}`}>c'est par ici !</NavLink></p>
-              */}  
         </Fragment>
         </div>
     )
