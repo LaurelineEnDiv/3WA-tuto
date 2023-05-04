@@ -109,9 +109,11 @@ const ManageDates = () => {
         <section className=" container admin-margin-top">
             <h2>Supprimer une date</h2>
             <div className="year-filter">
+                    <button className="button" onClick={() => handleYearChange(2024)}>2024</button>
                     <button className="button" onClick={() => handleYearChange(2023)}>2023</button>
                     <button className="button" onClick={() => handleYearChange(2022)}>2022</button>
                     <button className="button" onClick={() => handleYearChange(2021)}>2021</button>
+                    <button className="button" onClick={() => handleYearChange(2020)}>2020</button>
             </div>
                 <ul>
                 {dates.length > 0 && dates.map((date, i) => {
@@ -166,8 +168,11 @@ const ManageDates = () => {
                             <div>
                                 <input type="text" name="ville" placeholder="Ville" onChange={handleChange} value={date.ville} maxLength="100"/>
                             </div>
+                            
                             <div >
+                                <p>Si pays étranger, indiquer "--"</p>
                                 <input type="text" name="departement" placeholder="Numéro du département" onChange={handleChange} value={date.departement} maxLength="2"/>
+                                
                             </div>
                              <div>
                                 <input type="text" name="pays" placeholder="Pays" onChange={handleChange} value={date.pays} maxLength="100"/>

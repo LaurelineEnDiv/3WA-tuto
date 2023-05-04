@@ -17,7 +17,7 @@ const ListShows = () => {
         {!shows && (<p>loading</p>) }
         <section className="background-image shows-background-image">
         <div className="container section-margin-top">
-        <h1 className="title-white">Les Projets</h1>
+        <h1 className="title-white">Nos Projets</h1>
         <div className="row">
             {shows.length > 0 && shows.map((show, i) => {
                 if (show.image_selected === 1) {

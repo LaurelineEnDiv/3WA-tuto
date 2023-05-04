@@ -50,12 +50,6 @@ const ManageShow = () => {
     const submit = (e) => {
         e.preventDefault()
 
-        if (!inputCheck(showData.title, 255, 1) ||
-            !inputCheck(showData.year_creation, 4, 4)  ) {
-            alert("Les données saisies ne sont pas valides.")
-            return
-        }
-
         const dataFile = new FormData();
         const files = [...e.target.url_pictures.files];
 
@@ -149,7 +143,7 @@ const ManageShow = () => {
                             <input type='url' name='url_video' onChange={handleChange} value={showData.url_video} />
                         </div>
                         <div>
-                            <label>Télécharger les photos du spectacle (500 Ko max)</label>
+                            <label>Télécharger les photos du spectacle (400x300px, 500 Ko max)</label>
                             <input type='file' name='url_pictures' multiple />
                         </div>
                         <div>
