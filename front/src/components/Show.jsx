@@ -22,12 +22,12 @@ const Show = () => {
             {show && 
                 <div>
                     <h1 className="show-title">{show.sqlShow[0].title}</h1>
-                    <p>{show.sqlShow[0].pitch}</p>
+                    <p className="pitch">{show.sqlShow[0].pitch}</p>
                     <p className="text-description">{show.sqlShow[0].content}</p>
                     <div className="show-media">
                     {show.sqlShow[0].url_video && <YoutubePlayer url_video={show.sqlShow[0].url_video}/>}
                     </div>
-                    <div className="column row">
+                    <div className="column tab-row">
                         {show.sqlPictures.map((e,i) =>{
                             return(
                                 <img className="show-picture full-width" key={i} src={`${BASE_IMG}/${e.url_pictures}`} />

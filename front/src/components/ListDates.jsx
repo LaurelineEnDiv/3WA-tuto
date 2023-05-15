@@ -56,8 +56,11 @@ const ListDates = () => {
     return (
         <Fragment>
         {!dates && (<p>loading</p>) }
-        <div className="container section-margin-top">
-        <h1>Agenda</h1>
+        <div className="background-image dates-background-image container section-margin-top">
+          <h1 className="title-white">Agenda</h1>
+            
+            <section className="left">
+            <p className="filter-selected title-yellow">{selectedYear}</p>
             <div className="year-filter">
                 <button className="button" onClick={() => handleYearChange(2020)}>2020</button>
                 <button className="button" onClick={() => handleYearChange(2021)}>2021</button>
@@ -65,49 +68,51 @@ const ListDates = () => {
                 <button className="button" onClick={() => handleYearChange(2023)}>2023</button>
                 <button className="button" onClick={() => handleYearChange(2024)}>2024</button>
             </div>
-            <p className="filter-selected title-yellow">{selectedYear}</p>   
+               
             
-    <div className="show-filter">
-    <button className={selectedShow === "" ? "button active" : "button"} onClick={() => setSelectedShow("")}>
-    Tous les spectacles
-    </button>
-        {shows.map((show, index) => (
-            <button key={index} className={selectedShow === show ? "button active" : "button"} onClick={() => setSelectedShow(show)}>
-            {show}
+            <div className="show-filter">
+            <button className={selectedShow === "" ? "button active" : "button"} onClick={() => setSelectedShow("")}>
+            Tous les spectacles
             </button>
-        ))}
-    </div>
-    <p className="filter-selected title-yellow">{selectedShow}</p> 
-            
-    <section className="column">
-      {Object.entries(datesByMonth).map(([month, dates]) => (
-        <Fragment key={month}>
-          <div className="date-agenda full-width">
-            <h2>{new Date(dates[0].date).toLocaleString('default', { month: 'long' })}</h2>
-            {dates.reduce((acc, date) => {
-              const existingShow = acc.find(show => show.title === date.title);
-              if (existingShow) {
-                existingShow.dates.push(date);
-              } else {
-                acc.push({ title: date.title, dates: [date] });
-              }
-              return acc;
-            }, []).map(show => (
-              <Fragment key={show.title}>
-                {selectedShow === "" && <h3>{show.title}</h3>}
-                {show.dates.map((date, i) => (
-                  <div key={i}>
-                    <p> > {new Date(date.date).toLocaleString('default', { day: 'numeric', month: 'long' })} : <a href={date.site_web} target="_blank">{date.nom_lieu} </a>
-                      - {date.ville} {date.pays === "France" ? `(${date.departement})` : ""} {date.pays !== "France" && <span> - {date.pays}</span>}</p>
-                  </div>
+                {shows.map((show, index) => (
+                    <button key={index} className={selectedShow === show ? "button active" : "button"} onClick={() => setSelectedShow(show)}>
+                    {show}
+                    </button>
                 ))}
-              </Fragment>
-            ))}
-          </div>
-        </Fragment>
-      ))}
-    </section>    
+            </div>
+            <p className="filter-selected title-yellow">{selectedShow}</p> 
+            
+            <section className="column title-white">
+              {Object.entries(datesByMonth).map(([month, dates]) => (
+                <Fragment key={month}>
+                  <div className="date-agenda full-width">
+                    <h2>{new Date(dates[0].date).toLocaleString('default', { month: 'long' })}</h2>
+                    {dates.reduce((acc, date) => {
+                      const existingShow = acc.find(show => show.title === date.title);
+                      if (existingShow) {
+                        existingShow.dates.push(date);
+                      } else {
+                        acc.push({ title: date.title, dates: [date] });
+                      }
+                      return acc;
+                    }, []).map(show => (
+                      <Fragment key={show.title}>
+                        {selectedShow === "" && <h3 className="title-yellow">{show.title}</h3>}
+                        {show.dates.map((date, i) => (
+                          <div key={i}>
+                            <p> > {new Date(date.date).toLocaleString('default', { day: 'numeric', month: 'long' })} : <a href={date.site_web} target="_blank">{date.nom_lieu} </a>
+                              - {date.ville} {date.pays === "France" ? `(${date.departement})` : ""} {date.pays !== "France" && <span> - {date.pays}</span>}</p>
+                          </div>
+                        ))}
+                      </Fragment>
+                    ))}
+                  </div>
+                </Fragment>
+              ))}
+            </section>  
+           </section>   
         </div>
+        
         </Fragment>
     )
 }

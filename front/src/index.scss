@@ -67,7 +67,7 @@
   }
 
   .section-margin-top {
-    margin-top: 200px;
+    margin-top: 250px;
 
     @media #{$tab} {
       margin-top: 100px;
@@ -98,6 +98,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  
+  .left {
+    text-align:left;
   }
 
   .tab-row {
@@ -137,10 +141,6 @@
   .title-yellow {
     color: $yellow;
     text-shadow: 0.1rem 0.1rem 0 $black;
-  }
-  
-  .text-shadow-yellow {
-    text-shadow: 0.2rem 0.2rem 0 #fed136;
   }
 
   .button {
@@ -248,8 +248,10 @@
     }
 
     .navuser li {
+      padding: 0.5rem 0;
+      
       @media #{$tab} {
-        padding: 0 2rem;
+        padding: 1rem 2rem;
       }
     }
 
@@ -365,6 +367,10 @@
     letter-spacing: 0.2rem;
   }
   
+  .pitch {
+      font-style: italic;
+    }
+  
   .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -400,15 +406,15 @@
   AGENDA
   ***************************************************************** */
 
-  // .dates-background-image {
-   // background-image: url("assets/img/background/attaque-pirate.jpg");
-    //@media #{$tab} {
-     // background-position: center 8rem;
-    //}
-  //}
+  .dates-background-image {
+    background-image: url("assets/img/background/attaque-pirate.jpg");
+    @media #{$tab} {
+      background-position: center 8rem;
+    }
+  }
   
   .year-filter .button, .show-filter .button {
-    margin: 0.5rem 1rem;
+    margin: 0.5rem 0.5rem 0.5rem 0;
   }
   
   .filter-selected {
@@ -416,7 +422,7 @@
     font-weight:bold;
     text-transform:uppercase;
     letter-spacing: 0.3rem;
-    margin: 2rem;
+    margin: 2rem 0;
     
   }
 
