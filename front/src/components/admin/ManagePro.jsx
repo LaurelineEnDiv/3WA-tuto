@@ -12,6 +12,7 @@ const ManagePro = () => {
     const [showData, setShowData] = useState(initialState)
     const [diffPdf, setDiffPdf] = useState(null)
     const [ftPdf, setFtPdf] = useState(null)
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         if (showsList.length === 0) {
@@ -26,6 +27,7 @@ const ManagePro = () => {
 
     const diffSubmit = (e, id) => {
         e.preventDefault()
+        setIsLoading(true); // Activation de l'indicateur de chargement
         const dataFile = new FormData();
         const files = [...e.target.diff_pdf.files];
 
@@ -38,11 +40,14 @@ const ManagePro = () => {
 
         axios.post(`${BASE_URL}/adddiff`, dataFile)
             .then((res) => {
+                setIsLoading(false); // Désactivation de l'indicateur de chargement
                 alert("PDF ajouté avec succès")
                 setDiffPdf(res.data.files)
                 setShowData(initialState)
             })
             .catch((err) => {
+                // Erreur lors du téléchargement
+                setIsLoading(false); // Désactivation de l'indicateur de chargement
                 console.log(err)
             })
 
@@ -50,6 +55,7 @@ const ManagePro = () => {
     
     const ftSubmit = (e, id) => {
         e.preventDefault()
+        setIsLoading(true);
         const dataFile = new FormData();
         const files = [...e.target.ft_pdf.files];
 
@@ -62,11 +68,13 @@ const ManagePro = () => {
 
         axios.post(`${BASE_URL}/addft`, dataFile)
             .then((res) => {
+                setIsLoading(false);
                 alert("PDF ajouté avec succès")
                 setFtPdf(res.data.files)
                 setShowData(initialState)
             })
             .catch((err) => {
+                setIsLoading(false);
                 console.log(err)
             })
 
@@ -80,6 +88,7 @@ const ManagePro = () => {
                     return (
                       <Fragment key={i}>
                         <h3 className="title-yellow">{show.title}</h3>
+                        {isLoading && <div>En cours de chargement...</div>}
                         <Fragment>
                             <form onSubmit={(e) => diffSubmit(e, show.id)} encType="multipart/form-data">
                                 <div>
