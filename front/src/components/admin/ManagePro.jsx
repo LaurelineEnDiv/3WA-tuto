@@ -4,12 +4,14 @@ import { useState, useEffect, Fragment } from "react"
 
 const ManagePro = () => {
     const initialState = {
-        pdf: '',
+        diff_pdf: '',
+        ft_pdf: '',
     }
 
     const [showsList, setShowsList] = useState([])
     const [showData, setShowData] = useState(initialState)
-    const [pdf, setPdf] = useState(null)
+    const [diffPdf, setDiffPdf] = useState(null)
+    const [ftPdf, setFtPdf] = useState(null)
 
     useEffect(() => {
         if (showsList.length === 0) {
@@ -22,10 +24,10 @@ const ManagePro = () => {
 
     ///////ADD PDF////////
 
-    const submit = (e, id) => {
+    const diffSubmit = (e, id) => {
         e.preventDefault()
         const dataFile = new FormData();
-        const files = [...e.target.pdf.files];
+        const files = [...e.target.diff_pdf.files];
 
         // ajouter tous les fichiers à FormData
         for (let i = 0; i < files.length; i++) {
@@ -34,10 +36,34 @@ const ManagePro = () => {
 
         dataFile.append('show_id', id)
 
-        axios.post(`${BASE_URL}/addpdf`, dataFile)
+        axios.post(`${BASE_URL}/adddiff`, dataFile)
             .then((res) => {
                 alert("PDF ajouté avec succès")
-                setPdf(res.data.files)
+                setDiffPdf(res.data.files)
+                setShowData(initialState)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+    }
+    
+    const ftSubmit = (e, id) => {
+        e.preventDefault()
+        const dataFile = new FormData();
+        const files = [...e.target.ft_pdf.files];
+
+        // ajouter tous les fichiers à FormData
+        for (let i = 0; i < files.length; i++) {
+            dataFile.append('files', files[i], files[i].name)
+        }
+
+        dataFile.append('show_id', id)
+
+        axios.post(`${BASE_URL}/addft`, dataFile)
+            .then((res) => {
+                alert("PDF ajouté avec succès")
+                setFtPdf(res.data.files)
                 setShowData(initialState)
             })
             .catch((err) => {
@@ -48,23 +74,30 @@ const ManagePro = () => {
 
     return (
         <div className=" container admin-margin-top">
-            <h2>Ajouter un dossier de présentation</h2>
+            <h2>Ajouter des pdf</h2>
                 <ul>
                   {showsList.map((show, i) => {
                     return (
                       <Fragment key={i}>
-                          <h3>{show.title}</h3>
-                          <Fragment>
-                                <form onSubmit={(e) => submit(e, show.id)} encType="multipart/form-data">
-                                    <div>
-                                        <input type='file' name='pdf' multiple />
-                                    </div>
-                                    <div>
-                                    <input className="button" type='submit' value='Ajouter'/>
-                                    </div>
-                                </form>
-                            </Fragment>
-                         
+                        <h3 className="title-yellow">{show.title}</h3>
+                        <Fragment>
+                            <form onSubmit={(e) => diffSubmit(e, show.id)} encType="multipart/form-data">
+                                <div>
+                                <label>Dossier de diffusion</label>
+                                <input type='file' name='diff_pdf' multiple />
+                                <input className="button" type='submit' value='Ajouter'/>
+                                </div>
+                            </form>
+                        </Fragment>
+                        <Fragment>
+                            <form onSubmit={(e) => ftSubmit(e, show.id)} encType="multipart/form-data">
+                                <div>
+                                <label>Fiche technique</label>
+                                <input type='file' name='ft_pdf' multiple />
+                                <input className="button" type='submit' value='Ajouter'/>
+                                </div>
+                            </form>
+                        </Fragment>
                       </Fragment>
                     )
                   })}

@@ -13,7 +13,6 @@ const ManageShow = () => {
         year_creation: '',
         content: '',
         url_video: '',
-        pdf: '',
         url_pictures: '',
     }
     const [showsList, setShowsList] = useState([])

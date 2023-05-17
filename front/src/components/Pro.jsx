@@ -20,7 +20,9 @@ const Pro = () => {
                 return(
                     <div className="pro-item" key={i}>
                         <h2>{show.title}</h2>
-                        <a href={`${BASE_URL}/pdf/${show.pdf}`} target="_blank" download><button className="button">Dossier de présentation</button></a>
+                        <a href={`${BASE_URL}/pdf/${show.diff_pdf}`} target="_blank" download><button className="button">Dossier de diffusion</button></a>
+                        <a href={`${BASE_URL}/pdf/${show.ft_pdf}`} target="_blank" download><button className="button">Fiche technique</button></a>
+                       
                     </div>
                 )
             })}
