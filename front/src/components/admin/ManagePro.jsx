@@ -16,12 +16,12 @@ const ManagePro = () => {
 
     useEffect(() => {
         if (showsList.length === 0) {
-            axios.get(`${BASE_URL}/manageshows`)
+            axios.get(`${BASE_URL}/listpro`)
                 .then(res => setShowsList(res.data.result))
                 .catch(err => console.log(err))
         }
     }, [showsList])
-
+    
 
     ///////ADD PDF////////
 
@@ -88,6 +88,13 @@ const ManagePro = () => {
                     return (
                       <Fragment key={i}>
                         <h3 className="title-yellow">{show.title}</h3>
+                                {show.diff_pdf && (
+                                <p> Dossier de diff actuel : {show.diff_pdf}</p>
+                                )}
+                                {show.ft_pdf && (
+                                <p> Fiche technique actuelle : {show.ft_pdf}</p>
+                                )}
+                        
                         {isLoading && <div>En cours de chargement...</div>}
                         <Fragment>
                             <form onSubmit={(e) => diffSubmit(e, show.id)} encType="multipart/form-data">
@@ -107,7 +114,7 @@ const ManagePro = () => {
                                 </div>
                             </form>
                         </Fragment>
-                      </Fragment>
+                    </Fragment>
                     )
                   })}
                 </ul>
