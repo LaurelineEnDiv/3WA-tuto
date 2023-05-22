@@ -9,6 +9,7 @@ const ManagePro = () => {
     }
 
     const [showsList, setShowsList] = useState([])
+    const [pdfList, setPdfList] = useState([])
     const [showData, setShowData] = useState(initialState)
     const [diffPdf, setDiffPdf] = useState(null)
     const [ftPdf, setFtPdf] = useState(null)
@@ -21,6 +22,14 @@ const ManagePro = () => {
                 .catch(err => console.log(err))
         }
     }, [showsList])
+    
+    useEffect(() => {
+        if (pdfList.length === 0) {
+            axios.get(`${BASE_URL}/listpro`)
+                .then(res => setPdfList(res.data.result))
+                .catch(err => console.log(err))
+        }
+    }, [pdfList])
     
 
     ///////ADD PDF////////
@@ -82,7 +91,25 @@ const ManagePro = () => {
 
     return (
         <div className=" container admin-margin-top">
-            <h2>Ajouter des pdf</h2>
+            <h2>Liste des pdf</h2>
+            <ul>
+                  {pdfList.map((pdf, i) => {
+                    return (
+                      <Fragment key={i}>
+                        <h3 className="title-yellow">{pdf.title}</h3>
+                                {pdf.diff_pdf && (
+                                <p> Dossier de diff actuel : {pdf.diff_pdf}</p>
+                                )}
+                                {pdf.ft_pdf && (
+                                <p> Fiche technique actuelle : {pdf.ft_pdf}</p>
+                                )}
+                       
+                    </Fragment>
+                    )
+                  })}
+            </ul>
+                
+                <h2>Ajouter des pdf</h2>
                 <ul>
                   {showsList.map((show, i) => {
                     return (
