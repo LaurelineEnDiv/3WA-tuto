@@ -2,9 +2,9 @@ import { asyncQuery } from "../../config/database.js";
 
 export default async(req, res) => {
 
-  const sql = "INSERT INTO ft (show_id, ft_pdf) VALUES (?, ?)"
-  const { show_id, files} = req.body
-  const paramsSql = [show_id, files]
+  const sql = "INSERT INTO ft (ft_show_id, ft_pdf) VALUES (?, ?)"
+  const { ft_show_id, files} = req.body
+  const paramsSql = [ft_show_id, files]
 
   const result = await asyncQuery(sql, paramsSql)
 

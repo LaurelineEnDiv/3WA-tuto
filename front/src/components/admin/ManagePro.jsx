@@ -16,7 +16,7 @@ const ManagePro = () => {
 
     useEffect(() => {
         if (showsList.length === 0) {
-            axios.get(`${BASE_URL}/listpro`)
+            axios.get(`${BASE_URL}/manageshows`)
                 .then(res => setShowsList(res.data.result))
                 .catch(err => console.log(err))
         }
@@ -64,7 +64,7 @@ const ManagePro = () => {
             dataFile.append('files', files[i], files[i].name)
         }
 
-        dataFile.append('show_id', id)
+        dataFile.append('ft_show_id', id)
 
         axios.post(`${BASE_URL}/addft`, dataFile)
             .then((res) => {
@@ -88,12 +88,12 @@ const ManagePro = () => {
                     return (
                       <Fragment key={i}>
                         <h3 className="title-yellow">{show.title}</h3>
-                                {show.diff_pdf && (
+                                {/*{show.diff_pdf && (
                                 <p> Dossier de diff actuel : {show.diff_pdf}</p>
                                 )}
                                 {show.ft_pdf && (
                                 <p> Fiche technique actuelle : {show.ft_pdf}</p>
-                                )}
+                                )}*/}
                         
                         {isLoading && <div>En cours de chargement...</div>}
                         <Fragment>

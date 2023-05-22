@@ -31,7 +31,7 @@ const Pro = () => {
                             )}
                         </div>
                     ))}
-                    {shows.length === 0 && <p>Aucun spectacle disponible.</p>}
+                    
                 </div>
             </div>
         </Fragment>
