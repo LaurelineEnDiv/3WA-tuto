@@ -31,6 +31,26 @@ const ManagePro = () => {
         }
     }, [pdfList])
     
+    const deletePdfDiff = (id) => {
+        console.log('id:', id); 
+        axios.post(`${BASE_URL}/deleteDiffPdf`, { id })
+            .then(res => {
+                // Mettre à jour la liste des pdf en excluant le pdf supprimé
+                setPdfList(pdfList.filter(pdf => pdf.id !== id))
+            })
+            .catch(err => console.log(err))
+    }
+    
+    const deletePdfFt = (id) => {
+        console.log('id:', id); 
+        axios.post(`${BASE_URL}/deleteFTPdf`, { id })
+            .then(res => {
+                // Mettre à jour la liste des pdf en excluant le pdf supprimé
+                setPdfList(pdfList.filter(pdf => pdf.id !== id))
+            })
+            .catch(err => console.log(err))
+    }
+    
 
     ///////ADD PDF////////
 
@@ -98,10 +118,14 @@ const ManagePro = () => {
                       <Fragment key={i}>
                         <h3 className="title-yellow">{pdf.title}</h3>
                                 {pdf.diff_pdf && (
-                                <p> Dossier de diff actuel : {pdf.diff_pdf}</p>
+                                <p> Dossier de diff actuel : {pdf.diff_pdf}
+                                <button className="delete" onClick={() => deletePdfDiff(pdf.id)}>X</button>
+                                </p>
                                 )}
                                 {pdf.ft_pdf && (
-                                <p> Fiche technique actuelle : {pdf.ft_pdf}</p>
+                                <p> Fiche technique actuelle : {pdf.ft_pdf}
+                                <button className="delete" onClick={() => deletePdfFt(pdf.id)}>X</button>
+                                </p>
                                 )}
                        
                     </Fragment>
@@ -112,17 +136,15 @@ const ManagePro = () => {
                 <h2>Ajouter des pdf</h2>
                 <ul>
                   {showsList.map((show, i) => {
+                    const showHasDiffPdf = !pdfList.some(pdf => pdf.show_id === show.id && pdf.diff_pdf);
+                    const showHasFtPdf = !pdfList.some(pdf => pdf.show_id === show.id && pdf.ft_pdf);
+                    
                     return (
                       <Fragment key={i}>
                         <h3 className="title-yellow">{show.title}</h3>
-                                {/*{show.diff_pdf && (
-                                <p> Dossier de diff actuel : {show.diff_pdf}</p>
-                                )}
-                                {show.ft_pdf && (
-                                <p> Fiche technique actuelle : {show.ft_pdf}</p>
-                                )}*/}
                         
                         {isLoading && <div>En cours de chargement...</div>}
+                        {showHasDiffPdf && (
                         <Fragment>
                             <form onSubmit={(e) => diffSubmit(e, show.id)} encType="multipart/form-data">
                                 <div>
@@ -132,6 +154,9 @@ const ManagePro = () => {
                                 </div>
                             </form>
                         </Fragment>
+                        )}
+                         
+                        {showHasFtPdf && (
                         <Fragment>
                             <form onSubmit={(e) => ftSubmit(e, show.id)} encType="multipart/form-data">
                                 <div>
@@ -141,6 +166,8 @@ const ManagePro = () => {
                                 </div>
                             </form>
                         </Fragment>
+                        )}
+                        
                     </Fragment>
                     )
                   })}

@@ -39,6 +39,8 @@ import getLieuController from "../controllers/admin-agenda/getLieuController.js"
 import addDiffController from "../controllers/admin-pro/addDiffController.js";
 import addFtController from "../controllers/admin-pro/addFtController.js";
 import deleteDiffPdfController from "../controllers/admin-pro/deleteDiffPdfController.js";
+import deleteFtPdfController from "../controllers/admin-pro/deleteFtPdfController.js";
+import listPdfDiffController from "../controllers/admin-pro/listPdfDiffController.js";
 /////////USERS///////////
 import adminController from "../controllers/admin-users/adminController.js";
 import addAdminController from "../controllers/admin-users/addAdminController.js";
@@ -89,6 +91,8 @@ router.get("/listpro", listProController);
     router.post("/adddiff", middlewareUploadPdf, addDiffController);
     router.post("/addft", middlewareUploadPdf, addFtController);
     router.post("/deleteDiffPdf", deleteDiffPdfController);
+    router.post("/deleteFtPdf", deleteFtPdfController);
+    router.post("/listpdfdiff", listPdfDiffController);
     
     //////////USER//////////////////
     router.get("/admin", adminController);
