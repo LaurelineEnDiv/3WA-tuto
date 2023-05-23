@@ -34,6 +34,7 @@ const ManageText = () => {
                     )
                   })}
                 </ul>
+            
         </div>
     )
 }

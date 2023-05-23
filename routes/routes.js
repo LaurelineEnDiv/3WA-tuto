@@ -6,6 +6,7 @@ import middlewareUploadFileMultiple from "../controllers/middlewares/middlewareU
 import middlewareUploadPdf from "../controllers/middlewares/middlewareUploadPdf.js";
 
 /////////////////////////AFFICHAGE/////////////////////
+import listPartnersController from "../controllers/listPartnersController.js";
 import listTeamController from "../controllers/listTeamController.js";
 import listContactController from "../controllers/listContactController.js";
 import listShowsController from "../controllers/listShowsController.js";
@@ -23,6 +24,9 @@ import compagnieTextController from "../controllers/compagnieTextController.js";
 import editTextByIdController from "../controllers/admin-text/editTextByIdController.js";
 import getTextByIdController from '../controllers/admin-text/getTextByIdController.js';
 import manageTextController from "../controllers/admin-text/manageTextController.js";
+/////////PARTENAIRES//////////
+import addPartnerController from "../controllers/admin-partenaires/addPartnerController.js";
+import deletePartnerController from "../controllers/admin-partenaires/deletePartnerController.js";
 /////////TEAM///////////
 import addTeamMemberController from "../controllers/admin-team/addTeamMemberController.js";
 import deleteTeamMemberController from "../controllers/admin-team/deleteTeamMemberController.js";
@@ -62,6 +66,7 @@ const router = express.Router();
 
 /////////////////AFFICHAGE/////////////////////
 router.get("/listteam", listTeamController);
+router.get("/listpartners", listPartnersController);
 router.get("/listcontact", listContactController);
 router.get("/listshows", listShowsController);
 router.post("/show", showController);
@@ -75,6 +80,9 @@ router.get("/compagnietext", compagnieTextController);
     router.get("/managetext", manageTextController);
     router.post("/editTextById", editTextByIdController);
     router.post("/getTextById", getTextByIdController);
+    ////PARTENAIRES////
+    router.post("/addPartner", addPartnerController);
+    router.post("/deletePartner", deletePartnerController);
     ////TEAM////
     router.post("/addteammember", middlewareUploadFileMultiple, addTeamMemberController);
     router.post("/deleteTeamMember", deleteTeamMemberController);

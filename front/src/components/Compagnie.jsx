@@ -9,6 +9,7 @@ const Compagnie = () => {
     
     const [text, setText] = useState([])
     const [members, setMembers] = useState([])
+    const [partners, setPartners] = useState([])
     
     useEffect(() => {
         axios.get(`${BASE_URL}/compagnietext`)
@@ -19,6 +20,11 @@ const Compagnie = () => {
         axios.get(`${BASE_URL}/listteam`)
             .then(res => setMembers(res.data.result))
             .catch(e => console.log(e))
+    }, [])
+    
+    useEffect(() => {
+        axios.get(`${BASE_URL}/listpartners`)
+            .then(res => setPartners(res.data.result))
     }, [])
     
     return (
@@ -59,6 +65,17 @@ const Compagnie = () => {
                         </Fragment>
                     </div>
                 </section>
+                
+                <section className="container">
+                    <h2>Partenaires</h2>
+                    {partners.length > 0 && partners.map((partner, i) => (
+                        <ul key={i}>
+                        <li><a href={partner.url} target="_blank">{partner.nom}</a></li>
+                        </ul>
+                    ))} 
+                </section>
+                
+                
             </Fragment>
     )
 }

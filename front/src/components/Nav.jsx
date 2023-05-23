@@ -49,32 +49,37 @@ const Nav = (props) => {
         <ul className="navadmin">
           <li>
             <NavLink to="/admin">
-             Gérer les utilisateurs
+             Admin
             </NavLink>
           </li>
           <li>
             <NavLink to="/gestion-equipe">
-             Gérer l'équipe
+             Team/Contacts
             </NavLink>
           </li>
           <li>
             <NavLink to="/gestion-textes">
-             Gérer les textes
+             Textes
+            </NavLink>
+          </li>
+           <li>
+            <NavLink to="/gestion-partenaires">
+             Partenaires
             </NavLink>
           </li>
           <li>
             <NavLink to="/gestion-spectacles">
-             Gérer les spectacles
+             Spectacles
             </NavLink>
           </li>
           <li>
             <NavLink to="/gestion-agenda">
-             Gérer les dates
+             Dates
             </NavLink>
           </li>
           <li>
             <NavLink to="/gestion-pro">
-             Gérer l'espace pro
+             Espace pro
             </NavLink>
           </li>
           <li>
