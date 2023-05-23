@@ -13,8 +13,17 @@ import showController from '../controllers/showController.js';
 import selectShowController from "../controllers/selectShowController.js";
 import listDatesController from "../controllers/listDatesController.js";
 import listProController from "../controllers/listProController.js";
+import homeTextController from "../controllers/homeTextController.js";
+import compagnieTextController from "../controllers/compagnieTextController.js";
+
 
 //////////////////////ADMIN/////////////////////////////
+
+/////////TEXTES//////////
+import editTextByIdController from "../controllers/admin-text/editTextByIdController.js";
+import getTextByIdController from '../controllers/admin-text/getTextByIdController.js';
+import manageTextController from "../controllers/admin-text/manageTextController.js";
+/////////TEAM///////////
 import addTeamMemberController from "../controllers/admin-team/addTeamMemberController.js";
 import deleteTeamMemberController from "../controllers/admin-team/deleteTeamMemberController.js";
 import editTeamMemberByIdController from "../controllers/admin-team/editTeamMemberByIdController.js";
@@ -58,9 +67,14 @@ router.get("/listshows", listShowsController);
 router.post("/show", showController);
 router.get("/listdates", listDatesController);
 router.get("/listpro", listProController);
+router.get("/hometext", homeTextController);
+router.get("/compagnietext", compagnieTextController);
 
 ///////////////ADMIN///////////////////
-
+    ////TEXTES////
+    router.get("/managetext", manageTextController);
+    router.post("/editTextById", editTextByIdController);
+    router.post("/getTextById", getTextByIdController);
     ////TEAM////
     router.post("/addteammember", middlewareUploadFileMultiple, addTeamMemberController);
     router.post("/deleteTeamMember", deleteTeamMemberController);

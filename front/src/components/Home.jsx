@@ -7,9 +7,17 @@ import baleine from "../assets/img/baleine.png";
 
 
 const Home = () => {
+    const [text, setText] = useState([])
     const [shows, setShows] = useState([])
     const [dates, setDates] = useState([])
 
+    
+    useEffect(() => {
+        axios.get(`${BASE_URL}/hometext`)
+            .then(res => setText(res.data.result))
+    }, [])
+    
+    
     useEffect(() => {
         axios.get(`${BASE_URL}/listshows`)
             .then(res => setShows(res.data.result))
@@ -37,14 +45,16 @@ const Home = () => {
             </video>
          </section>
          <div className="container">
-                <h1>En bref</h1>
+         {text.length > 0 && text.map((item, i) => (
+            <div key={i}>
+                <h1>{item.titre}</h1>
                     <div className="text-description">
                         <img src={baleine} className="img-baleine"/>
-                        <p>Les Hommes Sensibles est une compagnie de cirque qui mélange acrobatie
-                        , danse, théâtre d’objet, musique, culture Hip-hop et magie (au sens large... très large).</p>
-                        <p>Ses artistes ont comme points communs leurs sensibilités.
-                        Bien que différentes, elles se rejoignent et ensemble deviennent force.</p>
+                        <p>{item.text1}</p>
                     </div>
+            </div>
+            ))}    
+                    
                     <NavLink to={`/la-compagnie`}><button className="button">Tout sur la compagnie</button></NavLink>
                     
          </div>

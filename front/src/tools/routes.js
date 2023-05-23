@@ -19,6 +19,8 @@ import ManagePro from "../components/admin/ManagePro";
 import EditTeamMember from "../components/admin/EditTeamMember";
 import EditShow from "../components/admin/EditShow";
 import EditShowPictures from "../components/admin/EditShowPictures";
+import EditText from "../components/admin/EditText";
+import ManageText from "../components/admin/ManageText";
 
 const routes = [
     {path:"/", component:<Home />},
@@ -43,6 +45,8 @@ const routes = [
     {path:"/editshowpictures/:id", component:<EditShowPictures />, auth:"admin"},
     {path:"/gestion-agenda", component:<ManageDates />, auth:"admin"},
     {path:"/gestion-pro", component:<ManagePro />, auth:"admin"},
+    {path:"/gestion-textes", component:<ManageText />, auth:"admin"},
+    {path:"/edittext/:id", component:<EditText />, auth:"admin"},
     
     {path:"*", component:<Error404 />},
    
