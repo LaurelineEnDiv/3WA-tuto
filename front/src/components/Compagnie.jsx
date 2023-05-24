@@ -3,6 +3,7 @@ import { Fragment, useState, useEffect } from 'react';
 import { BASE_URL, BASE_IMG } from "../tools/constante.js"
 import mouette from "../assets/img/mouette.png";
 import petitBateau from "../assets/img/petit-bateau.png";
+import partenaires from "../assets/img/partenaires.jpg";
 
 
 const Compagnie = () => {
@@ -68,11 +69,14 @@ const Compagnie = () => {
                 
                 <section className="container">
                     <h2>Partenaires</h2>
+                    <Fragment>
                     {partners.length > 0 && partners.map((partner, i) => (
-                        <ul key={i}>
-                        <li><a href={partner.url} target="_blank">{partner.nom}</a></li>
-                        </ul>
+                        <a key={i} href={partner.url} target="_blank"> {partner.nom} / </a>
                     ))} 
+                        <div className="logos">
+                         <img className="img-logos" src={partenaires}/>
+                        </div>
+                    </Fragment>
                 </section>
                 
                 

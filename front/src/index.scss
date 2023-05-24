@@ -456,10 +456,10 @@
     float: left;
     margin-right: 3rem;
   }
-
-  .margin {
-    max-width: 500px;
-    margin: 2rem auto;
+  
+  .img-logos {
+    max-width: 100%; 
+    height: auto;
   }
 
   .team-member {
@@ -498,6 +498,14 @@
       font-weight: bold;
     }
 
+  }
+  
+  .partner {
+    margin: 0.5rem 0;
+  }
+  
+  .logos {
+    margin: 2rem 0;
   }
 
   /* *****************************************************************
