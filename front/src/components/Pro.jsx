@@ -14,7 +14,7 @@ const Pro = () => {
         <Fragment>
             {!shows && (<p>loading</p>)}
             <div className="container section-margin-top pro-background-image background-image">
-                <h1>Espace Pro</h1>
+                <h1 className="title-white">Espace Pro</h1>
                 <div className="row">
                     {shows.length > 0 && shows.map((show, i) => (
                         <div className="pro-item" key={i}>
