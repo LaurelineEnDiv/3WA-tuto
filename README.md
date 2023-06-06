@@ -39,7 +39,7 @@ Cela lancera le serveur Node.js et le client React simultanément.
 Accédez à l'URL suivante dans votre navigateur :
 arduino
 
-http://localhost:3000
+http://localhost
 Vous devriez maintenant voir l'application React en cours d'exécution.
 
 Utilisation de Docker Compose
@@ -64,7 +64,7 @@ Les conteneurs Docker pour le serveur Node.js et le client React seront maintena
 Accédez à l'URL suivante dans votre navigateur :
 arduino
 
-http://localhost:3000
+http://localhost
 Vous devriez voir l'application React fonctionnant dans les conteneurs Docker.
 
 Vérification et gestion des conteneurs Docker

@@ -6,13 +6,14 @@ import router from "./routes/routes.js";
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost",
   })
 );
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use("/pdf", express.static("public/pdf"));
 
 app.use("/", router);
 

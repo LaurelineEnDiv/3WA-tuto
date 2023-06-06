@@ -61,7 +61,6 @@ const generateResponse = async (userDataSQL) => {
 };
 
 export default async (req, res) => {
-  console.log("ixi");
   const { password, email } = req.body;
   const sql = "SELECT * FROM users WHERE email = ?";
   const paramsSql = [email];
