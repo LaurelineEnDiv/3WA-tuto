@@ -7,14 +7,14 @@ const app = express();
 app.use(
   cors({
     //origin: "http://localhost", // If you want to lunch it locally with docker or with npm start
-    origin: "http://51.77.244.114",
+    origin: "http://www.leshommessensibles.fr",
   })
 );
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.use("/pdf", express.static("public/pdf"));
+//app.use("/pdf", express.static("public/pdf"));
 
 app.use("/", router);
 
