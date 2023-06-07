@@ -6,7 +6,8 @@ import router from "./routes/routes.js";
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost",
+    //origin: "http://localhost", // If you want to lunch it locally with docker or with npm start
+    origin: "http://51.77.244.114",
   })
 );
 
