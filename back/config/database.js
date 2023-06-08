@@ -1,4 +1,4 @@
-import mysql from "mysql2";
+import mysql from "mysql";
 
 export let pool = mysql.createConnection({
   // // Thoses variables are for docker run
