@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:18
 RUN apt update; \
     apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev; \
     wget https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tgz; \
@@ -13,5 +13,5 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-#EXPOSE 3001
+EXPOSE 3001
 CMD [ "node", "index.js" ]
