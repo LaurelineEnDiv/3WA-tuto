@@ -7,7 +7,8 @@ const app = express();
 app.use(
   cors({
     //origin: "http://localhost", // If you want to lunch it locally with docker or with npm start
-    origin: "http://www.leshommessensibles.fr",
+//    origin: "http://www.leshommessensibles.fr",
+	origin: '*', 
   })
 );
 
