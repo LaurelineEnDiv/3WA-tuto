@@ -26,7 +26,7 @@ const Footer = () => {
             </li>
           </ul>
           <section className="contact-footer">
-            <p>Justine Swygedauw Martinez</p>
+            <p>Justine Swygedauw</p>
             <p>Chargée de production et diffusion</p>
             <p>06 37 99 08 71</p>
           </section>
