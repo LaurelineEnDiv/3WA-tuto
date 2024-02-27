@@ -2,7 +2,7 @@ import { pool } from "./../config/database.js";
 
 export default (req, res) => {
   let sql = `
-    SELECT team.id, team.prenom, team.nom, team.role, profilpictures.photo
+    SELECT team.id, team.order, team.prenom, team.nom, team.role, profilpictures.photo
     FROM team
     JOIN profilpictures ON profilpictures.team_id = team.id
     `;

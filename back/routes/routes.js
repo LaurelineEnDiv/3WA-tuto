@@ -31,6 +31,7 @@ import addTeamMemberController from "./../controllers/admin-team/addTeamMemberCo
 import deleteTeamMemberController from "./../controllers/admin-team/deleteTeamMemberController.js";
 import editTeamMemberByIdController from "./../controllers/admin-team/editTeamMemberByIdController.js";
 import getTeamMemberByIdController from "./../controllers/admin-team/getTeamMemberByIdController.js";
+import updateTeamOrder from "../controllers/updateTeamOrder.js";
 /////////SHOWS///////////
 import manageShowsController from "./../controllers/admin-shows/manageShowsController.js";
 import addShowController from "./../controllers/admin-shows/addShowController.js";
@@ -91,6 +92,7 @@ router.post(
 router.post("/deleteTeamMember", deleteTeamMemberController);
 router.post("/editTeamMemberById", editTeamMemberByIdController);
 router.post("/getTeamMemberById", getTeamMemberByIdController);
+router.post("/updateTeamOrder", updateTeamOrder);
 
 ////SHOWS////
 router.get("/manageshows", manageShowsController);
