@@ -18,8 +18,6 @@ const UpdateTeamOrder = () => {
     }
   }, [teamList]);
 
-  console.log(teamList);
-
   // la fonction prend l'index d'un element et deplace cet element d'une position vers le haut
   const changeIndexUp = (index) => {
     const copy = [...teamList];
