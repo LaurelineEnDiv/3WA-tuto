@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { BASE_URL } from "../../../tools/constante";
+import axios from "axios";
 
-const ShowCategorie = ({ categories }) => {
+const ShowCategorie = ({ categories, setCategories }) => {
   const initialStateCategorie = {
     name: "",
   };
@@ -15,22 +17,19 @@ const ShowCategorie = ({ categories }) => {
       alert("le nom de la catégorie ne peut pas être vide");
       return;
     }
-    console.log(
-      `la categorie id ${catIdEdit} est modifiée en ${categorie.name}`
-    );
-    // TODO
-    /*axios
-      .post(`${BASE_URL}/updateCategorie`, categorie)
+    axios
+      .post(`${BASE_URL}/updateCategorie`, {
+        id: catIdEdit,
+        name: categorie.name,
+      })
       .then((res) => {
         setCategories(
-          categories.map((categorie) =>
-            categorie.id === catIdEdit ? categorie : res.data.result
-          )
+          categories.map((e) => (e.id === catIdEdit ? categorie : e))
         );
         setCategorie(initialStateCategorie);
         setCatIsEdit(false);
       })
-      .catch((err) => console.log(err));*/
+      .catch((err) => console.log(err));
   };
 
   const cancelEdit = () => {
@@ -40,37 +39,32 @@ const ShowCategorie = ({ categories }) => {
   };
 
   const editCategorie = (id) => {
-    console.log(categories.filter((categorie) => categorie.id === id)[0]);
     setCategorie(categories.filter((categorie) => categorie.id === id)[0]);
     setCatIsEdit(true);
     setCatIdEdit(id);
   };
 
   const addCategorie = (e) => {
-    // TODO
     if (categorie.name.trim() === "") {
       alert("le nom de la catégorie ne peut pas être vide");
       return;
     }
-    console.log("ajout de la catégorie " + categorie.name);
-    /*axios
+    axios
       .post(`${BASE_URL}/addCategorie`, categorie)
       .then((res) => {
-        setCategories([...categories, res.data.result]);
+        setCategories([...categories, categorie]);
         setCategorie(initialStateCategorie);
       })
-      .catch((err) => console.log(err));*/
+      .catch((err) => console.log(err));
   };
 
   const supprimerCategorie = (id) => {
-    console.log(`suppression de la catégorie ${id}`);
-    // TODO
-    /*axios
-        .post(`${BASE_URL}/deleteCategorie`, { id })
-        .then((res) => {
-            setCategories(categories.filter((categorie) => categorie.id !== id));
-        })
-        .catch((err) => console.log(err));*/
+    axios
+      .post(`${BASE_URL}/deleteCategorie`, { id })
+      .then((res) => {
+        setCategories(categories.filter((categorie) => categorie.id !== id));
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleChangeCategorie = (e) => {

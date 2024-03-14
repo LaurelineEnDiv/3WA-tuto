@@ -8,17 +8,10 @@ const ContactEdit = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    // TODO : récupérer les catégories
-    /*axios
+    axios
       .get(`${BASE_URL}/listCategorie`)
       .then((res) => setCategories(res.data.result))
       .catch((err) => console.log(err));
-
-    */
-    setCategories([
-      { name: "test", id: 0 },
-      { name: "test2", id: 1 },
-    ]);
   }, []);
 
   return (
@@ -27,7 +20,10 @@ const ContactEdit = () => {
       <section>
         <h2> Categorie</h2>
         <article>
-          <ShowCategorie categories={categories} />
+          <ShowCategorie
+            categories={categories}
+            setCategories={setCategories}
+          />
         </article>
       </section>
       <section>

@@ -1,38 +1,25 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../../../tools/constante";
 
 const ShowContact = ({ categories }) => {
   const initialStateContact = {
     name: "",
-    mail: "",
-    phone: "",
-    categorie: 0,
+    email: "",
+    tel: "",
+    type: 0,
   };
 
   const [contacts, setContacts] = useState([]);
+  const [contact, setContact] = useState(initialStateContact);
+  const [contactIdEdit, setContactIdEdit] = useState(null);
+  const [contactIsEdit, setContactIsEdit] = useState(false);
 
   useEffect(() => {
-    // TODO : récupérer les contacts
-    /*axios
-        .get(`${BASE_URL}/listContact`)
-        .then((res) => setContacts(res.data.result))
-        .catch((err) => console.log(err));*/
-
-    setContacts([
-      {
-        name: "test",
-        id: 0,
-        categorie: 0,
-        mail: "a@a.fr",
-        phone: "0606060606",
-      },
-      {
-        name: "test2",
-        id: 1,
-        categorie: 1,
-        mail: "b@b.fr",
-        phone: "0707070707",
-      },
-    ]);
+    axios
+      .get(`${BASE_URL}/listeContact`)
+      .then((res) => setContacts(res.data.result))
+      .catch((err) => console.log(err));
   }, []);
 
   const getCategories = (id) => {
@@ -58,78 +45,60 @@ const ShowContact = ({ categories }) => {
   const addContact = () => {
     if (
       contact.name.trim() === "" ||
-      contact.mail.trim() === "" ||
-      contact.phone.trim() === ""
+      contact.email.trim() === "" ||
+      contact.tel.trim() === ""
     ) {
       alert("le nom, le mail et le téléphone ne peuvent pas être vide");
       return;
     }
-    console.log(
-      "ajout du contact " +
-        contact.name +
-        " " +
-        contact.mail +
-        " " +
-        contact.phone +
-        " " +
-        contact.categorie
-    );
-    // TODO
-    /*axios
+    axios
       .post(`${BASE_URL}/addContact`, contact)
       .then((res) => {
-        setContacts([...contacts, res.data.result]);
+        setContacts([...contacts, contact]);
         setContact(initialStateContact);
       })
-      .catch((err) => console.log(err));*/
+      .catch((err) => console.log(err));
   };
 
   const supprimerContact = (id) => {
-    console.log("suppression du contact id " + id);
-    // TODO
-    /*axios
-        .post(`${BASE_URL}/deleteContact`, { id })
-        .then((res) => {
-            setContacts(contacts.filter((contact) => contact.id !== id));
-        })
-        .catch((err) => console.log(err));*/
+    axios
+      .post(`${BASE_URL}/deleteContact`, { id })
+      .then((res) => {
+        setContacts(contacts.filter((contact) => contact.id !== id));
+      })
+      .catch((err) => console.log(err));
   };
 
   const updateContact = () => {
     if (
       contact.name.trim() === "" ||
-      contact.mail.trim() === "" ||
-      contact.phone.trim() === ""
+      contact.email.trim() === "" ||
+      contact.tel.trim() === ""
     ) {
       alert("le nom, le mail et le téléphone ne peuvent pas être vide");
       return;
     }
-    console.log(
-      `le contact id ${contactIdEdit} est modifié en ${contact.name} ${contact.mail} ${contact.phone} ${contact.categorie}`
-    );
-    // TODO
-    /*axios
-        .post(`${BASE_URL}/updateContact`, contact)
-        .then((res) => {
-            setContacts(
-                contacts.map((contact) =>
-                    contact.id === contactIdEdit ? contact : res.data.result
-                )
-            );
-            setContact(initialStateContact);
-            setContactIsEdit(false);
-        })
-        .catch((err) => console.log(err));*/
+    axios
+      .post(`${BASE_URL}/updateContact`, { ...contact, id: contactIdEdit }) // TODO : updateContact
+      .then((res) => {
+        setContacts(
+          contacts.map((e) => (e.id === contactIdEdit ? contact : e))
+        );
+        setContact(initialStateContact);
+        setContactIsEdit(false);
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleChangeContact = (e) => {
     const { name, value } = e.target;
+    if (name === "type") {
+      setContact({ ...contact, [name]: parseInt(value) });
+      return;
+    }
     setContact({ ...contact, [name]: value });
   };
 
-  const [contact, setContact] = useState(initialStateContact);
-  const [contactIdEdit, setContactIdEdit] = useState(null);
-  const [contactIsEdit, setContactIsEdit] = useState(false);
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div
@@ -156,9 +125,9 @@ const ShowContact = ({ categories }) => {
           }}
         >
           <p>{contact.name}</p>
-          <p>{contact.mail}</p>
-          <p>{contact.phone}</p>
-          <p>{getCategories(contact.categorie)}</p>
+          <p>{contact.email}</p>
+          <p>{contact.tel}</p>
+          <p>{getCategories(contact.type)}</p>
           <div>
             <button
               className="button"
@@ -190,22 +159,22 @@ const ShowContact = ({ categories }) => {
           />
           <input
             type="email"
-            name="mail"
+            name="email"
             placeholder="Mail"
             onChange={handleChangeContact}
-            value={contact.mail}
+            value={contact.email}
           />
           <input
             type="text"
-            name="phone"
+            name="tel"
             placeholder="Téléphone"
             onChange={handleChangeContact}
-            value={contact.phone}
+            value={contact.tel}
           />
           <select
-            name="categorie"
+            name="type"
             onChange={handleChangeContact}
-            value={contact.categorie}
+            value={contact.type}
           >
             {categories.map((categorie, i) => (
               <option key={i} value={categorie.id}>
@@ -234,20 +203,20 @@ const ShowContact = ({ categories }) => {
           />
           <input
             type="email"
-            name="mail"
+            name="email"
             onChange={handleChangeContact}
-            value={contact.mail}
+            value={contact.email}
           />
           <input
             type="text"
-            name="phone"
+            name="tel"
             onChange={handleChangeContact}
-            value={contact.phone}
+            value={contact.tel}
           />
           <select
-            name="categorie"
+            name="type"
             onChange={handleChangeContact}
-            value={contact.categorie}
+            value={contact.type}
           >
             {categories.map((categorie, i) => (
               <option key={i} value={categorie.id}>
