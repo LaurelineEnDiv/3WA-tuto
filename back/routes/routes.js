@@ -61,6 +61,18 @@ import getAdminByIdController from "./../controllers/admin-users/getAdminByIdCon
 import editAdminByIdController from "./../controllers/admin-users/editAdminByIdController.js";
 import loginController from "./../controllers/admin-users/loginController.js";
 import checkToken from "./../controllers/admin-users/checkToken.js";
+import {
+  addContact,
+  deleteContact,
+  listContact,
+  updateContact,
+} from "../controllers/contact-setting/contactController.js";
+import {
+  addCategorie,
+  deleteCategorie,
+  listCategorie,
+  updateCategorie,
+} from "../controllers/contact-setting/categorieController.js";
 
 const router = express.Router();
 
@@ -120,6 +132,17 @@ router.post("/adddiff", middlewareUploadPdf, addDiffController);
 router.post("/addft", middlewareUploadPdf, addFtController);
 router.post("/deleteDiffPdf", deleteDiffPdfController);
 router.post("/deleteFtPdf", deleteFtPdfController);
+
+//////CONTACT SETTING//////
+router.post("/addContact", addContact);
+router.post("/deleteContact", deleteContact);
+router.post("/updateContact", updateContact);
+router.get("/listeContact", listContact);
+
+router.post("/addCategorie", addCategorie);
+router.post("/deleteCategorie", deleteCategorie);
+router.post("/updateCategorie", updateCategorie);
+router.get("/listCategorie", listCategorie);
 
 //////////USER//////////////////
 router.get("/admin", adminController);
