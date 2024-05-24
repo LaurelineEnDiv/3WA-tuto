@@ -22,6 +22,7 @@ import EditShowPictures from "./../components/admin/EditShowPictures";
 import EditText from "./../components/admin/EditText";
 import ManageText from "./../components/admin/ManageText";
 import ManagePartners from "./../components/admin/ManagePartners";
+import UpdateTeamOrder from "./../components/admin/UpdateTeamOrder";
 
 const routes = [
   { path: "/", component: <Home /> },
@@ -43,6 +44,7 @@ const routes = [
   { path: "/gestion-spectacles", component: <ManageShow />, auth: "admin" },
   { path: "/editteammember/:id", component: <EditTeamMember />, auth: "admin" },
   { path: "/editshow/:id", component: <EditShow />, auth: "admin" },
+  { path: "/editteamorder", component: <UpdateTeamOrder />, auth: "admin" },
   {
     path: "/editshowpictures/:id",
     component: <EditShowPictures />,
