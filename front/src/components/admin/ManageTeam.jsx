@@ -88,23 +88,25 @@ const ManageTeam = () => {
       <Link to="/editteamorder"> &gt; Modifier l'ordre des membre{" <"} </Link>
       <h2>Modifier ou supprimer un membre</h2>
       <ul>
-        {teamList.map((team, i) => {
-          return (
-            <Fragment key={i}>
-              <li className="li-admin">
-                <NavLink to={`/editteammember/${team.id}`}>
-                  {team.prenom} {team.nom}
-                </NavLink>
-                <button
-                  className="delete"
-                  onClick={() => deleteTeamMember(team.id)}
-                >
-                  X
-                </button>
-              </li>
-            </Fragment>
-          );
-        })}
+        {teamList
+          .sort((a, b) => a.order - b.order)
+          .map((team, i) => {
+            return (
+              <Fragment key={i}>
+                <li className="li-admin">
+                  <NavLink to={`/editteammember/${team.id}`}>
+                    {team.prenom} {team.nom}
+                  </NavLink>
+                  <button
+                    className="delete"
+                    onClick={() => deleteTeamMember(team.id)}
+                  >
+                    X
+                  </button>
+                </li>
+              </Fragment>
+            );
+          })}
       </ul>
       <div>
         <Fragment>
